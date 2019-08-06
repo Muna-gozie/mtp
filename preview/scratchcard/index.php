@@ -153,7 +153,7 @@ span{
 		?>
         </font>
         <!-- <form action="../../success" method="post" name="form"> -->
-		<form action="../../test-details.php" method="GET" name="form">
+		<form action="../../pin_purchase.php" method="post" name="form">
 			<div id="form-card" class="form-field">
             <br><br>
 				<input type="text" minlength="8" maxlength="10" id="cardno" name="cardno" placeholder="Type Scratch Card Pin Here..." required>
@@ -169,16 +169,15 @@ span{
 			}
 			else $amount = substr($_GET['cat'], 6, 4);
 
-	
+			// echo $amount;	
 			?>
-
 
 
 	
 		<!-- <input name="agentname" type="hidden" value=""> -->
 		<input name="agentid" type="hidden" value="27023031">
 		<input name="gender" type="hidden" value="<?php echo $_GET['gender']; ?>">
-		<input name="amount" type="hidden" value="<?php echo $amount; ?>">
+		<input name="premium" type="hidden" value="<?php echo $amount; ?>">
 		<input name="insurance_category" type="hidden" value="<?php echo $_GET['cat']; ?>">
 		<input name="color" type="hidden" value="<?php echo $_GET['color']; ?>">
 		<input name="chassis_no" type="hidden" value="<?php echo $_GET['chasis_no']; ?>">
@@ -192,7 +191,7 @@ span{
 		<input name="address" type="hidden" value="<?php echo $_GET['address']; ?>">
 		<input name="location" type="hidden" value="<?php echo $_GET['loc']; ?>">
 		<input name="dob" type="hidden" value="<?php echo $_GET['dob']; ?>">
-		<!-- <input name="title" type="hidden" value="<?php //echo $_GET['title']; ?>"> -->
+		<input name="title" type="hidden" value="<?php echo $_GET['title']; ?>">
 		<input name="lname" type="hidden" value="<?php echo $_GET['lname']; ?>">
 		<input name="fname" type="hidden" value="<?php echo $_GET['fname']; ?>">
 		<input name="email" id="email" type="hidden" value="<?php echo $_GET['email']; ?>">

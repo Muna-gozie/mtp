@@ -87,8 +87,8 @@ curl_close($curl);
 $doc = new DOMDocument();
 $doc->loadXML($result);
 
-// $title = $doc->getElementsByTagName( "Title" );
-// $title = $title->item(0)->nodeValue;
+$title = $doc->getElementsByTagName( "Title" );
+$title = $title->item(0)->nodeValue;
 
 $fname = $doc->getElementsByTagName( "Firstname" );
 $fname = $fname->item(0)->nodeValue;
@@ -280,7 +280,9 @@ $idno = $idno->item(0)->nodeValue;
 
 <table border="0" style="width:auto;">
   <tr>
-    
+    <!-- Hidden title --> 
+	<input type="hidden" id="title" name="title" maxlength="19" value="<?php echo $title; ?>">
+	
 	<div id="form-card" class="form-field" style="width:80%">
 		<label for="fname">Full name:</label>
 		<input id="fname" name="fname" maxlength="19" value="<?php echo $fname; ?>" required disabled>
