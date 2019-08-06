@@ -144,7 +144,7 @@ span{
         	echo '<img src="../../img/scratchcard3.png" width="241" height="140">';
 		}
 		?>
-<br><br><br>
+	<br><br><br>
 		<font color="#000000" style="font-weight:bold;">
 		<?php
 		if(isset($_GET['fname']))
