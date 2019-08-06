@@ -125,155 +125,183 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		  </p></marquee>
 		</div>
 	</section>
+
 	<section id="right">
 
-    <div align="center">
-<h1 style="font-size:18px; font-weight:bold; color:#000;">PERSONAL INFORMATION</h1><br><br>
+    <div align="">
+
+	<h1 class="form-title">PERSONAL INFORMATION</h1>
 	<form name="form1" id="form1" action="preview/" method="POST">
-        <input type="hidden" name="type" value="<?php echo $_POST['type']; ?>" />
-<table border="0" style="width:auto;">  
-  <tr>
-    <td><div id="form-card" class="form-field">
-                <label for="lname">Name Of Organization:</label>
-				<input id="lname" style="width:auto;" name="lname" maxlength="50" value="<?php echo $_POST['lname']; ?>" required>
-			</div></td>
-  </tr>
+    
+	<input type="hidden" name="type" value="<?php echo $_POST['type']; ?>" />
+	<table border="0" >  
+	<tr>
+		<td colspan="3">
+			<div id="form-card" class="form-field">
+					<label for="lname">Name Of Organization:</label>
+					<input id="lname"  name="lname" maxlength="50" value="<?php echo $_POST['lname']; ?>" required>
+			</div>
+		</td>
+	</tr>
 
 	<tr>
-    <td><div id="form-card" class="form-field">
-                <label for="dateofbirth">Date of Incorporation:</label>
-                <div style="margin:10px 0px;">
-				<input id="dob" name="dob" value="<?php echo ($dob == '--Y-----M-----D--' ? '2018-01-01' : $dob); ?>" required>
-                </div>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-				<label for="location">Location:</label>
-<select name="loc" style="width:197px; height:44px;" required>
-<OPTION><?php echo $_POST['location']; ?></OPTION>
-<option></option>
-<OPTION>Lagos</OPTION>
-<option>Abuja FCT</option>
-<option>Abia</option>
-<option>Adamawa</option>
-<option>Akwa Ibom</option>
-<option>Anambre</option>
-<option>Bachi</option>
-<option>Bayelsa</option>
-<option>Benue</option>
-<option>Borno</option>
-<option>Cross River</option>
-<option>Delta</option>
-<option>Ebonyi</option>
-<option>Edo</option>
-<option>Ekiti</option>
-<option>Enugu</option>
-<option>Gombe</option>
-<option>Imo</option>
-<option>Jigawa</option>
-<option>Kaduna</option>
-<option>Kano</option>
-<option>Kastina</option>
-<option>Kebbi</option>
-<option>Kogi</option>
-<option>Kwara</option>
-<option>Nassarawa</option>
-<option>Niger</option>
-<option>Ogun</option>
-<option>Ondo</option>
-<option>Osun</option>
-<option>Oyo</option>
-<option>Plateau</option>
-<option>Rivers</option>
-<option>Sokoto</option>
-<option>Taraba</option>
-<option>Yobe</option>
-<option>Zamfara</option>
-    </select>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="dob">Date of Incorporation:</label>
+				<input class="input-1" id="dob" name="dob" value="<?php echo ($dob == '--Y-----M-----D--' ? '2018-01-01' : $dob); ?>" required>
 			</div>
-</td>
-  </tr>
+		</td>
 
-  <tr>
-    <td><div id="form-card" class="form-field">
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="location">Location:</label>
+				<select name="loc" class="input-2" required>
+				<OPTION><?php echo $_POST['location']; ?></OPTION>
+				<option></option>
+				<OPTION>Lagos</OPTION>
+				<option>Abuja FCT</option>
+				<option>Abia</option>
+				<option>Adamawa</option>
+				<option>Akwa Ibom</option>
+				<option>Anambre</option>
+				<option>Bachi</option>
+				<option>Bayelsa</option>
+				<option>Benue</option>
+				<option>Borno</option>
+				<option>Cross River</option>
+				<option>Delta</option>
+				<option>Ebonyi</option>
+				<option>Edo</option>
+				<option>Ekiti</option>
+				<option>Enugu</option>
+				<option>Gombe</option>
+				<option>Imo</option>
+				<option>Jigawa</option>
+				<option>Kaduna</option>
+				<option>Kano</option>
+				<option>Kastina</option>
+				<option>Kebbi</option>
+				<option>Kogi</option>
+				<option>Kwara</option>
+				<option>Nassarawa</option>
+				<option>Niger</option>
+				<option>Ogun</option>
+				<option>Ondo</option>
+				<option>Osun</option>
+				<option>Oyo</option>
+				<option>Plateau</option>
+				<option>Rivers</option>
+				<option>Sokoto</option>
+				<option>Taraba</option>
+				<option>Yobe</option>
+				<option>Zamfara</option>
+				</select>
+			</div>
+		</td>
+  	</tr>
+
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="address">Address:</label>
-				<input id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="phone">Phone:</label>
-				<input id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
-			</div></td>
-  </tr>
+				<input class="input-1" id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
+			</div>
+		</td>
 
-  <tr>
-    <td><div id="form-card" class="form-field">
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="phone">Phone:</label>
+				<input class="input-2" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
+			</div>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="email">Email:</label>
-				<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="occupation">RC Number:</label>
-				<input id="id" name="id" maxlength="50" value="<?php echo ($_POST['rc_no'] == '' ? 'null' : $_POST['rc_no']); ?>" required>
-			</div></td>
-  </tr>
-</table>
-<br><div align="left"><h1 style="font-size:18px; font-weight:bold; color:#000;">VEHICLE INFORMATION</h1></div><br><br>
-<table border="0" style="width:auto;">
-  <tr>
-  <td colspan="2">Insurance Class: <font color="#FF0000">Motor Third Party</font><br><br></td>
-  </tr>
- 
- <tr>
-  <td><div id="form-card" class="form-field">
-                <label for="car">Vehicle Type:</label>
-  <input type="hidden" name="car" id="car" />
-  <select name="country" id="country" style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" required onchange="form.car.value=this.options[this.selectedIndex].text">
-			<option value=''>Select Type</option>
-			<?php 
-			include("../db.php");
+				<input class="input-1" id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
+			</div>
+		</td>
 
-			$sql = "select * from `cars` order by cars asc";
-			$res = mysqli_query($con, $sql);
-			if(mysqli_num_rows($res) > 0) {
-				while($row = mysqli_fetch_object($res)) {
-					echo "<option value='".$row->id."'>".$row->cars."</option>";
-				}
-			}
-			?>
-		</select>
-        </div></td>
-  <td>
-   <div id="form-card" class="form-field">
-                <label for="model">Model:</label>
-<input type="hidden" name="model" id="model" />
-  <select name="state" id="state" style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" required onchange="form.model.value=this.options[this.selectedIndex].text">
-  </select>
-  </div>
-  </td>
-  </tr>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="occupation">RC Number:</label>
+				<input class="input-2" id="id" name="id" maxlength="50" value="<?php echo ($_POST['rc_no'] == '' ? 'null' : $_POST['rc_no']); ?>" required>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<br><h1 class="form-title">VEHICLE INFORMATION</h1><br><br>
+<table border="0" style="width:auto;">
+  <!-- <tr>
+  <td colspan="2">Insurance Class: <font color="#FF0000">Motor Third Party</font><br><br></td>
+  </tr> -->
+ 
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="car">Vehicle Type:</label>
+				<input type="hidden" name="car" id="car" />
+				<select name="country" id="country" class="input-1" required onchange="form.car.value=this.options[this.selectedIndex].text">
+					<option value=''>Select Type</option>
+					<?php 
+					include("../db.php");
+
+					$sql = "select * from `cars` order by cars asc";
+					$res = mysqli_query($con, $sql);
+					if(mysqli_num_rows($res) > 0) {
+						while($row = mysqli_fetch_object($res)) {
+							echo "<option value='".$row->id."'>".$row->cars."</option>";
+						}
+					}
+					?>
+				</select>
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="model">Model:</label>
+				<input type="hidden" name="model" id="model" />
+				<select name="state" id="state" class="input-2" required onchange="form.model.value=this.options[this.selectedIndex].text">
+				</select>
+			</div>
+		</td>
+	</tr>
   
 	<tr>
-    <td><div id="form-card" class="form-field">
-                <label for="reg_no">Registration No:</label>
-                <div style="margin:10px 0px;">
-				<input id="reg_no" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required>
-                </div>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-				<label for="engine_no">Engine No:</label><br>
-				<input id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="reg_no">Registration No:</label>
+				<input id="reg_no" class="input-1" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required>
 			</div>
-</td>
-  </tr>
+		</td>
 
-  <tr>
-    <td><div id="form-card" class="form-field">
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="engine_no">Engine No:</label><br>
+				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required>
+			</div>
+		</td>
+  	</tr>
+
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="chasis_no">Chasis No:</label>
-				<input id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="color">Colour:</label>
-				<input id="color" name="color" maxlength="20" value="<?php echo $_POST['colour']; ?>" required>
-			</div></td>
-  </tr>
+				<input class="input-1" id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" required>
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="color">Colour:</label>
+				<input class="input-2" id="color" name="color" maxlength="20" value="<?php echo $_POST['colour']; ?>" required>
+			</div>
+		</td>
+	</tr>
   
   <tr>
     <td><div id="form-card" class="form-field">
@@ -291,7 +319,9 @@ while($yr >=1999)
 
 ?>
 </select>
-			</div></td>
+			</div>
+	</td>
+
     <td><div id="form-card" class="form-field">
                 <label for="state_reg">State of Registration:</label>
 				<select name="state_reg" required id="state_reg" style="color:#000; width:183px;">

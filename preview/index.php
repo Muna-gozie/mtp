@@ -385,83 +385,90 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
   <tr>
 		<td>
 			<div id="form-card" class="form-field">
-						<label for="year">Year of Make:</label>
-						<select style="width:197px; height:30px; border-color:#ddd; border-radius:5px;" name="year" id="year" style="color:#000; width:183px;">
-						<option><?php echo $_POST['year']; ?></option>
-						<option></option>
-						<?php
-						$yr = 2019;
+				<label for="year">Year of Make:</label>
+				<select class="input-1" name="year" id="year">
+				<option><?php echo $_POST['year']; ?></option>
+				<option></option>
+				<?php
+				$yr = 2019;
 
-						while($yr >=1999)
-						{
-							echo '<option>'. $yr. '</option>';
-							--$yr;
-						}
+				while($yr >=1999)
+				{
+					echo '<option>'. $yr. '</option>';
+					--$yr;
+				}
 
-						?>
-						</select>
+				?>
+				</select>
 			</div>
 		</td>
 
-    <td><div id="form-card" class="form-field">
+    	<td>
+			<div id="form-card" class="form-field">
                 <label for="state_reg">State of Registration:</label>
-                <select name="state_reg" id="state_reg" style="width:197px; height:30px; border-color:#ddd; border-radius:5px;" required style="color:#000; width:183px;">
-<option><?php echo $_POST['state_reg']; ?></option>
-<option></option>
-<option>ABUJA FCT</option>
-<option>ABIA</option>
-<option>ADAMAWA</option>
-<option>AKWA IBOM</option>
-<option>ANAMBRA</option>
-<option>BAUCHI</option>
-<option>BAYELSA</option>
-<option>BENUE</option>
-<option>BORNO</option>
-<option>CROSS RIVER</option>
-<option>DELTA</option>
-<option>EBONYI</option>
-<option>EDO</option>
-<option>EKITI</option>
-<option>ENUGU</option>
-<option>GOMBE</option>
-<option>IMO</option>
-<option>JIGAWA</option>
-<option>KADUNA</option>
-<option>KANO</option>
-<option>KATSINA</option>
-<option>KEBBI</option>
-<option>KOGI</option>
-<option>KWARA</option>
-<option>LAGOS</option>
-<option>NASSARAWA</option>
-<option>NIGER</option>
-<option>OGUN</option>
-<option>ONDO</option>
-<option>OSUN</option>
-<option>OYO</option>
-<option>PLATEAU</option>
-<option>RIVERS</option>
-<option>SOKOTO</option>
-<option>TARABA</option>
-<option>YOBE</option>
-<option>ZAMFARA</option>
-</select>
-			</div></td>
+                <select name="state_reg" id="state_reg" class="input-2" required >
+				<option><?php echo $_POST['state_reg']; ?></option>
+				<option></option>
+				<option>ABUJA FCT</option>
+				<option>ABIA</option>
+				<option>ADAMAWA</option>
+				<option>AKWA IBOM</option>
+				<option>ANAMBRA</option>
+				<option>BAUCHI</option>
+				<option>BAYELSA</option>
+				<option>BENUE</option>
+				<option>BORNO</option>
+				<option>CROSS RIVER</option>
+				<option>DELTA</option>
+				<option>EBONYI</option>
+				<option>EDO</option>
+				<option>EKITI</option>
+				<option>ENUGU</option>
+				<option>GOMBE</option>
+				<option>IMO</option>
+				<option>JIGAWA</option>
+				<option>KADUNA</option>
+				<option>KANO</option>
+				<option>KATSINA</option>
+				<option>KEBBI</option>
+				<option>KOGI</option>
+				<option>KWARA</option>
+				<option>LAGOS</option>
+				<option>NASSARAWA</option>
+				<option>NIGER</option>
+				<option>OGUN</option>
+				<option>ONDO</option>
+				<option>OSUN</option>
+				<option>OYO</option>
+				<option>PLATEAU</option>
+				<option>RIVERS</option>
+				<option>SOKOTO</option>
+				<option>TARABA</option>
+				<option>YOBE</option>
+				<option>ZAMFARA</option>
+				</select>
+			</div>
+		</td>
   </tr>
 
   <tr>
-    <td><div id="form-card" class="form-field">
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="category">Category:</label>
-				<input id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" required readonly>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="usage">Usage:</label>
-<select style="width:200px; height:30px; border-color:#ddd; border-radius:5px;" required name="usage" style="color:#000; width:183px;">
-<option><?php echo $_POST['usage']; ?></option>
-<option></option>
-<option>Private</option>
-<option>Commercial</option>
-			</div></td>
+				<input class="input-1" id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" required readonly>
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="usage">Usage:</label>
+				<select class="input-2" required name="usage">
+				<option><?php echo $_POST['usage']; ?></option>
+				<option></option>
+				<option>Private</option>
+				<option>Commercial</option>
+			</div>
+		</td>
   </tr>
 </table>
 			
