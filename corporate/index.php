@@ -136,12 +136,24 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 	<input type="hidden" name="type" value="<?php echo $_POST['type']; ?>" />
 	<table border="0" >  
 	<tr>
-		<td colspan="3">
-			<div id="form-card" class="form-field">
-					<label for="lname">Name Of Organization:</label>
-					<input id="lname"  name="lname" maxlength="50" value="<?php echo $_POST['lname']; ?>" required>
-			</div>
-		</td>
+		<div id="form-card" class="form-field" style="width:80%">
+			<label for="lname">Name Of Organization:</label>
+			<input id="lname"  name="lname" maxlength="50" value="<?php echo $_POST['lname']; ?>" required>
+		</div>
+	</tr>
+
+	<tr>
+		<div id="form-card" class="form-field" style="width:80%">
+			<label for="address">Address:</label>
+			<input id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
+		</div>
+	</tr>
+
+	<tr>
+		<div id="form-card" class="form-field" style="width:80%">
+			<label for="email">Email:</label>
+			<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
+		</div>
 	</tr>
 
 	<tr>
@@ -201,26 +213,11 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
   	</tr>
 
 	<tr>
-		<td>
-			<div id="form-card" class="form-field">
-				<label for="address">Address:</label>
-				<input class="input-1" id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
-			</div>
-		</td>
-
+		
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="phone">Phone:</label>
-				<input class="input-2" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
-			</div>
-		</td>
-	</tr>
-
-	<tr>
-		<td>
-			<div id="form-card" class="form-field">
-				<label for="email">Email:</label>
-				<input class="input-1" id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
+				<input class="input-1" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
 			</div>
 		</td>
 
@@ -231,13 +228,11 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			</div>
 		</td>
 	</tr>
+
 </table>
 
 <br><h1 class="form-title">VEHICLE INFORMATION</h1><br><br>
-<table border="0" style="width:auto;">
-  <!-- <tr>
-  <td colspan="2">Insurance Class: <font color="#FF0000">Motor Third Party</font><br><br></td>
-  </tr> -->
+<table border="0" >
  
 	<tr>
 		<td>
@@ -303,135 +298,143 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		</td>
 	</tr>
   
-  <tr>
-    <td><div id="form-card" class="form-field">
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="year">Year of Make:</label>
-				<select name="year" id="year" style="color:#000; width:183px;" required>
-<option></option>
-<?php
-$yr = 2019;
+				<select name="year" id="year" class="input-1" required>
+				<option></option>
+				<?php
+				$yr = 2019;
 
-while($yr >=1999)
-{
-	echo '<option>'. $yr. '</option>';
-	--$yr;
-}
-
-?>
-</select>
+				while($yr >=1999)
+				{
+					echo '<option>'. $yr. '</option>';
+					--$yr;
+				}
+				?>
+				</select>
 			</div>
-	</td>
+		</td>
 
-    <td><div id="form-card" class="form-field">
-                <label for="state_reg">State of Registration:</label>
-				<select name="state_reg" required id="state_reg" style="color:#000; width:183px;">
-<option></option>
-<option>ABUJA FCT</option>
-<option>ABIA</option>
-<option>ADAMAWA</option>
-<option>AKWA IBOM</option>
-<option>ANAMBRA</option>
-<option>BAUCHI</option>
-<option>BAYELSA</option>
-<option>BENUE</option>
-<option>BORNO</option>
-<option>CROSS RIVER</option>
-<option>DELTA</option>
-<option>EBONYI</option>
-<option>EDO</option>
-<option>EKITI</option>
-<option>ENUGU</option>
-<option>GOMBE</option>
-<option>IMO</option>
-<option>JIGAWA</option>
-<option>KADUNA</option>
-<option>KANO</option>
-<option>KATSINA</option>
-<option>KEBBI</option>
-<option>KOGI</option>
-<option>KWARA</option>
-<option>LAGOS</option>
-<option>NASSARAWA</option>
-<option>NIGER</option>
-<option>OGUN</option>
-<option>ONDO</option>
-<option>OSUN</option>
-<option>OYO</option>
-<option>PLATEAU</option>
-<option>RIVERS</option>
-<option>SOKOTO</option>
-<option>TARABA</option>
-<option>YOBE</option>
-<option>ZAMFARA</option>
-</select>
-			</div></td>
-  </tr>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="state_reg">State of Registration:</label>
+				<select class="input-2" name="state_reg" required id="state_reg" >
+					<option></option>
+					<option>ABUJA FCT</option>
+					<option>ABIA</option>
+					<option>ADAMAWA</option>
+					<option>AKWA IBOM</option>
+					<option>ANAMBRA</option>
+					<option>BAUCHI</option>
+					<option>BAYELSA</option>
+					<option>BENUE</option>
+					<option>BORNO</option>
+					<option>CROSS RIVER</option>
+					<option>DELTA</option>
+					<option>EBONYI</option>
+					<option>EDO</option>
+					<option>EKITI</option>
+					<option>ENUGU</option>
+					<option>GOMBE</option>
+					<option>IMO</option>
+					<option>JIGAWA</option>
+					<option>KADUNA</option>
+					<option>KANO</option>
+					<option>KATSINA</option>
+					<option>KEBBI</option>
+					<option>KOGI</option>
+					<option>KWARA</option>
+					<option>LAGOS</option>
+					<option>NASSARAWA</option>
+					<option>NIGER</option>
+					<option>OGUN</option>
+					<option>ONDO</option>
+					<option>OSUN</option>
+					<option>OYO</option>
+					<option>PLATEAU</option>
+					<option>RIVERS</option>
+					<option>SOKOTO</option>
+					<option>TARABA</option>
+					<option>YOBE</option>
+					<option>ZAMFARA</option>
+					</select>
+			</div>
+		</td>
+	</tr>
 
-  <tr>
-    <td><div id="form-card" class="form-field">
-				<label for="category">Category:</label>
-				<select required style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" name="category" style="color:#000; width:183px;">
-<option></option>
-<option title="Excluding Commercial Buses !!!"><?php 
-// $url = "http://63.33.166.144:3001/webservice/interapp.asmx?WSDL";
-$client = new SoapClient($url);
-
-
-$res2 = $client->FindPremiumThirdParty(array('Vehicle' => 'bus'));
-echo substr(ucfirst(strtolower($res2->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res2->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
-?></option>
-
-<option><?php 
-$res = $client->FindPremiumThirdParty(array('Vehicle' => 'car'));
-echo substr(ucfirst(strtolower($res->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
-
-?></option>
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
+					<label for="category">Category:</label>
+					<select required class="input-1" name="category" >
+					<option></option>
+					<option title="Excluding Commercial Buses !!!"><?php 
+					// $url = "http://63.33.166.144:3001/webservice/interapp.asmx?WSDL";
+					$client = new SoapClient($url);
 
 
-<option><?php 
-$res4 = $client->FindPremiumThirdParty(array('Vehicle' => 'jeep'));
-echo substr(ucfirst(strtolower($res4->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res4->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
-?></option>
+					$res2 = $client->FindPremiumThirdParty(array('Vehicle' => 'bus'));
+					echo substr(ucfirst(strtolower($res2->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+					echo " - ";
+					echo $res2->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+					?></option>
+
+					<option><?php 
+					$res = $client->FindPremiumThirdParty(array('Vehicle' => 'car'));
+					echo substr(ucfirst(strtolower($res->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+					echo " - ";
+					echo $res->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+
+					?></option>
 
 
-<option><?php 
-$res7 = $client->FindPremiumThirdParty(array('Vehicle' => 'keke'));
-echo substr(ucfirst(strtolower($res7->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 5); 
-echo " - ";
-echo $res7->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+					<option><?php 
+					$res4 = $client->FindPremiumThirdParty(array('Vehicle' => 'jeep'));
+					echo substr(ucfirst(strtolower($res4->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+					echo " - ";
+					echo $res4->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+					?></option>
 
-?></option>
 
-<option><?php 
-$res3 = $client->FindPremiumThirdParty(array('Vehicle' => 'suv'));
-echo substr(ucfirst(strtolower($res3->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res3->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
-?></option>
+					<option><?php 
+					$res7 = $client->FindPremiumThirdParty(array('Vehicle' => 'keke'));
+					echo substr(ucfirst(strtolower($res7->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 5); 
+					echo " - ";
+					echo $res7->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 
-<option><?php 
-$res6 = $client->FindPremiumThirdParty(array('Vehicle' => 'truck'));
-echo substr(ucfirst(strtolower($res6->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 5); 
-echo " - ";
-echo $res6->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+					?></option>
 
-?>
-</option>
-</select>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="usage">Usage:</label>
-				<select style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" name="usage" style="color:#000; width:183px;">
-<option>Private</option>
-</select>
-			</div></td>
-  </tr>
+					<option><?php 
+					$res3 = $client->FindPremiumThirdParty(array('Vehicle' => 'suv'));
+					echo substr(ucfirst(strtolower($res3->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+					echo " - ";
+					echo $res3->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+					?></option>
+
+					<option><?php 
+					$res6 = $client->FindPremiumThirdParty(array('Vehicle' => 'truck'));
+					echo substr(ucfirst(strtolower($res6->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 5); 
+					echo " - ";
+					echo $res6->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+
+					?>
+					</option>
+					</select>
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="usage">Usage:</label>
+				<select class="input-2" name="usage" >
+				<option>Private</option>
+				<option>Commercial</option>
+				</select>
+			</div>
+		</td>
+	</tr>
 </table>
 			
 	<br><br>

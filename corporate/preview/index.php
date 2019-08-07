@@ -134,159 +134,184 @@ else $amount = substr($_POST['category'], 6, 4);
 		<center><div style="background-color:#852B2C; width:250px; height:60px; opacity:0.7"><br><h3 align="center" style="font-size:18px; font-weight:bold; color:#fff;">Your Purchase: ₦<?php echo number_format($amount);	
 		?></h3></div></center>
 	</section>
+
 	<section id="right">
-        <div align="left"><h1 style="font-size:18px; font-weight:bold; color:#000;">CORPORATE INFORMATION</h1></div><br>
+        <h1 class="form-title">CORPORATE INFORMATION</h1><br>
         <form name="form1" id="form1" action="../../preview/scratchcard/" method="GET">
         <input type="hidden" name="amount" id="amount" value="<?php echo $amount; ?>" />
         <input type="hidden" name="type" value="<?php echo $_POST['type']; ?>" />
-<table border="0" style="width:auto;">  
-  <tr>
-    <td><div id="form-card" class="form-field">
-                <label for="lname">Name Of Organization:</label>
-				<input id="lname" style="width:auto;" name="lname" maxlength="30" value="<?php echo $_POST['lname']; ?>" required>
-			</div></td>
-  </tr>
+	<table border="0">  
+	<tr>
+		<div id="form-card" class="form-field" style="width:80%">
+			<label for="lname">Name Of Organization:</label>
+			<input id="lname" name="lname" maxlength="30" value="<?php echo $_POST['lname']; ?>" required disabled>
+			<!-- Hidden -->
+			<input type="hidden" name="lname" maxlength="30" value="<?php echo $_POST['lname']; ?>" >
+		</div>
+	</tr>
 
 	<tr>
-    <td><div id="form-card" class="form-field">
-                <label for="dateofbirth">Date of Incorporation:</label>
-                <div style="margin:10px 0px;">
-				<input id="dob" name="dob" value="<?php echo $_POST['dob']; ?>" required>
-                </div>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-				<label for="location">Location:</label>
-<select name="loc" style="width:197px; height:44px;" required>
-<OPTION><?php echo $_POST['loc']; ?></OPTION>
-<option></option>
-<OPTION>Lagos</OPTION>
-<option>Abuja FCT</option>
-<option>Abia</option>
-<option>Adamawa</option>
-<option>Akwa Ibom</option>
-<option>Anambre</option>
-<option>Bachi</option>
-<option>Bayelsa</option>
-<option>Benue</option>
-<option>Borno</option>
-<option>Cross River</option>
-<option>Delta</option>
-<option>Ebonyi</option>
-<option>Edo</option>
-<option>Ekiti</option>
-<option>Enugu</option>
-<option>Gombe</option>
-<option>Imo</option>
-<option>Jigawa</option>
-<option>Kaduna</option>
-<option>Kano</option>
-<option>Kastina</option>
-<option>Kebbi</option>
-<option>Kogi</option>
-<option>Kwara</option>
-<option>Nassarawa</option>
-<option>Niger</option>
-<option>Ogun</option>
-<option>Ondo</option>
-<option>Osun</option>
-<option>Oyo</option>
-<option>Plateau</option>
-<option>Rivers</option>
-<option>Sokoto</option>
-<option>Taraba</option>
-<option>Yobe</option>
-<option>Zamfara</option>
-    </select>
+		<div id="form-card" class="form-field" style="width:80%">
+			<label for="address">Address:</label>
+			<input id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required disabled>
+			<!-- Hidden -->
+			<input type="hidden" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
+		</div>
+	</tr>
+
+	<tr>
+		<div id="form-card" class="form-field" style="width:80%">
+			<label for="email">Email:</label>
+			<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required disabled>
+			<!-- Hidden -->
+			<input type="hidden"  name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
+		</div>
+	</tr>
+
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="dateofbirth">Date of Incorporation:</label>
+				<input class="input-1" id="dob" name="dob" value="<?php echo $_POST['dob']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" id="dob" name="dob" value="<?php echo $_POST['dob']; ?>" required >
 			</div>
-</td>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="location">Location:</label>
+				<input type="text" name="loc" class="input-2" value="<?php echo $_POST['loc'] ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" name="loc" value="<?php echo $_POST['loc'] ?>" required >
+			</div>
+		</td>
   </tr>
 
   <tr>
-    <td><div id="form-card" class="form-field">
-				<label for="address">Address:</label>
-				<input id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="phone">Phone:</label>
-				<input id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
-			</div></td>
-  </tr>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="phone">Phone:</label>
+				<input class="input-1" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
+			</div>
+		</td>
 
-  <tr>
-    <td><div id="form-card" class="form-field">
-				<label for="email">Email:</label>
-				<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="occupation">RC Number:</label>
-				<input id="id" name="id" maxlength="50" value="<?php echo $_POST['id']; ?>" required>
-			</div></td>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="occupation">RC Number:</label>
+				<input class="input-2" id="id" name="id" maxlength="50" value="<?php echo $_POST['id']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" name="id" maxlength="50" value="<?php echo $_POST['id']; ?>" required>
+			</div>
+		</td>
   </tr>
 </table>
-<br><div align="left"><h1 style="font-size:18px; font-weight:bold; color:#000;">VEHICLE INFORMATION</h1></div><br><br>
+
+<br>
+
+<h1 class="form-title">VEHICLE INFORMATION</h1><br><br>
 <table border="0" style="width:auto;">
-  <tr>
-  <td colspan="2">Insurance Class: <font color="#FF0000">Motor Third Party</font><br><br></td>
-  </tr>
  
- <tr>
-  <td><div id="form-card" class="form-field">
-                <label for="car">Car:</label>
-  <input id="car" name="car" value="<?php echo $_POST['car']; ?>" style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" required>
-        </div></td>
-  <td>
-   <div id="form-card" class="form-field">
-                <label for="model">Model:</label>
- <input id="model" name="model" value="<?php echo $_POST['model']; ?>" style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" required>
-  </div>
-  </td>
-  </tr>
+	<tr>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="car">Car:</label>
+				<input class="input-1" id="car" name="car" value="<?php echo $_POST['car']; ?>" disabled required>
+				<!-- Hidden -->
+				<input type="hidden" name="car" value="<?php echo $_POST['car']; ?>">
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="model">Model:</label>
+				<input class="input-2" id="model" name="model" value="<?php echo $_POST['model']; ?>" disabled required>
+				<!-- Hidden -->
+				<input type="hidden" id="model" name="model" value="<?php echo $_POST['model']; ?>">
+			</div>
+		</td>
+	</tr>
   
 	<tr>
-    <td><div id="form-card" class="form-field">
-                <label for="reg_no">Registration No:</label>
-                <div style="margin:10px 0px;">
-				<input id="reg_no" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required>
-                </div>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-				<label for="engine_no">Engine No:</label><br>
-				<input id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required>
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="reg_no">Registration No:</label>
+				<input class="input-1" id="reg_no" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>">
 			</div>
-</td>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="engine_no">Engine No:</label><br>
+				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>">
+			</div>
+		</td>
   </tr>
 
   <tr>
-    <td><div id="form-card" class="form-field">
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="chasis_no">Chasis No:</label>
-				<input id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="color">Colour:</label>
-				<input id="color" name="color" maxlength="20" value="<?php echo $_POST['color']; ?>" required>
-			</div></td>
+				<input class="input-1" id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" >
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="color">Colour:</label>
+				<input class="input-2" id="color" name="color" maxlength="20" value="<?php echo $_POST['color']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" id="color" name="color" maxlength="20" value="<?php echo $_POST['color']; ?>" required>
+			</div>
+		</td>
   </tr>
   
   <tr>
-    <td><div id="form-card" class="form-field">
-				<label for="year">Year of Make:</label>
-				<input id="year" name="year" maxlength="19" value="<?php echo $_POST['year']; ?>" required>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="state_reg">State of Registration:</label>
-				<input id="state_reg" name="state_reg" maxlength="19" value="<?php echo $_POST['state_reg']; ?>" required>
-			</div></td>
+    <td>
+		<div id="form-card" class="form-field">
+			<label for="year">Year of Make:</label>
+			<input class="input-1" id="year" name="year" maxlength="19" value="<?php echo $_POST['year']; ?>" required disabled>
+			<!-- Hidden -->
+			<input type="hidden" name="year" maxlength="19" value="<?php echo $_POST['year']; ?>" required>
+		</div>
+	</td>
+
+    <td>
+		<div id="form-card" class="form-field">
+			<label for="state_reg">State of Registration:</label>
+			<input class="input-2" id="state_reg" name="state_reg" maxlength="19" value="<?php echo $_POST['state_reg']; ?>" required disabled>
+			<!-- Hidden -->
+			<input type="hidden" id="state_reg" name="state_reg" maxlength="19" value="<?php echo $_POST['state_reg']; ?>" required>
+		</div>
+	</td>
   </tr>
 
   <tr>
-    <td><div id="form-card" class="form-field">
+		<td>
+			<div id="form-card" class="form-field">
 				<label for="category">Category:</label>
-				<input id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" required readonly>
-			</div></td>
-    <td><div id="form-card" class="form-field">
-                <label for="usage">Usage:</label>
-				<input id="usage" name="usage" maxlength="19" value="<?php echo $_POST['usage']; ?>" readonly required>
-			</div></td>
+				<input class="input-1" id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" required disabled>
+				<!-- Hidden -->
+				<input type="hidden" id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>">
+			</div>
+		</td>
+
+		<td>
+			<div id="form-card" class="form-field">
+				<label for="usage">Usage:</label>
+				<input class="input-2" id="usage" name="usage" maxlength="19" value="<?php echo $_POST['usage']; ?>" disabled required>
+			</div>
+			<!-- Hidden -->
+			<input type="hidden" id="usage" name="usage" maxlength="19" value="<?php echo $_POST['usage']; ?>" >
+		</td>
   </tr>
 </table>
 			

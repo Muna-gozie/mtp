@@ -147,7 +147,7 @@ span{
 	<br><br><br>
 		<font color="#000000" style="font-weight:bold;">
 		<?php
-		if(isset($_GET['fname']))
+		if(isset($_GET['fname']) || isset($_GET['lname']))
 		{
 			echo strtoupper('DEAR '.$_GET['lname'].' '.$_GET['fname'].', Kindly Type In your Scratch Card Pin Below');
 		?>

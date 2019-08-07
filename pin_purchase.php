@@ -40,7 +40,7 @@ if(isset($_POST['pin_pay'])){
     $insurance_category = substr($category,0,4);
 
 
-    echo $fname.' '.$address.' '.$email.' '.$dob.' '.$location.' '.$phone.' '.$occupation.' '.$id.' '.$id_no.' '.$vehicle_name.' '.$vehicle_model.' '.$reg_no.' '.$engine_no.' '.$chassis_no.' '.$color.' '.$manufacture_year.' '.$registered_state.' '.$insurance_category.' '.$usage.' '.$insured_type.' '.$policy_date.' '.$card_number.' '.$agentid.' '.$gender.' '.$premium.'<br><br><br><br><br>'; 
+    // echo $fname.' '.$address.' '.$email.' '.$dob.' '.$location.' '.$phone.' '.$occupation.' '.$id.' '.$id_no.' '.$vehicle_name.' '.$vehicle_model.' '.$reg_no.' '.$engine_no.' '.$chassis_no.' '.$color.' '.$manufacture_year.' '.$registered_state.' '.$insurance_category.' '.$usage.' '.$insured_type.' '.$policy_date.' '.$card_number.' '.$agentid.' '.$gender.' '.$premium.'<br><br><br><br><br>'; 
      
 
       $buy_policy_params = [
@@ -84,7 +84,21 @@ if(isset($_POST['pin_pay'])){
         $client = new SoapClient($url);
         $result = $client->BuyPolicy($buy_policy_params);
 
-        print_r($result);
+        foreach($result->BuyPolicyResult as $item){
+            $insured_id = $item->CustomerReference;
+            $policy_number = $item->PolicyNumber;
+            $fullname = $item->Fullname;
+            $policy_expiry_date = $item->ExpiryDate;
+            $status_message = $item->StatusmSG;
+            $certificate_number = $item->CertificateNos;
+            $product = $item->Product;
+          }
+
+        echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
+
+        if(!empty($policy_number)){
+            echo '<form action="/success"></form>';
+        }
 
     }catch( Exception $e){
         $error = $e->getMessage();
