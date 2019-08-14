@@ -162,21 +162,30 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="title">Title:</label>
-					<input class="input-1" id="title" name="title" maxlength="10" value="<?php echo ($_POST['title2'] == '' ? $_POST['title'] : $_POST['title2']); ?>" readonly>
+					<input class="input-1" id="title" name="title" maxlength="10" value="<?php echo ($_POST['title2'] == '' ? $_POST['title'] : $_POST['title2']); ?>" disabled>
 				</div>
+				<!-- Hidden -->
+				<input type="hidden" class="input-1" id="title" name="title" maxlength="10" value="<?php echo ($_POST['title2'] == '' ? $_POST['title'] : $_POST['title2']); ?>">
 			</td>
 
 			<td>
 				<div id="form-card" class="form-field">
-					<label for="gender">Gender:</label>
+					<!-- 
 					<select class="input-2" name="gender" id="gender" required>
-						<OPTION><?php echo $_POST['gender']; ?></OPTION>
+						<OPTION><?php //echo $_POST['gender']; ?></OPTION>
 						<option></option>
 						<option>Female</option>
 						<option>Male</option>
 						<option>Others</option>
-					</select>
-				</div>
+					</select> -->
+					<label for="gender">Gender:</label>
+					<input class="input-2" name="gender" id="gender" value="<?php echo $_POST['gender']; ?>" required disabled>
+
+					<!-- Hidden -->
+					<input type="hidden" class="input-2" name="gender" id="gender" value="<?php echo $_POST['gender']; ?>" required >
+
+				</div>		
+
 			</td>
 		</tr>
 		
@@ -184,14 +193,18 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="fname">Firstname:</label>
-					<input class="input-1" id="fname" name="fname" maxlength="19" value="<?php echo $_POST['fname']; ?>" required>
+					<input class="input-1" id="fname" name="fname" maxlength="19" value="<?php echo $_POST['fname']; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-1" id="fname" name="fname" maxlength="19" value="<?php echo $_POST['fname']; ?>" required>
 				</div>
 			</td>
 
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="lname">Lastname:</label>
-					<input class="input-2" id="lname" name="lname" maxlength="19" value="<?php echo $_POST['lname']; ?>" required>
+					<input class="input-2" id="lname" name="lname" maxlength="19" value="<?php echo $_POST['lname']; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-2" id="lname" name="lname" maxlength="19" value="<?php echo $_POST['lname']; ?>" required>
 				</div>
 			</td>
 		</tr>
@@ -200,15 +213,21 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="dateofbirth">Date of Birth:</label>
-					<input class="input-1" id="dob" name="dob" value="<?php echo $dob; ?>" readonly>
+					<input class="input-1" id="dob" name="dob" value="<?php echo $dob; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-1" id="dob" name="dob" value="<?php echo $dob; ?>" required>
 				</div>
 			</td>
 
 			<td>
 				<div id="form-card" class="form-field">
-						<label for="location">Location:</label>
-					<select class="input-2" name="loc" required>
-					<OPTION><?php echo $_POST['location']; ?></OPTION>
+					<label for="location">Location:</label>
+					<input type="text" class="input-2" name="loc" value="<?php echo $_POST['location']; ?>" required disabled>
+					<!-- Hidden --> 
+					<input type="hidden" class="input-2" name="loc" value="<?php echo $_POST['location']; ?>">
+
+					<!-- <select class="input-2" name="loc" required>
+					<OPTION><?php // echo $_POST['location']; ?></OPTION>
 					<option></option>
 					<OPTION>Lagos</OPTION>
 					<option>Abuja FCT</option>
@@ -247,7 +266,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 					<option>Taraba</option>
 					<option>Yobe</option>
 					<option>Zamfara</option>
-					</select>
+					</select> -->
 				</div>
 		</td>
 	</tr>
@@ -256,7 +275,9 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td colspan ="3">
 				<div id="form-card" class="form-field">
 					<label for="address">Address:</label>
-					<input id="address" name="address" maxlength="200" value="<?php echo $_POST['address']; ?>" required>
+					<input id="address" name="address" maxlength="200" value="<?php echo $_POST['address']; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" id="address" name="address" maxlength="200" value="<?php echo $_POST['address']; ?>" required>
 				</div>
 			</td>		
 	</tr>
@@ -265,7 +286,9 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td colspan="3">
 				<div id="form-card" class="form-field">
 					<label for="email">Email:</label>
-					<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
+					<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
 				</div>
 			</td>
 	</tr>
@@ -274,14 +297,18 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="phone">Phone:</label>
-					<input class="input-1" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
+					<input class="input-1" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-1" id="phone" name="phone" maxlength="11" value="<?php echo $_POST['phone']; ?>" required>
 				</div>
 			</td>
 
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="occupation">Occupation:</label>
-					<input class="input-2" id="occu" name="occu" maxlength="50" value="<?php echo ($_POST['occupation'] == '' ? 'Business' : $_POST['occupation']); ?>" required>
+					<input class="input-2" id="occu" name="occu" maxlength="50" value="<?php echo ($_POST['occupation'] == '' ? 'Business' : $_POST['occupation']); ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-2" id="occu" name="occu" maxlength="50" value="<?php echo ($_POST['occupation'] == '' ? 'Business' : $_POST['occupation']); ?>" required>
 				</div>
 			</td>
 	</tr>
@@ -289,22 +316,28 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 	<tr>
 			<td>
 				<div id="form-card" class="form-field">
-							<label for="email">Means of Identification:</label>
-						<select class="input-1" name="id" id="id" required>
+					<label for="email">Means of Identification:</label>
+					<input type="text" class="input-1" name="id" id="id" value="<?php echo $_POST['identification']; ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-1" name="id" id="id" value="<?php echo $_POST['identification']; ?>">
+
+						<!-- <select class="input-1" name="id" id="id" required>
 						<OPTION><?php echo $_POST['identification']; ?></OPTION>
 						<option></option>
 						<option>National ID</option>
 						<option>Driver's Licence</option>
 						<option>International Passport</option>
 						<option>Permanent Voters Card (PVC)</option>
-						</select>
+						</select> -->
 				</div>
 			</td>
 
 			<td>
 				<div id="form-card" class="form-field">
 					<label for="ID Number">ID Number:</label>
-					<input class="input-2" id="id_no" name="id_no" maxlength="50" value="<?php echo ($_POST['id_no'] == '' ? '00000' : $_POST['id_no']); ?>" required>
+					<input class="input-2" id="id_no" name="id_no" maxlength="50" value="<?php echo ($_POST['id_no'] == '' ? '00000' : $_POST['id_no']); ?>" required disabled>
+					<!-- Hidden -->
+					<input type="hidden" class="input-2" id="id_no" name="id_no" maxlength="50" value="<?php echo ($_POST['id_no'] == '' ? '00000' : $_POST['id_no']); ?>">
 				</div>
 			</td>
 	</tr>
@@ -323,10 +356,15 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 				<label for="car">Vehicle:</label>
 				<input type="hidden" name="car" id="car" value="<?php echo $_POST['car']; ?>"/>
 
-				<select class="input-1" name="country" id="country" required onchange="form.car.value=this.options[this.selectedIndex].text">
-				<option><?php echo $_POST['car']; ?></option>
+				<input type="text" class="input-1" name="country" id="country" value="<?php echo $_POST['car']; ?>" required disabled/>
+				<!-- Hidden -->
+				<input type="hidden" class="input-1" name="country" id="country" value="<?php echo $_POST['car']; ?>" />
+
+				<!-- <select class="input-1" name="country" id="country" required onchange="form.car.value=this.options[this.selectedIndex].text">
+				<option><?php // echo $_POST['car']; ?></option>
 				<option></option>
 				<?php 
+				/*
 				$sql = "select * from `cars` order by cars asc";
 				$res = mysqli_query($con, $sql);
 				if(mysqli_num_rows($res) > 0) {
@@ -334,8 +372,9 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 						echo "<option value='".$row->id."'>".ucfirst(strtolower($row->cars))."</option>";
 					}
 				}
+				*/
 				?>
-				</select>
+				</select> -->
 			</div>
 		</td>
 			
@@ -343,6 +382,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<div id="form-card" class="form-field">
 				<label for="model">Model:</label>
 				<input type="hidden" name="model" id="model" value="<?php echo $_POST['model']; ?>"/>
+				
 				<select name="state" id="state" class="input-2" required onchange="form.model.value=this.options[this.selectedIndex].text">
 				<option><?php echo $_POST['model']; ?></option>
 				</select>

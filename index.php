@@ -411,6 +411,7 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
 </head>
 
 		<body>
@@ -818,9 +819,8 @@ Consolidated Hallmark Insurance Motor Third Party Online is committed to protect
 			</section>
 			<!-- end service Area-->
 
-<div style="margin-bottom:-200px;"></div>
 
-    
+<div style="margin-bottom:-200px;"></div>
 		
 			<!-- Start testimonial Area -->
 			<section class="relative section-gap">
