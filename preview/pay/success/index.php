@@ -358,7 +358,6 @@ $header);
 
 $result = curl_exec($curl);
 
-
 $err = curl_error($curl);
 
 
@@ -403,7 +402,8 @@ $cert = $cert->item(0)->nodeValue;
 			<!--/.icon-->
 			<h1>Success!</h1>
              <br><br>
-			<p style="margin-top:-30px;">Thank You, we've Sent Your Certificate And A Receipt Of Purchace To Your E-mail</p>
+			<p style="margin-top:-30px;">Thank You, we've Sent Your Certificate And A Receipt Of Purchace To Your E-mail
+      </p>
             <br>
             <form action="../../../print" method="get" target="_blank" name="form">
            <input type="hidden" id="fullname" name="fullname" value="<?php echo $fullname; ?>">

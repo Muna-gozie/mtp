@@ -324,8 +324,8 @@ else $amount = substr($_POST['category'], 6, 4);
 	<div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
 	</div>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-  <!-- <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script> -->
-  <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
+  <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script>
+  <!-- <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script> -->
 
   
 
@@ -335,8 +335,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
      
     var chargeResponse = "",
         trxref = "MTP" + Math.random(),// add your transaction ref here
-		pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
-      //  pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
+	//	pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
+        pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
       getpaidSetup({
         customer_email: "<?php echo $_POST['email']; ?>",// 
         amount: <?php echo $amount; ?>,

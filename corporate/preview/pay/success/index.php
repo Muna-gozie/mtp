@@ -409,7 +409,8 @@ $cert = $cert->item(0)->nodeValue;
             <input type="hidden" name="expiry" value="<?php echo $expiry1; ?>">
             <input type="hidden" name="cert" value="<?php echo $cert; ?>">
             <input type="hidden" name="regno" value="<?php echo $_GET['regno']; ?>">
-            <input type="hidden" name="car" value="<?php echo $_GET['car']; ?>">
+            <input type="hidden" name="car" value="<?php echo $_GET['cartype']; ?>">
+            <input type="hidden" name="amount" value="<?php echo $_GET['amount']; ?>">
             <input type="hidden" name="model" value="<?php echo $_GET['model']; ?>">
             <input type="hidden" name="year" value="<?php echo $_GET['year']; ?>">
             <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>">

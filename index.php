@@ -543,18 +543,16 @@ s0.parentNode.insertBefore(s1,s0);
         </div>
        <div class="modal-header">
         <form action="customer/" name="form1" method="post">
-           <div align="right"><img src="img/returnee.png" width="50" height="50"> <font style="font-weight:bold; color:#000;">RETURNING CUSTOMER</font></div>
-<hr>
-           <font color="#000000">
-<table width="100%" border="0">
-  <tr>
-    <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="phone" placeholder="TYPE YOUR REGISTRATION NO. HERE" required></td>
-  </tr>
-  
-</table>
+          <div>
+            <img src="img/returnee.png" width="50" height="50"> 
+            <span style="font-weight:bold; color:#000; margin-left:5em;">RETURNING CUSTOMER</span>
+          </div>
+          <hr>
 
-           </font>
-          
+          <div>
+           <input style="width: 400px; margin-left: 30px;" type="text" style="" maxlength="11" name="phone" placeholder="ENTER YOUR REGISTRATION NO. HERE" required>
+           </div>
+           
         </div>
        <!-- footer -->
         <div class="modal-footer">
@@ -1358,7 +1356,9 @@ while($yr >=1900)
 </select></td>
   </tr>
 </table></td>
-<td><input type="text" name="rc_no" placeholder="RC Number"></td>
+<td>
+<label style="font-size: 14px; margin: -11.6px 6px; color: #ddd;font-weight: bolder;" for="">Registration Number</label>
+<input style="" type="text" name="rc_no" placeholder="RC Number"></td>
   </tr>
   <tr>
   <td><input type="text" name="email" placeholder="Email"  required></td>
