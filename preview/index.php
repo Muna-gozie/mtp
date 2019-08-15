@@ -183,9 +183,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 
 					<!-- Hidden -->
 					<input type="hidden" class="input-2" name="gender" id="gender" value="<?php echo $_POST['gender']; ?>" required >
-
 				</div>		
-
 			</td>
 		</tr>
 		
@@ -356,9 +354,9 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 				<label for="car">Vehicle:</label>
 				<input type="hidden" name="car" id="car" value="<?php echo $_POST['car']; ?>"/>
 
-				<input type="text" class="input-1" name="country" id="country" value="<?php echo $_POST['car']; ?>" required disabled/>
+				<input type="text" class="input-1" name="country" id="country" value="<?php echo $_POST['car']; ?>" required />
 				<!-- Hidden -->
-				<input type="hidden" class="input-1" name="country" id="country" value="<?php echo $_POST['car']; ?>" />
+				<!-- <input type="hidden" class="input-1" name="country" id="country" value="<?php // echo $_POST['car']; ?>" /> -->
 
 				<!-- <select class="input-1" name="country" id="country" required onchange="form.car.value=this.options[this.selectedIndex].text">
 				<option><?php // echo $_POST['car']; ?></option>
@@ -384,7 +382,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 				<input type="hidden" name="model" id="model" value="<?php echo $_POST['model']; ?>"/>
 				
 				<select name="state" id="state" class="input-2" required onchange="form.model.value=this.options[this.selectedIndex].text">
-				<option><?php echo $_POST['model']; ?></option>
+					<option><?php echo $_POST['model']; ?></option>
 				</select>
 			</div>
 		</td>
@@ -554,9 +552,10 @@ elseif($_POST['id_no'] != '')
     elseif($_POST[paynow] != 'bus' || $_POST[paynow] != 'car' || $_POST[paynow] != 'jeep' || $_POST[paynow] != 'keke' || $_POST[paynow] != 'suv' || $_POST[paynow] != 'truck')
     {
 	?>
-	<div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em></div>
+	<div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
+	</div>
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-<script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script>
+  <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script>
 
   
 

@@ -6,6 +6,7 @@ $response = $api->getKey();
 $url = $response['url'];
 $key = $response['key'];
 
+// echo $key.$url;
 
 if(isset($_POST['pin_pay'])){
     $title = $_POST['title'];
@@ -40,10 +41,10 @@ if(isset($_POST['pin_pay'])){
     $insurance_category = substr($category,0,4);
 
 
-    // echo $fname.' '.$address.' '.$email.' '.$dob.' '.$location.' '.$phone.' '.$occupation.' '.$id.' '.$id_no.' '.$vehicle_name.' '.$vehicle_model.' '.$reg_no.' '.$engine_no.' '.$chassis_no.' '.$color.' '.$manufacture_year.' '.$registered_state.' '.$insurance_category.' '.$usage.' '.$insured_type.' '.$policy_date.' '.$card_number.' '.$agentid.' '.$gender.' '.$premium.'<br><br><br><br><br>'; 
+    echo $fname.' '.$lname.' '.$address.' '.$email.' '.$dob.' '.$location.' '.$phone.' '.$occupation.' '.$id.' '.$id_no.' '.$vehicle_name.' '.$vehicle_model.' '.$reg_no.' '.$engine_no.' '.$chassis_no.' '.$color.' '.$manufacture_year.' '.$registered_state.' '.$insurance_category.' '.$usage.' '.$insured_type.' '.$policy_date.' '.$card_number.' '.$agentid.' '.$gender.' '.$premium.'<br><br><br><br><br>'; 
      
 
-      $buy_policy_params = [
+      $buy_policy_params = array(
         'MTPApikey' => $key,
         'Title' => '',
         'Firstname' => $fname,
@@ -75,32 +76,60 @@ if(isset($_POST['pin_pay'])){
         'MeansIDNo' => $id_no,
         'SubmitbyID' => $agentid,
         'Payref' => $card_number,
-        'ispin' => 0
+        'ispin' => '0'
+      );
 
-    ];
+    print_r($buy_policy_params);
+    echo '<br><br>';
+   
+    $client = new SoapClient($url);
+     $result = $client->BuyPolicy($buy_policy_params);
+    // $result = $client->FindPremiumThirdParty(array('MerchantReference'=>'x76o-XInterAP','Vehicle' => 'bus'));
+    //  echo '<br><br>'.$result;
+    print_r($result);
 
+//     $data = '
+//     <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+//     <soap:Body>
+//       <FindPremiumThirdParty xmlns="http://tempuri.org/">
+//         <MerchantReference>x76o-XInterAP</MerchantReference>
+//         <Vehicle>bus</Vehicle>
+//       </FindPremiumThirdParty>
+//     </soap:Body>
+//   </soap:Envelope>
+//     ';
+
+//     $header = array('Content-Type:text/xml; charset=utf-8');
+
+//     $ch = curl_init();
+//     curl_setopt($ch,CURLOPT_URL,$url);
+//     curl_setopt($ch,CURLOPT_POSTFIELDS,$data);
+//     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
+//     curl_setopt($ch,CURLOPT_HEADER,$header);
+//     $result = curl_exec($ch);
+//      $error =  curl_error($ch);
+//     if($error){
+//         echo $error;
+//     }
+//     print_r($result);
+     
     try{
-         // Buy Policy
-        $client = new SoapClient($url);
-        $result = $client->BuyPolicy($buy_policy_params);
+    
+        // foreach($result->BuyPolicyResult as $item){
+        //     $insured_id = $item->CustomerReference;
+        //     $policy_number = $item->PolicyNumber;
+        //     $fullname = $item->Fullname;
+        //     $policy_expiry_date = $item->ExpiryDate;
+        //     $status_message = $item->StatusmSG;
+        //     $certificate_number = $item->CertificateNos;
+        //     $product = $item->Product;
+        //   }
 
-        foreach($result->BuyPolicyResult as $item){
-            $insured_id = $item->CustomerReference;
-            $policy_number = $item->PolicyNumber;
-            $fullname = $item->Fullname;
-            $policy_expiry_date = $item->ExpiryDate;
-            $status_message = $item->StatusmSG;
-            $certificate_number = $item->CertificateNos;
-            $product = $item->Product;
-          }
+        // echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
 
-        echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
 
-        if(!empty($policy_number)){
-            echo '<form action="/success"></form>';
-        }
 
-    }catch( Exception $e){
+    }catch(SoapFault $e){
         $error = $e->getMessage();
     }
 

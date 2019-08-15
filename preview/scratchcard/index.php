@@ -1,12 +1,12 @@
 <?php
 
-if(!isset($_GET['email'])) 
-{
-echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS");
-		 window.location.assign("../../")
-		</script>';
-			exit();	
-}
+// if(!isset($_GET['email'])) 
+// {
+// echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS");
+// 		 window.location.assign("../../")
+// 		</script>';
+// 			exit();	
+// }
 
 error_reporting(0);
 ?>
