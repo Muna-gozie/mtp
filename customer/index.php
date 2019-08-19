@@ -193,13 +193,13 @@ $idno = $idno->item(0)->nodeValue;
 }
 
 /* New style */
-.input-1{
+/* .input-1{
 	width:230px;
 	margin-right:10px;
 }
 .input-2{
 	width:230px;
-}
+} */
 .form-title{
 	font-size:18px;
 	font-weight:bold; 
@@ -269,7 +269,7 @@ $idno = $idno->item(0)->nodeValue;
 	{
 	?>
     <div align="center"><h1 style="font-size:18px; font-weight:bold; color:#008C23;"><img src="happy.fw.png" width="80" height="80"><br>WELCOME BACK, <?php echo strtoupper($lname.' '.$fname); ?></h1></div> <hr>
-<h1 class="form-title">PERSONAL INFORMATION</h1><br><br>
+<h1 class="form-title">PERSONAL INFORMATION</h1><br>
 		<?php
 		if(isset($_POST['submit']))
 		{
@@ -283,7 +283,7 @@ $idno = $idno->item(0)->nodeValue;
     <!-- Hidden title --> 
 	<input type="hidden" id="title" name="title" maxlength="19" value="<?php echo $title; ?>">
 	
-	<div id="form-card" class="form-field" style="width:80%">
+	<div id="form-card" class="form-field full-width">
 		<label for="fname">Full name:</label>
 		<input id="fname" name="fname" maxlength="19" value="<?php echo $fname; ?>" required disabled>
 		<!-- Required hidden input for next page -->
@@ -293,7 +293,7 @@ $idno = $idno->item(0)->nodeValue;
   </tr>
 
   <tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width">
 			<label for="address">Address:</label>
 			<input id="address" name="address" maxlength="100" value="<?php echo $add; ?>" disabled required>
 			<!-- Hidden -->
@@ -309,7 +309,7 @@ $idno = $idno->item(0)->nodeValue;
   </tr>
 
   <tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width" >
 			<label for="email">Email:</label>
 			<input id="email" name="email" maxlength="50" value="<?php echo $email; ?>" required disabled>
 			<!-- Hidden -->
@@ -330,7 +330,7 @@ $idno = $idno->item(0)->nodeValue;
 			<label for="dateofbirth">Date of Birth:</label>
 			<input id="dob" name="dob" class="input-1" value="<?php echo substr($dob, 0, 10); ?>" required disabled>
 			<!-- Hidden -->
-			<input type="hidden" id="dob" name="dob" class="input-1" value="<?php echo substr($dob, 0, 10); ?>" >
+			<input type="hidden" id="dob" name="dob" value="<?php echo substr($dob, 0, 10); ?>" >
 		</div>
 	</td>
 
@@ -438,7 +438,7 @@ $idno = $idno->item(0)->nodeValue;
 		</td>
 		<td>
 			<div id="form-card" class="form-field">
-				<label for="engine_no">Engine No:</label><br>
+				<label for="engine_no">Engine No:</label>
 				<input id="engine_no" class="input-2" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required>
 			</div>
 		</td>
@@ -622,7 +622,7 @@ if(($phone != '') && ($type == 'Corporate'))
 	{
 	?>
     <div align="center"><h1 style="font-size:18px; font-weight:bold; color:#008C23;"><img src="happy.fw.png" width="80" height="80"><br>WELCOME BACK, <?php echo strtoupper($lname.' '.$fname); ?></h1></div> <hr>
-<h1 class="form-title">CORPORATE INFORMATION</h1><br><br>
+<h1 class="form-title">CORPORATE INFORMATION</h1><br>
 		<?php
 		// if(isset($_POST['submit']))
 		// {
@@ -753,7 +753,7 @@ if(($phone != '') && ($type == 'Corporate'))
 	</td>
 	<td>
 		<div id="form-card" class="form-field">
-			<label for="engine_no">Engine No:</label><br>
+			<label for="engine_no">Engine No:</label>
 			<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required>
 		</div>
 	</td>
