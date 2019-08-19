@@ -907,7 +907,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .genric-btn.default-border:hover {
   color: #222222;
-  background: #cc;
+  background: #ccc;
   border: 1px solid transparent;
 }
 
@@ -2795,12 +2795,13 @@ h6 {
 
 /* New style */
 .input-1{
-	width:230px;
-	margin-right:10px;
+  /* width:230px; */
+  width: 95%;
 }
 .input-2{
-	width:230px;
+  width: 95%;
 }
+
 .form-title{
 	font-size:18px;
 	font-weight:bold; 
@@ -2812,3 +2813,8 @@ h6 {
 td{
   width:240px;
 }
+
+.full-width{
+  width: 98%;
+}
+

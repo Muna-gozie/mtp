@@ -136,21 +136,21 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 	<input type="hidden" name="type" value="<?php echo $_POST['type']; ?>" />
 	<table border="0" >  
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width" style="">
 			<label for="lname">Name Of Organization:</label>
 			<input id="lname"  name="lname" maxlength="50" value="<?php echo $_POST['lname']; ?>" required>
 		</div>
 	</tr>
 
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width">
 			<label for="address">Address:</label>
 			<input id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
 		</div>
 	</tr>
 
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width">
 			<label for="email">Email:</label>
 			<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
 		</div>
@@ -276,7 +276,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 
 		<td>
 			<div id="form-card" class="form-field">
-				<label for="engine_no">Engine No:</label><br>
+				<label for="engine_no">Engine No:</label>
 				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required>
 			</div>
 		</td>

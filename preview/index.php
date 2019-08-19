@@ -273,7 +273,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td colspan ="3">
 				<div id="form-card" class="form-field">
 					<label for="address">Address:</label>
-					<input id="address" name="address" maxlength="200" value="<?php echo $_POST['address']; ?>" required disabled>
+					<input id="address" class="full-width" name="address" maxlength="200" value="<?php echo $_POST['address']; ?>" required disabled>
 					<!-- Hidden -->
 					<input type="hidden" id="address" name="address" maxlength="200" value="<?php echo $_POST['address']; ?>" required>
 				</div>
@@ -284,7 +284,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 			<td colspan="3">
 				<div id="form-card" class="form-field">
 					<label for="email">Email:</label>
-					<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required disabled>
+					<input id="email" class="full-width" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required disabled>
 					<!-- Hidden -->
 					<input type="hidden" id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
 				</div>
@@ -379,11 +379,13 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="model">Model:</label>
+				<input type="text" class="input-2" name="model" id="model" value="<?php echo $_POST['model']; ?>" required disabled/>
+				<!-- Hidden -->
 				<input type="hidden" name="model" id="model" value="<?php echo $_POST['model']; ?>"/>
 				
-				<select name="state" id="state" class="input-2" required disabled onchange="form.model.value=this.options[this.selectedIndex].text">
-					<option><?php echo $_POST['model']; ?></option>
-				</select>
+				<!-- <select name="state" id="state" class="input-2" required disabled onchange="form.model.value=this.options[this.selectedIndex].text">
+					<option><?php // echo $_POST['model']; ?></option>
+				</select> -->
 			</div>
 		</td>
 	</tr>
@@ -401,7 +403,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 
 		<td>
 			<div id="form-card" class="form-field">
-				<label for="engine_no">Engine No:</label><br>
+				<label for="engine_no">Engine No:</label>
 				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required disabled>
 				<!-- Hidden -->
 				<input type="hidden" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>">
@@ -592,8 +594,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
      
     var chargeResponse = "",
         trxref = "MTP" + Math.random(),// add your transaction ref here
-		// pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
-       pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
+	//  pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
+      pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
       getpaidSetup({
         customer_email: "<?php echo $_POST['email']; ?>",// 
         amount: <?php echo $amount; ?>,

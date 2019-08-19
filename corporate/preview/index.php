@@ -142,27 +142,27 @@ else $amount = substr($_POST['category'], 6, 4);
         <input type="hidden" name="type" value="<?php echo $_POST['type']; ?>" />
 	<table border="0">  
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field" >
 			<label for="lname">Name Of Organization:</label>
-			<input id="lname" name="lname" maxlength="30" value="<?php echo $_POST['lname']; ?>" required disabled>
+			<input id="lname" class="full-width" name="lname" maxlength="30" value="<?php echo $_POST['lname']; ?>" required disabled>
 			<!-- Hidden -->
 			<input type="hidden" name="lname" maxlength="30" value="<?php echo $_POST['lname']; ?>" >
 		</div>
 	</tr>
 
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field">
 			<label for="address">Address:</label>
-			<input id="address" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required disabled>
+			<input id="address" class="full-width" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required disabled>
 			<!-- Hidden -->
 			<input type="hidden" name="address" maxlength="100" value="<?php echo $_POST['address']; ?>" required>
 		</div>
 	</tr>
 
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field">
 			<label for="email">Email:</label>
-			<input id="email" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required disabled>
+			<input id="email" class="full-width" name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required disabled>
 			<!-- Hidden -->
 			<input type="hidden"  name="email" maxlength="50" value="<?php echo $_POST['email']; ?>" required>
 		</div>
@@ -211,7 +211,7 @@ else $amount = substr($_POST['category'], 6, 4);
 
 <br>
 
-<h1 class="form-title">VEHICLE INFORMATION</h1><br><br>
+<h1 class="form-title">VEHICLE INFORMATION</h1><br>
 <table border="0" style="width:auto;">
  
 	<tr>
@@ -246,7 +246,7 @@ else $amount = substr($_POST['category'], 6, 4);
 
 		<td>
 			<div id="form-card" class="form-field">
-				<label for="engine_no">Engine No:</label><br>
+				<label for="engine_no">Engine No:</label>
 				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required disabled>
 				<!-- Hidden -->
 				<input type="hidden" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>">
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
      
     var chargeResponse = "",
         trxref = "MTP" + Math.random(),// add your transaction ref here
-	//	pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
+		// pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
         pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
       getpaidSetup({
         customer_email: "<?php echo $_POST['email']; ?>",// 
