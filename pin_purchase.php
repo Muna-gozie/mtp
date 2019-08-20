@@ -1,5 +1,6 @@
 <?php
 require('api_config.php');
+include('page_function.php');
 
 $api = new Api;
 $response = $api->getKey();
@@ -30,63 +31,62 @@ if(isset($_POST['pin_pay'])){
     $manufacture_year = $_POST['year'];
     $registered_state = $_POST['registered_state'];
     $usage = $_POST['usage']; //private or commercial vehicle
-    $policy_date = date("Y-m-d");
+    // $policy_date = date("Y-m-d");
+
     $premium = $_POST['premium'];
     $card_number = $_POST['cardno'];
     $agentid = $_POST['agentid'];
     $gender = $_POST['gender'];
     $insured_type = $_POST['insured_type'];
     $category = $_POST['insurance_category'];
-
     $insurance_category = substr($category,0,4);
+    $policy_start_date = set_policy_date($_POST['start_date']);
 
 
-    echo $fname.' '.$lname.' '.$address.' '.$email.' '.$dob.' '.$location.' '.$phone.' '.$occupation.' '.$id.' '.$id_no.' '.$vehicle_name.' '.$vehicle_model.' '.$reg_no.' '.$engine_no.' '.$chassis_no.' '.$color.' '.$manufacture_year.' '.$registered_state.' '.$insurance_category.' '.$usage.' '.$insured_type.' '.$policy_date.' '.$card_number.' '.$agentid.' '.$gender.' '.$premium.'<br><br><br><br><br>'; 
+    echo $fname.' '.$lname.' '.$address.' '.$email.' '.$dob.' '.$location.' '.$phone.' '.$occupation.' '.$id.' '.$id_no.' '.$vehicle_name.' '.$vehicle_model.' '.$reg_no.' '.$engine_no.' '.$chassis_no.' '.$color.' '.$manufacture_year.' '.$registered_state.' '.$insurance_category.' '.$usage.' '.$insured_type.' '.$policy_start_date.' '.$card_number.' '.$agentid.' '.$gender.' '.$premium.'<br><br><br><br><br>'; 
      
 
-      $buy_policy_params = array(
-        'MTPApikey' => $key,
-        'Title' => '',
-        'Firstname' => $fname,
-        'LastName' => $lname,
-        'PhoneNos' => $phone,
-        'Gender' => $gender,
-        'InsuredType' => $insured_type,
-        'Email' => $email,
-        'policystarts' => $policy_date,
-        'DOB' => $dob,
-        'Address' => $address,
-        'Country' => 'Nigeria',
-        'Occupation' => $occupation,
-        'StateofResidence' => $location,
-        'Vehicletype' => $vehicle_type,
+    //   $buy_policy_params = array(
+    //     'MTPApikey' => $key,
+    //     'Title' => '',
+    //     'Firstname' => $fname,
+    //     'LastName' => $lname,
+    //     'PhoneNos' => $phone,
+    //     'Gender' => $gender,
+    //     'InsuredType' => $insured_type,
+    //     'Email' => $email,
+    //     'policystarts' => $policy_date,
+    //     'DOB' => $dob,
+    //     'Address' => $address,
+    //     'Country' => 'Nigeria',
+    //     'Occupation' => $occupation,
+    //     'StateofResidence' => $location,
+    //     'Vehicletype' => $vehicle_type,
 
-        'TransactionRef' => 'pay_ref',
-        'CarRegNo' => $reg_no,
-        'Carmake' => $vehicle_name,
-        'CarModel' => $vehicle_model,
-        'EngineNo' => $engine_no,
-        'Caryear' => $manufacture_year,
-        'CarColor' => $color,
-        'CarRegState' => $registered_state,
-        'VehicleUsagetype' => $usage,
-        'ChassisNo' => $chassis_no,
-        'Premium' => $premium,
-        'MeansID' => $id,
-        'MeansIDNo' => $id_no,
-        'SubmitbyID' => $agentid,
-        'Payref' => $card_number,
-        'ispin' => '0'
-      );
+    //     'TransactionRef' => 'pay_ref',
+    //     'CarRegNo' => $reg_no,
+    //     'Carmake' => $vehicle_name,
+    //     'CarModel' => $vehicle_model,
+    //     'EngineNo' => $engine_no,
+    //     'Caryear' => $manufacture_year,
+    //     'CarColor' => $color,
+    //     'CarRegState' => $registered_state,
+    //     'VehicleUsagetype' => $usage,
+    //     'ChassisNo' => $chassis_no,
+    //     'Premium' => $premium,
+    //     'MeansID' => $id,
+    //     'MeansIDNo' => $id_no,
+    //     'SubmitbyID' => $agentid,
+    //     'Payref' => $card_number,
+    //     'ispin' => '0'
+    //   );
 
-    print_r($buy_policy_params);
-    echo '<br><br>';
+    // print_r($buy_policy_params);
+    // echo '<br><br>';
    
-    $client = new SoapClient($url);
-     $result = $client->BuyPolicy($buy_policy_params);
-    // $result = $client->FindPremiumThirdParty(array('MerchantReference'=>'x76o-XInterAP','Vehicle' => 'bus'));
-    //  echo '<br><br>'.$result;
-    print_r($result);
+    // $client = new SoapClient($url);
+    //  $result = $client->BuyPolicy($buy_policy_params);
+    // print_r($result);
 
 //     $data = '
 //     <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">

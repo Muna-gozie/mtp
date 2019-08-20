@@ -16,18 +16,12 @@ echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS"
 			exit();	
 }
 error_reporting(0);
-/*
-//dob ymd
-//$dob = substr($_GET["dob"],5,0);
 
-*/
 ?>
 
     <!DOCTYPE html>
 	<html lang="zxx" class="no-js">
-	<head>
-    
-    
+	<head>   
     
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

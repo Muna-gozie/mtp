@@ -5,7 +5,7 @@ $api = new Api;
 $response = $api->getKey();
 
 $url = $response['url'];
-$api_param = $response['api_param'];
+// $api_param = $response['api_param'];
 $key = $response['key'];
 
 if(!isset($_GET['email'])) 

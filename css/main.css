@@ -2801,6 +2801,9 @@ h6 {
 .input-2{
   width: 95%;
 }
+input:focus{
+  outline: none;
+}
 
 .form-title{
 	font-size:18px;

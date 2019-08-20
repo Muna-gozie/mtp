@@ -1,12 +1,12 @@
 <?php
 
-// if(!isset($_GET['email'])) 
-// {
-// echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS");
-// 		 window.location.assign("../../")
-// 		</script>';
-// 			exit();	
-// }
+if(!isset($_GET['email'])) 
+{
+echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS");
+		 window.location.assign("../../")
+		</script>';
+			exit();	
+}
 
 error_reporting(0);
 ?>
@@ -35,6 +35,9 @@ error_reporting(0);
 			<link rel="stylesheet" href="../../css/bootstrap.css">
 			<link rel="stylesheet" href="../../css/owl.carousel.css">
 			<link rel="stylesheet" href="../../css/main.css">
+			<link rel="stylesheet" href="../../asset/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
+			<link rel="stylesheet" href="../../asset/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css">
+
 
                  
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -60,12 +63,16 @@ error_reporting(0);
         loadingImage : '../img/ajax-loader2.gif',
         closeImage   : '../img/close.png'
       })
+
+	  $('#datepicker').datepicker();
     })
+
+	
   </script>	
   
 <style>
 
-span{
+/* span{
 	font-size: 25px;
 	font-family: cursive;
 	color: white;
@@ -75,7 +82,7 @@ span{
 0%{opacity: 0.2;}
 50%{opacity: .5;}
 100%{opacity: 1;}
-}
+} */
 </style>
  
 
@@ -154,10 +161,31 @@ span{
         </font>
         <!-- <form action="../../success" method="post" name="form"> -->
 		<form action="../../pin_purchase.php" method="post" name="form">
-			<div id="form-card" class="form-field">
-            <br><br>
-				<input type="text" minlength="8" maxlength="10" id="cardno" name="cardno" placeholder="Type Scratch Card Pin Here..." required>
-			</div>
+			<table width="100%">
+			<tr>
+				<td>
+					<input type="text" class="input-1" minlength="8" maxlength="10" id="cardno" name="cardno" placeholder="Type Scratch Card Pin Here..." required>
+					<!-- <div id="form-card" class="form-field">
+						<br><br>
+						<input type="text" minlength="8" maxlength="10" id="cardno" name="cardno" placeholder="Type Scratch Card Pin Here..." required>
+					</div> -->
+				</td>
+
+				<td>
+					<div id="datepicker" class="input-group date " data-provide="datepicker">
+						<input type="text" name="start_date" class="input-2" placeholder="Policy start date" readonly>
+						<div class="input-group-addon">
+							<span class="glyphicon glyphicon-th"></span>
+						</div>
+					</div>
+
+					<!-- <input class="input-2" type="text" minlength="8" maxlength="10" id="cardno" name="cardno" placeholder="Enter policy start date" required> -->
+				</td>
+			</tr>
+			</table>
+				
+				
+
 			<?php
 			if($_GET['cat'] == 'Truck - 10000.00')
 			{
@@ -202,19 +230,24 @@ span{
 		<input type="hidden" name="usage" value="<?php echo $_GET['usage']; ?>">
 		<input type="hidden" name="address" value="<?php echo $_GET['address']; ?>">
 		<table width="100%" border="1">
+
 		<tr>
-			<td align="left"><a href="#" style="color:#891C2E;" onclick="goBack()">&larr; Go Back</a>
-		<script>
-		function goBack() {
-			window.history.back();
-		}
-		</script></td>
+		<td align="left"><a href="#" style="color:#891C2E;" onclick="goBack()">&larr; Go Back</a>
+			<script>
+			function goBack() {
+				window.history.back();
+			}
+			</script>
+	
+		</td>
+
 		<td>&nbsp;&nbsp;&nbsp;</td>
 			<td align="right">
 			<input name="pin_pay" type="submit" value="Pay Now" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
 		padding: 10px; border: none; border-radius: 50px; width:100px; color: white; font-weight: 400; font-size: 12pt;">
 		</td>
 		</tr>
+
 		</table>
  		</form>
         <?php
@@ -297,5 +330,6 @@ span{
 			<script src="../js/jquery.DonutWidget.min.js"></script>
 			<script src="../js/jquery.magnific-popup.min.js"></script>			
 			<script src="../js/main.js"></script>	
+			<script src="../../asset/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 		</body>
 	</html>
