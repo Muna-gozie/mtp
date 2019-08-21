@@ -8,7 +8,7 @@ function set_policy_date($date){
         $today_stamp = strtotime($today_date);
         $user_date = strtotime($date);
         if($user_date < $today_stamp){
-            return 'Invalid date';
+            return false;
         }else{
             $date = explode("/",$date);
             $date = $date[2].'-'.$date[0].'-'.$date[1];

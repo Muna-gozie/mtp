@@ -623,6 +623,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		}
 		?>
     </td>
+	
     <td><div class="blink"><em><input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
   padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card"></em></div></td>
   </tr>

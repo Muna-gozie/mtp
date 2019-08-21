@@ -1,4 +1,6 @@
 <?php
+// include('page_function.php');
+
 
 if(!isset($_GET['email'])) 
 {
@@ -37,6 +39,7 @@ error_reporting(0);
 			<link rel="stylesheet" href="../../css/main.css">
 			<link rel="stylesheet" href="../../asset/bootstrap-datepicker/css/bootstrap-datepicker3.min.css">
 			<link rel="stylesheet" href="../../asset/bootstrap-datepicker/css/bootstrap-datepicker.standalone.min.css">
+			<script src="https://kit.fontawesome.com/d55b898dfe.js"></script>
 
 
                  
@@ -57,6 +60,7 @@ error_reporting(0);
 <link href="facebox.css" media="screen" rel="stylesheet" type="text/css" />
  <script src="../js/jquery.js" type="text/javascript"></script>
   <script src="../js/facebox.js" type="text/javascript"></script>
+
   <script type="text/javascript">
     jQuery(document).ready(function($) {
       $('a[rel*=facebox]').facebox({
@@ -64,10 +68,16 @@ error_reporting(0);
         closeImage   : '../img/close.png'
       })
 
-	  $('#datepicker').datepicker();
+	//   $('#datepicker').datepicker();
     })
-
 	
+	// var check_date = function(){
+	// var	start_date = document.getElementById('start_date').value;
+	// 	alert(start_date);
+	// };
+
+	// window.onload(check_date);
+
   </script>	
   
 <style>
@@ -134,8 +144,9 @@ error_reporting(0);
 		echo number_format($_GET['amount']);		
 		?></h3></div></center>
 	</section>
+
 	<section id="right">
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br>
 		<center><h1 style="font-size:22px; font-weight:bold; color:#000;">SCRATCH CARD PAYMENT</h1><br><br><br>
         <?php
 		if($_GET['amount']>9000)
@@ -173,9 +184,11 @@ error_reporting(0);
 
 				<td>
 					<div id="datepicker" class="input-group date " data-provide="datepicker">
-						<input type="text" name="start_date" class="input-2" placeholder="Policy start date" readonly>
+						<input type="text" id="start_date" name="start_date" class="input-2" placeholder="Policy start date" readonly>
 						<div class="input-group-addon">
-							<span class="glyphicon glyphicon-th"></span>
+							<span><i class="far fa-calendar-alt" style="color: black"></i></span>
+							
+							<!-- <span class="glyphicon glyphicon-th"></span> -->
 						</div>
 					</div>
 
@@ -203,7 +216,7 @@ error_reporting(0);
 
 	
 		<!-- <input name="agentname" type="hidden" value=""> -->
-		<input name="agentid" type="hidden" value="27023031">
+		<input name="agentid" type="hidden" value="27033119">
 		<input name="gender" type="hidden" value="<?php echo $_GET['gender']; ?>">
 		<input name="premium" type="hidden" value="<?php echo $amount; ?>">
 		<input name="insurance_category" type="hidden" value="<?php echo $_GET['cat']; ?>">
@@ -244,7 +257,7 @@ error_reporting(0);
 		<td>&nbsp;&nbsp;&nbsp;</td>
 			<td align="right">
 			<input name="pin_pay" type="submit" value="Pay Now" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
-		padding: 10px; border: none; border-radius: 50px; width:100px; color: white; font-weight: 400; font-size: 12pt;">
+		padding: 10px; border: none; border-radius: 50px; width:100px; color: white; font-weight: 400; font-size: 12pt; margin-top:10px;">
 		</td>
 		</tr>
 

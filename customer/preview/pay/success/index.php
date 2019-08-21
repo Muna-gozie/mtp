@@ -356,19 +356,6 @@ $result = curl_exec($curl);
 $err = curl_error($curl);
 
 
-//var_dump($err);
-
-//ob_start();
-//var_dump($result);
-//$output = ob_get_clean();
-
-//$checker = "PolicyNumber";
-
-#$xml=simplexml_load_string($result) or die("Error: Cannot create object");
-
-// Free up the resources $curl is using
-
-
 curl_close($curl);
 
 $doc = new DOMDocument();

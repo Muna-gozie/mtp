@@ -1,16 +1,43 @@
 <?php
-require('../api_config.php');
-
-// Get API information
-$api = new Api;
-$response = $api->getKey();
-
-// Api details
-$url = $response['url'];
-$api_param = $response['api_params'];
-$key = $response['key'];
+// require('../api_config.php');
 
 error_reporting(0);
+
+$policy_number = $_GET['policy_number']; 
+$status_message = $_GET['status']; 
+$insured_id = $_GET['insured_id']; 
+$fullname =  $_GET['fullname']; 
+$policy_expiry_date =  $_GET['expiry_date']; 
+$certificate_number =  $_GET['cert_no']; 
+$product = $_GET['product']; 
+$phone = $_GET['phone_number']; 
+$vehicle_name = $_GET['vehicle_name']; 
+$reg_no = $_GET['reg_no']; 
+$premium = $_GET['premium']; 
+$vehicle_model = $_GET['vehicle_model']; 
+$year_made = $_GET['manufacture_year']; 
+$policy_start_date = $_GET['policy_start_date']; 
+ 
+
+// echo $_GET['policy_number']; 
+// echo $_GET['status']; 
+// echo $_GET['insured_id']; 
+// echo $_GET['fullname']; 
+// echo $_GET['expiry_date']; 
+// echo $_GET['cert_no']; 
+// echo $_GET['product']; 
+// echo $_GET['phone_number']; 
+// echo $_GET['vehicle_name']; 
+// echo $_GET['reg_no']; 
+// echo $_GET['premium']; 
+// echo $_GET['vehicle_model']; 
+// echo $_GET['manufacture_year']; 
+// echo $_GET['policy_start_date']; 
+// echo $_GET['agent_id']; 
+
+// $policy_number = $_SESSION['policy_number'];
+
+// echo $policy_number;
 
  // Prevent unauthorized access
 //  if(!isset($_POST['email'])) 
@@ -22,106 +49,10 @@ error_reporting(0);
 //  }
 
 
-// Form input
-
-// if(isset($_POST['pin_pay'])){
-
-//   $title = $_POST['title'];
-//   $fname = $_POST['fname'];
-//   $lname = $_POST['lname'];
-//   $address = $_POST['address'];
-//   $email =  $_POST['email'];
-//   $dob = $_POST['dob'];
-//   $location = $_POST['location'];
-//   $phone = $_POST['phone'];
-//   $occupation =$_POST['occupation'];
-//   $id = $_POST['id'];
-//   $id_no = $_POST['id_no'];
-//   $vehicle_type = 'car';
-//   $vehicle_name = $_POST['vehicle_name'];
-//   $vehicle_model = $_POST['vehicle_model'];
-//   $reg_no = $_POST['reg_no'];
-//   $engine_no = $_POST['engine_no'];
-//   $chassis_no  = $_POST['chassis_no'];
-//   $color = $_POST['color'];
-//   $manufacture_year = $_POST['year'];
-//   $registered_state = $_POST['registered_state'];
-//   $usage = $_POST['usage']; //private or commercial vehicle
-//   $policy_date = date("Y-m-d");
-//   $premium = $_POST['premium'];
-//   $card_number = $_POST['cardno'];
-//   $agentid = $_POST['agentid'];
-//   $gender = $_POST['gender'];
-//   $insured_type = $_POST['insured_type'];
-//   $category = $_POST['insurance_category'];
-
-//   $insurance_category = substr($category,0,4);
-
-
-//     $buy_policy_params = [
-//       'MTPApikey' => $key,
-//       'Title' => '',
-//       'Firstname' => $fname,
-//       'LastName' => $lname,
-//       'PhoneNos' => $phone,
-//       'Gender' => $gender,
-//       'InsuredType' => $insured_type,
-//       'Email' => $email,
-//       'policystarts' => $policy_date,
-//       'DOB' => $dob,
-//       'Address' => $address,
-//       'Country' => 'Nigeria',
-//       'Occupation' => $occupation,
-//       'StateofResidence' => $location,
-//       'Vehicletype' => $vehicle_type,
-
-//       'TransactionRef' => 'pay_ref',
-//       'CarRegNo' => $reg_no,
-//       'Carmake' => $vehicle_name,
-//       'CarModel' => $vehicle_model,
-//       'EngineNo' => $engine_no,
-//       'Caryear' => $manufacture_year,
-//       'CarColor' => $color,
-//       'CarRegState' => $registered_state,
-//       'VehicleUsagetype' => $usage,
-//       'ChassisNo' => $chassis_no,
-//       'Premium' => $premium,
-//       'MeansID' => $id,
-//       'MeansIDNo' => $id_no,
-//       'SubmitbyID' => $agentid,
-//       'Payref' => $card_number,
-//       'ispin' => 0
-
-//   ];
-
-//   try{
-//        // Buy Policy
-//       $client = new SoapClient($url);
-//       $result = $client->BuyPolicy($buy_policy_params);
-
-//       // print_r($result);
-//       foreach($result->BuyPolicyResult as $item){
-//         $insured_id = $item->CustomerReference;
-//         $policy_number = $item->PolicyNumber;
-//         $fullname = $item->Fullname;
-//         $policy_expiry_date = $item->ExpiryDate;
-//         $status_message = $item->StatusmSG;
-//         $certificate_number = $item->CertificateNos;
-//         $product = $item->Product;
-//       }
-      
-
-//   }catch( SoapFault $e){
-//       $error = $e->getMessage();
-//   }
-
- 
-// }
-
-
 ?>
 
-    <!DOCTYPE html>
+
+<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
     
@@ -208,7 +139,6 @@ error_reporting(0);
 						<div class="menu-content pb-70 col-lg-8">
 							<div class="title text-center" align="center">
 								<h1 class="mb-10" style="font-size:24px; font-weight:bold; color:#891C2E">MOTOR THIRD PARTY INSURANCE</h1>
-                <?php echo $policy_number ?>
 							</div>
 						</div>
 					</div>	
@@ -225,8 +155,8 @@ if(!is_numeric($policy_number))
 				<span class="glyphicon glyphicon-thumbs-down"></span>
 			</div>
 			<!--/.icon-->
-			<h1>Invalid Card!</h1>
-            <p style="margin-top:-30px; font-size:12px; line-height:25px;"><?php echo strtoupper($status_message.',<br>Try Again Or Contact The Administrator'); ?></p>
+			<h1> <?php echo $policy_number ?> </h1>
+            <p style="margin-top:-30px; font-size:14px; line-height:25px;"><?php echo $status_message; ?></p>
            
             <button onclick="goBack()" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
   padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Try Again</button>
@@ -310,7 +240,6 @@ elseif($policy_number == "")
 			<div class="icon">
 				<span class="glyphicon glyphicon-thumbs-down"></span>
 			</div>
-			<!--/.icon-->
 			<h1>Invalid Details!</h1>
             <p style="margin-top:-30px; font-size:12px; line-height:25px;"><?php echo strtoupper('Sorry Details Provided Is Either Wrong / Invalid, <br>Please Check And Try Again'); ?></p>
            
@@ -405,14 +334,14 @@ elseif(is_numeric($policy_number))
             <input type="hidden" id="fullname" name="fullname" value="<?php echo $fullname; ?>">
             <input type="hidden" name="policy" value="<?php echo $policy_number; ?>">
             <input type="hidden" name="phone" value="<?php echo $phone; ?>">
-            <input type="hidden" name="expiry" value="<?php echo $policy_expiry_date; ?>">
+            <input type="hidden" name="expiry" value="<?php echo str_replace('T00:00:00','',$policy_expiry_date); ?>">
             <input type="hidden" name="cert" value="<?php echo $certificate_number; ?>">
             <input type="hidden" name="regno" value="<?php echo $reg_no ; ?>">
             <input type="hidden" name="car" value="<?php echo $vehicle_name; ?>">
             <input type="hidden" name="amount" value="<?php echo $premium; ?>">
             <input type="hidden" name="model" value="<?php echo $vehicle_model; ?>">
-            <input type="hidden" name="year" value="<?php echo $manufacture_year; ?>">
-            <input type="hidden" name="date" value="<?php echo $policy_date; ?>">
+            <input type="hidden" name="year" value="<?php echo $year_made; ?>">
+            <input type="hidden" name="date" value="<?php echo $policy_start_date; ?>">
             <input type="submit" name="submit" value="View Certificate" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
   padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">
             </form>
@@ -561,3 +490,4 @@ elseif(is_numeric($policy_number))
 			<script src="../js/main.js"></script>	
 		</body>
 	</html>
+  

@@ -393,9 +393,6 @@ $idno = $idno->item(0)->nodeValue;
 <br><h1 class="form-title">VEHICLE INFORMATION</h1>
 <br><br>
 <table border="0" style="width:auto;">
-  <!-- <tr>
-  <td colspan="2">Insurance Class: <font color="#FF0000">Motor Third Party</font><br><br></td>
-  </tr> -->
  
  <tr>
   <td>
@@ -624,14 +621,14 @@ if(($phone != '') && ($type == 'Corporate'))
     <div align="center"><h1 style="font-size:18px; font-weight:bold; color:#008C23;"><img src="happy.fw.png" width="80" height="80"><br>WELCOME BACK, <?php echo strtoupper($lname.' '.$fname); ?></h1></div> <hr>
 <h1 class="form-title">CORPORATE INFORMATION</h1><br>
 		<?php
-		// if(isset($_POST['submit']))
-		// {
+		if(isset($_POST['submit']))
+		{
 		?>
         <form name="form1" id="form1" action="preview/" method="POST">
         <input type="hidden" name="type" value="<?php echo $type; ?>" />
 	<table border="0" style="width:auto;">  
   	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width">
 			<label for="fname">Name Of Organization:</label>
 			<input id="fname" name="fname" maxlength="19" value="<?php echo $fname; ?>" disabled required />
 			<!-- Hidden -->
@@ -640,7 +637,7 @@ if(($phone != '') && ($type == 'Corporate'))
   	</tr>
 	
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width">
 		<label for="email">Email:</label>
 		<input id="email" name="email" maxlength="50" value="<?php echo $email; ?>" required disabled>
 		<!-- Hidden -->
@@ -651,7 +648,7 @@ if(($phone != '') && ($type == 'Corporate'))
 	</tr>
 
 	<tr>
-		<div id="form-card" class="form-field" style="width:80%">
+		<div id="form-card" class="form-field full-width">
 			<label for="address">Address:</label>
 			<input id="address" name="address" maxlength="100" value="<?php echo $add; ?>" disabled required>
 			<!-- Hidden -->
@@ -926,7 +923,7 @@ if(($phone != '') && ($type == 'Corporate'))
   
  		</form>
         <?php
-		// }
+		}
 	}elseif($phone == '')
 		{
 			echo '<br><br><br><br><br><br><br><br><br><center><img src="failed.fw.png" width="92" height="120"><br>
