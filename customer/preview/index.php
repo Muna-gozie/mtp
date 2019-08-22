@@ -529,7 +529,7 @@ else $amount = substr($_POST['category'], 6, 4);
 
     <td>
 		<div id="form-card" class="form-field">
-			<label for="engine_no">Engine No:</label><br>
+			<label for="engine_no">Engine No:</label>
 			<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" disabled required>
 			<!-- Hidden -->
 			<input type="hidden" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" >
@@ -642,7 +642,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           //flw_ref = response.tx.flwRef;
           console.log("This is the response returned after a charge", response);
           if(response.tx.chargeResponseCode =='00' || response.tx.chargeResponseCode == '0') {
-            window.location.assign("pay/success/?usage=<?php echo $_POST['usage']; ?>&agentname=<?php echo $_POST['agentname']; ?>&type=<?php echo $_POST['type']; ?>&agentid=<?php echo $_POST['agentid']; ?>&amount=<?php echo $amount; ?>&cat=<?php echo $_POST['category']; ?>&color=<?php echo $_POST['colour']; ?>&chasis_no=<?php echo $_POST['chasis_no']; ?>&engine_no=<?php echo $_POST['engine_no']; ?>&regno=<?php echo $_POST['reg_no']; ?>&model=<?php echo $_POST['model']; ?>&cartype=<?php echo $_POST['car']; ?>&id_no=<?php echo $id_no; ?>&id=<?php echo $_POST['identification']; ?>&occu=<?php echo $occu; ?>&address=<?php echo $_POST['address']; ?>&loc=<?php echo $_POST['location']; ?>&dob=<?php echo $dob; ?>&gender=<?php echo $_POST['gender']; ?>&title=<?php echo $_POST['title']; ?>&lname=<?php echo $_POST['lname']; ?>&fname=<?php echo $_POST['fname']; ?>&email=<?php echo $_POST['email']; ?>&phone=<?php echo $_POST['phone']; ?>&agent_id=<?php echo $_POST['agent_id']; ?>&year=<?php echo $_POST['year']; ?>&state_reg=<?php echo $_POST['state_reg']; ?>");
+            window.location.assign("pay/success/?usage=<?php echo $_POST['usage']; ?>&agentname=<?php echo $_POST['agentname']; ?>&type=<?php echo $_POST['type']; ?>&agentid=27033119&amount=<?php echo $amount; ?>&cat=<?php echo $_POST['category']; ?>&color=<?php echo $_POST['color']; ?>&chasis_no=<?php echo $_POST['chasis_no']; ?>&engine_no=<?php echo $_POST['engine_no']; ?>&regno=<?php echo $_POST['reg_no']; ?>&model=<?php echo $_POST['model']; ?>&cartype=<?php echo $_POST['car']; ?>&id_no=<?php echo $id_no; ?>&id=<?php echo $_POST['identification']; ?>&occu=<?php echo $occu; ?>&address=<?php echo $_POST['address']; ?>&loc=<?php echo $_POST['loc']; ?>&dob=<?php echo $_POST['dob']; ?>&gender=<?php echo $_POST['gender']; ?>&title=<?php echo $_POST['title']; ?>&lname=<?php echo $_POST['lname']; ?>&fname=<?php echo $_POST['fname']; ?>&email=<?php echo $_POST['email']; ?>&phone=<?php echo $_POST['phone']; ?>&agent_id=<?php echo $_POST['agent_id']; ?>&year=<?php echo $_POST['year']; ?>&state_reg=<?php echo $_POST['state_reg']; ?>");
           } else {
             window.location.assign("failed/");
           }

@@ -624,7 +624,8 @@ if(($phone != '') && ($type == 'Corporate'))
 		if(isset($_POST['submit']))
 		{
 		?>
-        <form name="form1" id="form1" action="preview/" method="POST">
+        <!-- <form name="form1" id="form1" action="preview/" method="POST"> -->
+		<form name="form1" id="form1" action="preview/" method="POST">
         <input type="hidden" name="type" value="<?php echo $type; ?>" />
 	<table border="0" style="width:auto;">  
   	<tr>
