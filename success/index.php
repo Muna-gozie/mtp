@@ -328,7 +328,7 @@ elseif(is_numeric($policy_number))
 			<!--/.icon-->
 			<h1>Success!</h1>
              <br><br>
-			<p style="margin-top:-30px; font-size:12px; line-height:25px;"><?php echo strtoupper('Thank You, We\'ve Sent Your Certificate And A Receipt Of Purchace To Your E-mail , Please ensure to confirm Validity of your Insurance policy here  <a href="http://askniid.org/VerifyPolicy.aspx">NIID</a>'); ?></p>
+			<p style="margin-top:-30px; font-size:12px; line-height:25px;"><?php echo 'Thank You, We\'ve Sent Your Certificate And A Receipt Of Purchace To Your E-mail , Please ensure to confirm Validity of your Insurance policy here  <a href="http://askniid.org/VerifyPolicy.aspx">NIID</a>'; ?></p>
             <br>
             <form action="../print" method="get" target="_blank" name="form">
             <input type="hidden" id="fullname" name="fullname" value="<?php echo $fullname; ?>">

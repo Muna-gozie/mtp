@@ -6,7 +6,7 @@ $api = new Api;
 $response = $api->getKey() ;
 
 $url= $response['url'];
-$api_param = $response['api_param'];
+// $api_param = $response['api_param'];
 $key = $response['key'];
 
 if(!isset($_GET['email'])) 
@@ -17,14 +17,125 @@ echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS"
 			exit();	
 }
 error_reporting(0);
-/*
-//dob ymd
-//$dob = substr($_GET["dob"],5,0);
 
-*/
+$amount = $_GET['amount'];
+$email = strtoupper($_GET['email']);
+$usage = $_GET['usage'];
+
+if($_GET['cat'] == 'Truck - 10000.00')
+{
+	$car = substr($_GET['cat'], 0, 5);
+}
+elseif(($_GET['cat'] == 'Jeep - 5000.00') || $_GET['cat'] == 'Keke - 2500.00')
+{
+	$car = substr($_GET['cat'], 0, 4);
+}
+else $car = substr($_GET['cat'], 0, 3);
+
+$gender = strtoupper($_GET['gender']);
+$color = strtoupper($_GET['color']);
+$chasis = strtoupper($_GET['chasis_no']);
+$engine = strtoupper($_GET['engine_no']);
+$regno = strtoupper($_GET['regno']);
+$model = strtoupper(preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $_GET['model']));
+$id_no = $_GET['id_no'];
+$id = strtoupper($_GET['id']);
+$occupation = strtoupper(preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $_GET['occu']));
+$address = strtoupper(preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $_GET['address']));
+$location = strtoupper($_GET['loc']);
+$title = strtoupper($_GET['title']);
+$dob = $_GET['dob'];
+$vehicle_name = strtoupper($_GET['cartype']);
+$mob = $_GET['phone'];
+$lname = strtoupper(preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $_GET['lname']));
+$fname = strtoupper(preg_replace('/&(amp;)?#?[a-z0-9]+;/i', '-', $_GET['fname']));
+$state_reg = strtoupper($_GET['state_reg']);
+$year = $_GET['year'];
+$agentid = $_GET['agentid'];
+$agentname = $_GET['agentname'];
+$card = $_GET['cardno'];
+$ref = $_GET['ref'];
+$type = $_GET['type'];
+$category = $_GET['cat'];
+$policy_start_date = date('Y-m-d');
+$transaction_ref = 'MTP'.date('Ymdhis');
+
+
+// echo 'Amount'.$amount.' Email'.$email.' Car'.$car.' Gender'.$gender.' Color '.$color.' Chasis No.'.$chasis.' Engine No.'.$engine.' Reg_no'.$regno.' Model.'.$model.' ID Type'.$id.' ID no.'.$id_no.' Occupation.'.$occupation.' Address'.$address.' Location.'.$location.' Title'.$title.' DOB.'.$dob.' Vehicle Name.'.$vehicle_name.' Mobile No.'.$mob.' LastName.'.$lname.' FirstName.'.$fname.' Registered State.'.$state_reg.' Year made'.$year.' Agent ID'.$agentid.' Agent Name.'.$agentname.' Card number.'.$card.'Pay ref'.$transaction_ref.' Type.'.$type.' Usage'.$usage.' Category '.$category.' Policy start date '.$policy_start_date.'<br>'; 
+
+
+
+// Call Buy policy webservice
+
+$buy_policy_params = array(
+	'MTPApikey' => $key,
+	'Title' => $title,
+	'Firstname' => $fname,
+	'LastName' => $lname,
+	'PhoneNos' => $mob,
+	'Gender' => $gender,
+	'InsuredType' => $type,
+	'Email' => $email,
+	'policystarts' => $policy_start_date,
+	'DOB' => $dob,
+	'Address' => $address,
+	'Country' => 'Nigeria',
+	'Occupation' => $occupation,
+	'StateofResidence' => $location,
+	'Vehicletype' => $car,
+  
+	'TransactionRef' => $transaction_ref,
+	'CarRegNo' => $regno,
+	'Carmake' => $vehicle_name,
+	'CarModel' => $model,
+	'EngineNo' => $engine,
+	'Caryear' => $year,
+	'CarColor' => $color,
+	'CarRegState' => $state_reg,
+	'VehicleUsagetype' => $usage,
+	'ChassisNo' => $chasis,
+	'Premium' => $amount,
+	'MeansID' => $id,
+	'MeansIDNo' => $id_no,
+	'SubmitbyID' => $agentid,
+	'Payref' => $card,
+	'ispin' => '0'
+  );
+  
+  
+  try{
+	$client = new SoapClient($url);
+	$response = $client->BuyPolicy($buy_policy_params);
+  
+	// print_r($response);
+  
+	foreach($response->BuyPolicyResult as $item){
+	  if(!is_numeric($item->PolicyNumber)){
+		$policy_number = $item->PolicyNumber;
+		$status_message = $item->StatusmSG;
+	  }else{
+		$policy_number = $item->PolicyNumber;
+		$insured_id = $item->CustomerReference;
+		$fullname = $item->Fullname;
+		$policy_expiry_date = $item->ExpiryDate;
+		$status_message = $item->StatusmSG;
+		$certificate_number = $item->CertificateNos;
+		$product = $item->Product;
+	  }
+	}
+  
+	// echo $policy_number.' '.$status_message.' '.$insured_id.' '.$fullname;
+  
+  }catch(SoapFault $e){
+	$e->getMessage();
+  }
+  
+
 ?>
 
-    <!DOCTYPE html>
+
+
+<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
     
@@ -200,201 +311,101 @@ error_reporting(0);
 					</div>	
 					<div class="col-lg-12 col-md-12">
 					<div class="row">
-<?php
-$amount = $_GET['amount'];
-$email = strtoupper($_GET['email']);
-//$usage = $_GET['usage'];
+	<?php 
+		if(!is_numeric($policy_number)){
+	?>
 
-if($_GET['cat'] == 'Truck - 10000.00')
-{
-	$car = substr($_GET['cat'], 0, 5);
-}
-elseif(($_GET['cat'] == 'Jeep - 5000.00') || $_GET['cat'] == 'Keke - 2500.00')
-{
-	$car = substr($_GET['cat'], 0, 4);
-}
-else $car = substr($_GET['cat'], 0, 3);
+<body style="background-image:url(../img/road2.png);">
+          <div class="modalbox success col-sm-8 col-md-6 col-lg-5 center animate">
+          <div class="icon">
+          <span class="glyphicon glyphicon-thumbs-down"></span>
+          </div>
+          <!--/.icon-->
+          <h1> <?php echo $policy_number ?> </h1>
+            <p style="margin-top:-30px; font-size:14px; line-height:25px;"><?php echo $status_message; ?></p>
+            
+            <!-- <a href="../../index.php"><button onclick="goBack()" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
+          padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Try Again</button></a> -->
 
+          <button onclick="goBack()" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
+          padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Try Again</button>
+            
+          <script>
+            function goBack() {
+            //  window.history.back();
+            window.history.go(-1);
+            }
+          </script>
+          <br><br><br>
+            Redirecting you back to the home page in...
+              <div style="margin-left:70px;">  
+          <div class="countdown">
+          <div class="bloc-time min" data-init-value="2">
+          <span class="count-title"></span>
 
+          <div class="figure min min-1">
+          <span class="top">0</span>
+          <span class="top-back">
+          <span>0</span>
+          </span>
+          <span class="bottom">0</span>
+          <span class="bottom-back">
+          <span>0</span>
+          </span>        
+          </div>
 
-$gender = strtoupper($_GET['gender']);
-$color = strtoupper($_GET['color']);
-$chasis = strtoupper($_GET['chasis_no']);
-$engine = strtoupper($_GET['engine_no']);
-$regno = strtoupper($_GET['regno']);
-$model = strtoupper(preg_replace('/[^a-zA-Z0-9_.]/', ' ', $_GET['model']));
-$id_no = $_GET['id_no'];
-$id = strtoupper($_GET['id']);
-$occu = strtoupper(preg_replace('/[^a-zA-Z0-9_.]/', ' ', $_GET['occu']));
-$add = strtoupper(preg_replace('/[^a-zA-Z0-9_.]/', ' ', $_GET['address']));
-$loc = strtoupper($_GET['loc']);
-$title = strtoupper(preg_replace('/[^a-zA-Z0-9_.]/', ' ', $_GET['title']));
-$dob = $_GET['dob'];
-$cartype = strtoupper($_GET['cartype']);
-$mob = $_GET['phone'];
-$lname = strtoupper(preg_replace('/[^a-zA-Z0-9_.]/', ' ', $_GET['lname']));
-$fname = strtoupper(preg_replace('/[^a-zA-Z0-9_.]/', ' ', $_GET['fname']));
-$state_reg = strtoupper($_GET['state_reg']);
-$year = $_GET['$year'];
-$agentid = $_GET['agentid'];
-$agentname = $_GET['agentname'];
-$card = $_GET['cardno'];
-$ref = $_GET['ref'];
-$type = $_GET['type'];
+          <div class="figure min min-2">
+          <span class="top">0</span>
+          <span class="top-back">
+          <span>0</span>
+          </span>
+          <span class="bottom">0</span>
+          <span class="bottom-back">
+          <span>0</span>
+          </span>
+          </div>
+          </div>
 
+          <div class="bloc-time sec" data-init-value="0">
+          <span class="count-title"></span>
 
+          <div class="figure sec sec-1">
+          <span class="top">0</span>
+          <span class="top-back">
+          <span>0</span>
+          </span>
+          <span class="bottom">0</span>
+          <span class="bottom-back">
+          <span>0</span>
+          </span>          
+          </div>
 
-		 
-$data2 = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <tem:BuyPolicy>
-         <!--Optional:-->
-         <tem:MTPApikey>'.$key.'</tem:MTPApikey>
-         <!--Optional:-->
-         <tem:Title>'.$title.'</tem:Title>
-         <!--Optional:-->
-         <tem:Firstname>'.$fname.'</tem:Firstname>
-         <!--Optional:-->
-         <tem:LastName>'.$lname.'</tem:LastName>
-         <!--Optional:-->
-         <tem:PhoneNos>'.$mob.'</tem:PhoneNos>
-         <!--Optional:-->
-         <tem:Email>'.$email.'</tem:Email>
-         <tem:DOB>'.$dob.'</tem:DOB>
-         <!--Optional:-->
-         <tem:Address>'.$add.'</tem:Address>
-         <!--Optional:-->
-         <tem:Country>Nigeria</tem:Country>
-         <!--Optional:-->
-         <tem:Gender>'.$gender.'</tem:Gender>
-         <!--Optional:-->
-         <tem:InsuredType>'.$type.'</tem:InsuredType>
-         <!--Optional:-->
-         <tem:Occupation>'.$occu.'</tem:Occupation>
-         <!--Optional:-->
-         <tem:StateofResidence>'.$loc.'</tem:StateofResidence>
-         <!--Optional:-->
-         <tem:Usage>Private</tem:Usage>
-         <!--Optional:-->
-         <tem:MerchantReference>test</tem:MerchantReference>
-         <!--Optional:-->
-         <tem:InsuranceClass>THIRD PARTY</tem:InsuranceClass>
-         <!--Optional:-->
-         <tem:Vehicle>'.$car.'</tem:Vehicle>
-         <!--Optional:-->
-         <tem:Excess>With Excess</tem:Excess>
-         <tem:SumValue>0</tem:SumValue>
-         <!--Optional:-->
-         <tem:TransactionID></tem:TransactionID>
-         <!--Optional:-->
-         <tem:CarRegNos>'.$regno.'</tem:CarRegNos>
-         <!--Optional:-->
-          <tem:Carbrand>'.$cartype.'</tem:Carbrand>
-          <!--Optional:-->
-         <tem:EngineNo>'.$engine.'</tem:EngineNo>
-         <!--Optional:-->
-         <tem:CarType>'.$model.'</tem:CarType>
-         <!--Optional:-->
-         <tem:CarModel>'.$year.'</tem:CarModel>
-         <!--Optional:-->
-         <tem:CarColor>'.$color.'</tem:CarColor>
-         <!--Optional:-->
-         <tem:Registration_State>'.$state_reg.'</tem:Registration_State>
-         <!--Optional:-->
-         <tem:ChasisNos>'.$chasis.'</tem:ChasisNos>
-         <!--Optional:-->
-         <tem:Amount>'.$amount.'</tem:Amount>
-         <!--Optional:-->
-         <tem:MeansID>'.$id.'</tem:MeansID>
-         <!--Optional:-->
-         <tem:MeansIDNo>'.$id_no.'</tem:MeansIDNo>
-         <!--Optional:-->
-         <tem:Submitby></tem:Submitby>
-         <!--Optional:-->
-         <tem:SubmitbyID></tem:SubmitbyID>
-         <!--Optional:-->
-         <tem:Carstuff>'.$card.'</tem:Carstuff>
-      </tem:BuyPolicy>
-   </soapenv:Body>
-</soapenv:Envelope>';
+          <div class="figure sec sec-2">
+          <span class="top">0</span>
+          <span class="top-back">
+          <span>0</span>
+          </span>
+          <span class="bottom">0</span>
+          <span class="bottom-back">
+          <span>0</span>
+          </span>
+          </div>
+          </div>
+          </div>
+          </div>
+          <br><br><br><br><br><br><br>
+          <a href="../" style="text-decoration:none;"><img src="../../../img/home.fw.png" width="35" height="30">
+          <br><font style="font-size:10px; color:#991F36">Go Home</font></a><br><br>
+          <span class="change" style="color:#991F36;">Consolidated Hallmark Insurance Plc.</span>
+          </div>
+          <!--/.success-->
+          </div>
+          <!--/.row-->
 
+	<?php 
+		}else{
+	?>
 
-$header = 
-array(
-
-"Content-type: text/xml;charset=\"utf-8\"",
-
-"Accept: text/xml",
-
-"Cache-Control: no-cache",
-
-"Pragma: no-cache",
-
-"SOAPAction: \"http://tempuri.org/BuyPolicy\"",
-
-"Content-length: ".strlen($data2),
-
-);
-
-$curl = curl_init();
-
-curl_setopt($curl, CURLOPT_URL, $url);
-// Set the url path we want to call
-
-curl_setopt($curl, CURLOPT_RETURNTRANSFER,
-true); // Make it so the data coming back is put into a string
-
-curl_setopt($curl, CURLOPT_POST,
-1); //Choosing the POST method
-
-curl_setopt($curl, CURLOPT_POSTFIELDS,
-$data2); // Insert the data
-
-curl_setopt($curl, CURLOPT_HTTPHEADER,
-$header);
-
-//This sends the request
-
-$result = curl_exec($curl);
-
-$err = curl_error($curl);
-
-
-//var_dump($err);
-
-//ob_start();
-//var_dump($result);
-//$output = ob_get_clean();
-
-//$checker = "PolicyNumber";
-
-#$xml=simplexml_load_string($result) or die("Error: Cannot create object");
-
-// Free up the resources $curl is using
-
-
-curl_close($curl);
-
-$doc = new DOMDocument();
-$doc->loadXML($result);
-
-$fullname = $doc->getElementsByTagName( "Fullname" );
-$fullname = $fullname->item(0)->nodeValue;
-
-$policy = $doc->getElementsByTagName( "PolicyNumber" );
-$policy = $policy->item(0)->nodeValue;
-
-$phone = $doc->getElementsByTagName( "PhoneNos" );
-$phone = $phone->item(0)->nodeValue;
-
-$expiry = $doc->getElementsByTagName( "ExpiryDate" );
-$expiry = $expiry->item(0)->nodeValue;
-$expiry1 = substr($expiry, 0, 10);
-
-$cert = $doc->getElementsByTagName( "CertificateNos" );
-$cert = $cert->item(0)->nodeValue;
-?>
 <div class="modalbox success col-sm-8 col-md-6 col-lg-5 center animate">
 			<div class="icon">
 				<span class="glyphicon glyphicon-ok"></span>
@@ -407,16 +418,16 @@ $cert = $cert->item(0)->nodeValue;
             <br>
             <form action="../../../print" method="get" target="_blank" name="form">
            <input type="hidden" id="fullname" name="fullname" value="<?php echo $fullname; ?>">
-            <input type="hidden" name="policy" value="<?php echo $policy; ?>">
+            <input type="hidden" name="policy" value="<?php echo $policy_number; ?>">
             <input type="hidden" name="phone" value="<?php echo $phone; ?>">
-            <input type="hidden" name="expiry" value="<?php echo $expiry1; ?>">
-            <input type="hidden" name="cert" value="<?php echo $cert; ?>">
-            <input type="hidden" name="regno" value="<?php echo $_GET['regno']; ?>">
-            <input type="hidden" name="car" value="<?php echo $_GET['cartype']; ?>">
-            <input type="hidden" name="amount" value="<?php echo $_GET['amount']; ?>">
-            <input type="hidden" name="model" value="<?php echo $_GET['model']; ?>">
-            <input type="hidden" name="year" value="<?php echo $_GET['year']; ?>">
-            <input type="hidden" name="date" value="<?php echo date('Y-m-d'); ?>">
+            <input type="hidden" name="expiry" value="<?php echo $policy_expiry_date; ?>">
+            <input type="hidden" name="cert" value="<?php echo $certificate_number; ?>">
+            <input type="hidden" name="regno" value="<?php echo $regno; ?>">
+            <input type="hidden" name="car" value="<?php echo $car; ?>">
+            <input type="hidden" name="amount" value="<?php echo $amount; ?>">
+            <input type="hidden" name="model" value="<?php echo $model; ?>">
+            <input type="hidden" name="year" value="<?php echo $year; ?>">
+            <input type="hidden" name="date" value="<?php echo $policy_start_date; ?>">
             <input type="submit" name="submit" value="View Certificate" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
   padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">
             </form>
@@ -485,6 +496,10 @@ $cert = $cert->item(0)->nodeValue;
 		<!--/.success-->
 	</div>
 	<!--/.row-->
+
+	<?php 
+		}
+	?>
 
     <br>
 

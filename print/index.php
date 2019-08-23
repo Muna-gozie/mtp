@@ -293,7 +293,7 @@
 	</tr>
 	
 	<tr height="">
-	<td width="193" valign="bottom" style="text-align:center;">&nbsp;&nbsp;<img src="../img/sign.jpg" width="209" height="48" align="absmiddle"><p class="style19">________________________ </p>
+	<td width="193" valign="bottom" style="text-align:center;">&nbsp;&nbsp;<img src="../img/new_cert_sign.PNG" width="150" height="48" align="absmiddle"><p class="style19">________________________ </p>
 	<blockquote>
 	<p class="style19"><strong>Examined</strong></p>
 	</blockquote></td></td>

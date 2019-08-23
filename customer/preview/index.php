@@ -358,9 +358,17 @@ else $amount = substr($_POST['category'], 6, 4);
 
    <table width="100%" style="margin-left:50px;">
   <tr>
-	<td>
-		<div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
+
+	  <td>
+		<div class="blink">
+		<span><input type="submit" name="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
+		padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card"></span>
 		</div>
+  	</td>
+
+	<td>
+		<!-- <div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
+		</div> -->
 	<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 	<!-- <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script> -->
 	<script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
@@ -399,12 +407,7 @@ else $amount = substr($_POST['category'], 6, 4);
 	</script>			
 	</td>
   
-    <td>
-		<div class="blink">
-		<span><input type="submit" name="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
-		padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card"></span>
-		</div>
-  	</td>
+    
   </tr>
 </table>  
 

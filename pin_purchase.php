@@ -48,7 +48,7 @@ if(isset($_POST['pin_pay'])){
 
       $buy_policy_params = array(
         'MTPApikey' => $key,
-        'Title' => '',
+        'Title' => $title,
         'Firstname' => $fname,
         'LastName' => $lname,
         'PhoneNos' => $phone,
@@ -144,7 +144,7 @@ if(isset($_POST['pin_pay'])){
           $error = $e->getMessage();
       }
     }else{
-        echo'<script> window.history.back(alert("Enter a valid start date")); </script>';
+        echo'<script> window.history.back(alert("Enter a valid policy start date")); </script>';
     }
  
     

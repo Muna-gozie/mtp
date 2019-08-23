@@ -439,7 +439,7 @@ s0.parentNode.insertBefore(s1,s0);
             <div class="col-md-4 col-xs-12">
               <div class="buyer-category">
                 <div class="img-border"><img src="img/user-img.png" width="130" alt=""></div>
-                <h2 class="buyer-type">Individual</h2>
+                <h2 class="buyer-type">Are you an Individual?</h2>
                 <a href="#" data-toggle="modal" data-target="#popUpWindow">
                   <button class="btn btn-primary click-here">Buy Now</button>
                 </a>
@@ -449,7 +449,7 @@ s0.parentNode.insertBefore(s1,s0);
             <div class="col-md-4 col-xs-12">
               <div class="buyer-category">
                 <div class="img-border"><img src="img/corporate-1.jpg" width="130" alt=""></div>
-                <h2 class="buyer-type">Coporate Entity</h2>
+                <h2 class="buyer-type">Are you a Company? </h2>
                 <a href="#" data-toggle="modal" data-target="#popUpWindow2">
                   <button class="btn btn-primary click-here">Buy Now</button>
                 </a>
@@ -460,7 +460,7 @@ s0.parentNode.insertBefore(s1,s0);
             <div class="col-md-4 col-xs-12">
               <div class="buyer-category">
                 <div class="img-border"><img src="img/returning-cus1.jpg" width="130" alt=""></div> 
-                <h2 class="buyer-type">Existing Policy Holder</h2>
+                <h2 class="buyer-type">Existing Policy Holder?</h2>
                 <a href="#" data-toggle="modal" data-target="#popUpWindow1">
                   <button class="btn btn-primary click-here">Buy Now</button>
                 </a>
@@ -1075,7 +1075,7 @@ while($yr >=1999)
     </td>
   <td>
   <div style="margin-left:6px;">
-<select style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" name="category" style="color:#000; width:183px;">
+<select style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" name="category" style="color:#000; width:183px;" required>
 <option value="">Category</option>
 <option>
     <?php 
@@ -1445,13 +1445,13 @@ while($yr >=1900)
         </div>
         <!-- body -->
         <div class="modal-header">
-          <form action="renewal/" name="formx" id="formx"  method="post">
+          <form action="customer/" name="formx" id="formx"  method="post">
           <div align="center"><img src="img/car.fw.png" width="50" height="70">  <font style="font-weight:bold; color:#000;">RENEW YOUR POLICY</font></div><br>
  <hr>
            <font color="#000000">
 <table align="center" style="width:100%;">
    <tr>
-       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="Regno" placeholder="Enter your Vehicle Registration No. :" required></td>
+       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="phone" placeholder="Enter your Vehicle Registration No. :" required></td>
   </tr>
 </table>
 

@@ -224,47 +224,6 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 					<!-- Hidden --> 
 					<input type="hidden" class="input-2" name="loc" value="<?php echo $_POST['location']; ?>">
 
-					<!-- <select class="input-2" name="loc" required>
-					<OPTION><?php // echo $_POST['location']; ?></OPTION>
-					<option></option>
-					<OPTION>Lagos</OPTION>
-					<option>Abuja FCT</option>
-					<option>Abia</option>
-					<option>Adamawa</option>
-					<option>Akwa Ibom</option>
-					<option>Anambre</option>
-					<option>Bachi</option>
-					<option>Bayelsa</option>
-					<option>Benue</option>
-					<option>Borno</option>
-					<option>Cross River</option>
-					<option>Delta</option>
-					<option>Ebonyi</option>
-					<option>Edo</option>
-					<option>Ekiti</option>
-					<option>Enugu</option>
-					<option>Gombe</option>
-					<option>Imo</option>
-					<option>Jigawa</option>
-					<option>Kaduna</option>
-					<option>Kano</option>
-					<option>Kastina</option>
-					<option>Kebbi</option>
-					<option>Kogi</option>
-					<option>Kwara</option>
-					<option>Nassarawa</option>
-					<option>Niger</option>
-					<option>Ogun</option>
-					<option>Ondo</option>
-					<option>Osun</option>
-					<option>Oyo</option>
-					<option>Plateau</option>
-					<option>Rivers</option>
-					<option>Sokoto</option>
-					<option>Taraba</option>
-					<option>Yobe</option>
-					<option>Zamfara</option>
-					</select> -->
 				</div>
 		</td>
 	</tr>
@@ -342,7 +301,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 </table>
 
 <br>
-<h1 class="form-title">VEHICLE INFORMATION</h1><br><br>
+<h1 class="form-title">VEHICLE INFORMATION</h1><br>
 <table border="0" style="width:auto;">
   <!-- <tr>
   <td colspan="2">Insurance Class: <font color="#FF0000">Motor Third Party</font><br><br></td>
@@ -464,48 +423,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 
 				<!--  Hidden -->	
 				<input type="hidden" name="state_reg" id="state_reg" class="input-2" value="<?php echo $_POST['state_reg']; ?>" >	
-
-                <!-- <select name="state_reg" id="state_reg" class="input-2" required >
-				<option><?php // echo $_POST['state_reg']; ?></option>
-				<option></option>
-				<option>ABUJA FCT</option>
-				<option>ABIA</option>
-				<option>ADAMAWA</option>
-				<option>AKWA IBOM</option>
-				<option>ANAMBRA</option>
-				<option>BAUCHI</option>
-				<option>BAYELSA</option>
-				<option>BENUE</option>
-				<option>BORNO</option>
-				<option>CROSS RIVER</option>
-				<option>DELTA</option>
-				<option>EBONYI</option>
-				<option>EDO</option>
-				<option>EKITI</option>
-				<option>ENUGU</option>
-				<option>GOMBE</option>
-				<option>IMO</option>
-				<option>JIGAWA</option>
-				<option>KADUNA</option>
-				<option>KANO</option>
-				<option>KATSINA</option>
-				<option>KEBBI</option>
-				<option>KOGI</option>
-				<option>KWARA</option>
-				<option>LAGOS</option>
-				<option>NASSARAWA</option>
-				<option>NIGER</option>
-				<option>OGUN</option>
-				<option>ONDO</option>
-				<option>OSUN</option>
-				<option>OYO</option>
-				<option>PLATEAU</option>
-				<option>RIVERS</option>
-				<option>SOKOTO</option>
-				<option>TARABA</option>
-				<option>YOBE</option>
-				<option>ZAMFARA</option>
-				</select> -->
+            
 			</div>
 		</td>
   </tr>
@@ -571,6 +489,10 @@ elseif($_POST['id_no'] != '')
 
    <table width="100%" style="margin-left:50px;">
   <tr>
+	<td><div class="blink"><em><input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
+	padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card"></em></div>
+	</td>
+
     <td>
     <?php
     if($_POST[paynow] == 'bus' || $_POST[paynow] == 'car' || $_POST[paynow] == 'jeep' || $_POST[paynow] == 'keke' || $_POST[paynow] == 'suv' || $_POST[paynow] == 'truck')
@@ -580,8 +502,8 @@ elseif($_POST['id_no'] != '')
     elseif($_POST[paynow] != 'bus' || $_POST[paynow] != 'car' || $_POST[paynow] != 'jeep' || $_POST[paynow] != 'keke' || $_POST[paynow] != 'suv' || $_POST[paynow] != 'truck')
     {
 	?>
-	<div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
-	</div>
+	<!-- <div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
+	</div> -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
   <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script>
   <!-- <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script> -->
@@ -594,8 +516,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
      
     var chargeResponse = "",
         trxref = "MTP" + Math.random(),// add your transaction ref here
-	//  pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
-      pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
+	 	// pubkey = "FLWPUBK-07743ba9e44bf8ccadb21b4b72449146-X"; // Sandbox key
+      	pubkey = "FLWPUBK-d9d52d459a7b8577add4ab47c5f15bf4-X"; // Add public keys generated on your dashboard here
       getpaidSetup({
         customer_email: "<?php echo $_POST['email']; ?>",// 
         amount: <?php echo $amount; ?>,
@@ -609,7 +531,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           //flw_ref = response.tx.flwRef;
           console.log("This is the response returned after a charge", response);
           if(response.tx.chargeResponseCode =='00' || response.tx.chargeResponseCode == '0') {
-            window.location.assign("pay/success/?usage=<?php echo $_POST['usage']; ?>&agentname=<?php echo $_POST['agentname']; ?>&type=<?php echo $_POST['type']; ?>&agentid=<?php echo $_POST['agentid']; ?>&amount=<?php echo $amount; ?>&cat=<?php echo $_POST['category']; ?>&color=<?php echo $_POST['colour']; ?>&chasis_no=<?php echo $_POST['chasis_no']; ?>&engine_no=<?php echo $_POST['engine_no']; ?>&regno=<?php echo $_POST['reg_no']; ?>&model=<?php echo $_POST['model']; ?>&cartype=<?php echo $_POST['car']; ?>&id_no=<?php echo $id_no; ?>&id=<?php echo $_POST['identification']; ?>&occu=<?php echo $occu; ?>&address=<?php echo $_POST['address']; ?>&loc=<?php echo $_POST['location']; ?>&dob=<?php echo $dob; ?>&gender=<?php echo $_POST['gender']; ?>&title=<?php echo $_POST['title']; ?>&lname=<?php echo $_POST['lname']; ?>&fname=<?php echo $_POST['fname']; ?>&email=<?php echo $_POST['email']; ?>&phone=<?php echo $_POST['phone']; ?>&agent_id=<?php echo $_POST['agent_id']; ?>&year=<?php echo $_POST['year']; ?>&state_reg=<?php echo $_POST['state_reg']; ?>");
+            window.location.assign("pay/success/?usage=<?php echo $_POST['usage']; ?>&agentname=<?php echo $_POST['agentname']; ?>&type=<?php echo $_POST['type']; ?>&agentid=27033119&amount=<?php echo $amount; ?>&cat=<?php echo $_POST['category']; ?>&color=<?php echo $_POST['colour']; ?>&chasis_no=<?php echo $_POST['chasis_no']; ?>&engine_no=<?php echo $_POST['engine_no']; ?>&regno=<?php echo $_POST['reg_no']; ?>&model=<?php echo $_POST['model']; ?>&cartype=<?php echo $_POST['car']; ?>&id_no=<?php echo $id_no; ?>&id=<?php echo $_POST['identification']; ?>&occu=<?php echo $occu; ?>&address=<?php echo $_POST['address']; ?>&loc=<?php echo $_POST['location']; ?>&dob=<?php echo $dob; ?>&gender=<?php echo $_POST['gender']; ?>&title=<?php echo $_POST['title']; ?>&lname=<?php echo $_POST['lname']; ?>&fname=<?php echo $_POST['fname']; ?>&email=<?php echo $_POST['email']; ?>&phone=<?php echo $_POST['phone']; ?>&agent_id=<?php echo $_POST['agent_id']; ?>&year=<?php echo $_POST['year']; ?>&state_reg=<?php echo $_POST['state_reg']; ?>");
           } else {
             window.location.assign("failed/");
           }
@@ -624,8 +546,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		?>
     </td>
 	
-    <td><div class="blink"><em><input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
-  padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card"></em></div></td>
   </tr>
 </table>  
 

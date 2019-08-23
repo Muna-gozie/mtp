@@ -5,7 +5,7 @@ $api = new Api;
 $response = $api->getKey();
 $url = $response['url'];
 $key = $response['key'];
-$api_param =  $response['api_param'];
+// $api_param =  $response['api_param'];
 
 error_reporting(0);
 $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
