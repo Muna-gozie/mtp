@@ -19,7 +19,9 @@ Class Api{
         // Api key and url for policy renewal
         return [
         // 'url' => 'https://onboarding.chiplc.com:4443/chisoapapi/mtpapp.asmx?wsdl',
-        'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
+        // 'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
+
+        'url' => '52.213.72.87/chisoapapi/mtpapp.asmx?wsdl',
         'key' => 'x76o-XInterAP',
         'api_params' => $api_params
         ];
