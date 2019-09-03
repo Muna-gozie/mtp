@@ -1445,13 +1445,13 @@ while($yr >=1900)
         </div>
         <!-- body -->
         <div class="modal-header">
-          <form action="customer/" name="formx" id="formx"  method="post">
+          <form action="renewal/" name="formx" id="formx"  method="post">
           <div align="center"><img src="img/car.fw.png" width="50" height="70">  <font style="font-weight:bold; color:#000;">RENEW YOUR POLICY</font></div><br>
  <hr>
            <font color="#000000">
 <table align="center" style="width:100%;">
    <tr>
-       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="phone" placeholder="Enter your Vehicle Registration No. :" required></td>
+       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="Regno" placeholder="Enter your Vehicle Registration No. :" required></td>
   </tr>
 </table>
 

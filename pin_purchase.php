@@ -78,7 +78,7 @@ if(isset($_POST['pin_pay'])){
         'MeansIDNo' => $id_no,
         'SubmitbyID' => $agentid,
         'Payref' => $card_number,
-        'ispin' => '0'
+        'ispin' => '1'
       );
 
     // print_r($buy_policy_params);
@@ -94,6 +94,7 @@ if(isset($_POST['pin_pay'])){
               if(!is_numeric($item->PolicyNumber)){
                 $policy_number = $item->PolicyNumber;
                 $status_message = $item->StatusmSG;
+
               }else{
                 $policy_number = $item->PolicyNumber;
                 $insured_id = $item->CustomerReference;
@@ -145,10 +146,7 @@ if(isset($_POST['pin_pay'])){
       }
     }else{
         echo'<script> window.history.back(alert("Enter a valid policy start date")); </script>';
-    }
- 
-    
-
+    }  
    
 }
 
