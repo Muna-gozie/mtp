@@ -4,8 +4,28 @@ require('../api_config.php');
 error_reporting(0);
 if(isset($_POST['Regno'])) 
 {
-	$Regno = $_POST['Regno'];
+	$Regno = htmlentities($_POST['Regno']);
 }
+
+ // Prevent unauthorized access
+//  if(!isset($_POST['email'])) 
+//  {
+//  echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS");
+//      window.location.assign("../")
+//      </script>';
+//        exit();	
+//  }
+
+// $api_params = array(
+// 	'cache_wsdl' => 0,
+// 	'trace' => 1,
+// 	'stream_context' => stream_context_create(array(
+// 		'ssl' => array(
+// 			'verify_peer' => false,
+// 			'verify_peer_name' => false,
+// 			'allow_self_signed' => true
+// 		)
+// 	)));
 
 $api = new Api;
 $response = $api->getKey();
@@ -13,13 +33,14 @@ $response = $api->getKey();
 // Get Api details
 $url = $response['url'];
 $key = $response['key'];
+$api_params = $response['api_params'];
 
 $param = [
 	'MTPApikey' => $key,
 	'regno' => $Regno
 ];
 
-$client = new SoapClient($url);
+$client = new SoapClient($url,$api_params);
 $results = $client->ConfirmMotorPolicy($param);
 
 foreach($results->ConfirmMotorPolicyResult as $item){
@@ -35,16 +56,18 @@ foreach($results->ConfirmMotorPolicyResult as $item){
 	$expiry_date = $item->ExpiryDate;
 }
 
+if(empty($policy_number)){
+	echo '<script type="text/javascript">alert("ERROR!!! THIS POLICY DOES NOT EXIST");
+     window.location.assign("../")
+     </script>';
+       exit();
+}
+
 // echo $policy_number;
 
 ?>
 
 <style>
-/* span.icon-date{
-	font-size: 0;
-	height: 16px;
-	animation: none;
-} */
 
 #start_date{
 	height: 31px;
@@ -111,10 +134,10 @@ foreach($results->ConfirmMotorPolicyResult as $item){
 <style>
 
 span{
-	font-size: 18px;
+	/* font-size: 18px;
 	font-family: cursive;
 	color: white;
-	height: 15px;
+	height: 15px; */
 	/* animation: blink 1s linear infinite; */
 }
 
@@ -133,12 +156,7 @@ span{
 	color: #86192c;
 }
 
-/* .pay-title{
-	font-weight: 500;
-	text-align: center;
-	padding: 20px 0;
-	color: 
-} */
+
 
 </style>
 </head>
@@ -203,12 +221,8 @@ span{
 	?>
     <div align="center"><h1 style="font-size:18px; font-weight:bold; color:#008C23;"><img src="happy.fw.png" width="80" height="80"><br>WELCOME BACK <?php echo strtoupper($lname.' '.$fname); ?></h1></div> <hr>
 <h1 class="form-title">POLICY INFORMATION</h1><br>
-		<?php
-		if(isset($_POST['submit']))
-		{
-		?>
         <form name="form" id="form" action="../pin_purchase.php" method="POST">
-		<input type="hidden" name="type" value="<?php echo $insurance_type; ?>" />
+		<input type="hidden" name="insurance_type" value="<?php echo $insurance_type; ?>" />
 
 		<input type="hidden" name="amount" value="<?php echo $premium; ?>" />
         <!-- <input type="hidden" name="type" value="<?php // echo $type; ?>" /> -->
@@ -223,7 +237,7 @@ span{
 		<label for="policy_holder">Policy Holder:</label>
 		<input id="policy_holder" name="policy_holder" maxlength="19" value="<?php echo $policy_holder; ?>" required disabled>
 		<!-- Required hidden input for next page -->
-		<input type="hidden" id="policy_holder" name="policy_holder" maxlength="19" value="<?php echo $policy_holder; ?>">
+		<!-- <input type="hidden" id="policy_holder" name="policy_holder" maxlength="19" value="<?php echo $policy_holder; ?>"> -->
 	</div>
 	
   </tr>
@@ -233,7 +247,7 @@ span{
 			<label for="policy_number">Policy Number:</label>
 			<input id="policy_number" name="policy_number" maxlength="100" value="<?php echo $policy_number; ?>" disabled required>
 			<!-- Hidden -->
-			<input type="hidden" id="policy_number" name="policy_number" maxlength="100" value="<?php echo $policy_number; ?>">
+			<!-- <input type="hidden" id="policy_number" name="policy_number" maxlength="100" value="<?php echo $policy_number; ?>"> -->
 		</div>
 		
   </tr>
@@ -244,9 +258,9 @@ span{
 	<td>
 		<div id="form-card" class="form-field full-width" >
 			<label for="vehicle_brand">Vehicle Brand:</label>
-			<input id="vehicle_brand" name="vehicle_brand" maxlength="50" value="<?php echo $vehicle_brand; ?>" required disabled>
+			<input id="vehicle_brand" name="brand" maxlength="50" value="<?php echo $vehicle_brand; ?>" required disabled>
 			<!-- Hidden -->
-			<input type="hidden" id="vehicle_brand" name="vehicle_brand" maxlength="50" value="<?php // echo $vehicle_brand; ?>" >
+			<input type="hidden" id="vehicle_brand" name="vehicle_brand" maxlength="50" value="<?php echo $vehicle_brand; ?>" >
 		</div>
 	</td>
 	
@@ -254,7 +268,7 @@ span{
 	<td>
 		<div id="form-card" class="form-field">
 			<label for="vehicle_model">Vehicle Model:</label>
-			<input  name="vehicle_model" class="input-2" value="<?php echo $vehicle_model; ?>" required disabled>
+			<input  name="model" class="input-2" value="<?php echo $vehicle_model; ?>" required disabled>
 			<!-- Hidden -->
 			<input type="hidden"  name="vehicle_model" class="input-2" value="<?php echo $vehicle_model; ?>">
 		</div>
@@ -320,15 +334,13 @@ span{
 
 	<td>
 		<div id="datepicker" class="input-group date " data-provide="datepicker">
-			<input type="text" id="start_date" name="start_date" class="input-2" placeholder="Policy start date" readonly>
+			<input type="text" id="new_start_date" name="new_start_date" class="input-2" placeholder="Policy start date" readonly>
 			<div class="input-group-addon">
 				<span class="date-icon"><i class="far fa-calendar-alt" style="color: black"></i></span>
 				
 				<!-- <span class="glyphicon glyphicon-th"></span> -->
 			</div>
 		</div>
-
-		<!-- <input class="input-2" type="text" minlength="8" maxlength="10" id="cardno" name="cardno" placeholder="Enter policy start date" required> -->
 	</td>
 </tr>
 
@@ -340,7 +352,7 @@ span{
 	<tr>
 		<td colspan="2" align="center">
 			<input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
-		padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" name="preview" value="Pay Now">
+		padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" name="renew_now" value="Pay Now">
 		</td>
 	</tr>
 </table>  
@@ -348,7 +360,7 @@ span{
   
  		</form>
 <?php
-}
+
 }elseif($Regno !='' && $insurance_type =='COMPREHENSIVE'){
 
 	echo '<br><br><br><br><br><br><br><br><br><center><img src="failed.fw.png" width="92" height="120"><br>

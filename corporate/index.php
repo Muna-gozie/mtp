@@ -5,7 +5,7 @@ $api = new Api;
 $response = $api->getKey();
 $url = $response['url'];
 $key = $response['key'];
-// $api_param =  $response['api_param'];
+$api_params =  $response['api_params'];
 
 error_reporting(0);
 $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
@@ -372,7 +372,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 					<option></option>
 					<option title="Excluding Commercial Buses !!!"><?php 
 					// $url = "http://63.33.166.144:3001/webservice/interapp.asmx?WSDL";
-					$client = new SoapClient($url);
+					$client = new SoapClient($url,$api_params);
 
 
 					$res2 = $client->FindPremiumThirdParty(array('Vehicle' => 'bus'));

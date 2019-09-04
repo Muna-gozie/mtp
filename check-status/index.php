@@ -8,7 +8,7 @@ require('../api_config.php');
 $api =  new Api;
 $response = $api->getKey();
 $url = $response['url'];
-$api_param = $response['api_param'];
+// $api_param = $response['api_param'];
 $key = $response['key'];
 
 error_reporting(0);
@@ -188,11 +188,11 @@ $id = $id->item(0)->nodeValue;
 	
 	<style type="text/css">
 	
-	<!--
 	
+/* 	
 	.style21 {font-size: 10}
+	 */
 	
-	-->
 	
 	</style>
 	

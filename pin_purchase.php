@@ -7,8 +7,92 @@ $api = new Api;
 $response = $api->getKey();
 $url = $response['url'];
 $key = $response['key'];
+$api_params = $response['api_params'];
 
 // echo $key.$url;
+
+// Policy renewal
+if(isset($_POST['renew_now'])){
+
+  $insurance_type = $_POST['insurance_type'];
+  $premium = $_POST['amount'];
+  $reg_number = $_POST['reg_no'];
+  $pin = $_POST['cardno'];
+  $policy_start_date = set_policy_date($_POST['new_start_date']);  
+  $paymode = 'pin';
+  $vehicle_brand = $_POST['vehicle_brand'];
+  $vehicle_model = $_POST['vehicle_model'];
+
+  // echo $vehicle_brand.'  '.$vehicle_model;
+
+
+  $renewal_params = [
+    'MerchantID' => $key,
+    'policystarts' => $policy_start_date,
+    'Regno' => $reg_number,
+    'paymode' => $paymode,
+    'paypin' => $pin
+  ];
+
+  // echo ' Hello world ';
+  // print_r($renewal_params);
+
+  if($policy_start_date != false){
+
+    try{
+      $client = new SoapClient($url,$api_params);
+      $response = $client->RenewMotorPolicy($renewal_params);
+
+      // print_r($response);
+
+      foreach($response->RenewMotorPolicyResult as $result){
+        if(!is_numeric($result->CertificateNos)){
+          $certificate_number = $result->CertificateNos;
+        }else{
+          $certificate_number = $result->CertificateNos;
+          $fullname = $result->Firstname;
+          $insurance_type = $result->InsuredType;
+          $policy_number = $result->PolicyNumber;
+          $premium = $result->Premium;
+          $policy_start_date = $result->StartDate;
+          $policy_expiry_date = $result->ExpiryDate; 
+        }
+        
+      }
+      
+      // echo $certificate_number;
+
+      $policy_info = [
+        'policy_number' => $policy_number,
+        'fullname' => $fullname,
+        'cert_no' => $certificate_number,
+        'insurance_type' => $insurance_type, 
+        'premium' => $premium,
+        'policy_start_date' => $policy_start_date,
+        'expiry_date' => $policy_expiry_date,
+        'reg_no' => $reg_number,
+        'vehicle_name' =>  $vehicle_brand,
+        'vehicle_model' => $vehicle_model
+      ];
+
+      print_r($policy_info);
+
+      $query = http_build_query($policy_info);
+
+      header('Location:http://localhost:81/projects/mtp/success/?'.$query);
+
+    }catch(Exception $e){
+      $error = $e->getMessage();
+      // Send error back to page
+    }   
+
+  }else{
+    echo'<script> window.history.back(alert("Enter a valid policy start date")); </script>';
+  }
+
+}
+
+
 
 if(isset($_POST['pin_pay'])){
     $title = $_POST['title'];
@@ -86,7 +170,7 @@ if(isset($_POST['pin_pay'])){
 
     if($policy_start_date !== false){
         try{
-          $client = new SoapClient($url);
+          $client = new SoapClient($url,$api_params);
           $result = $client->BuyPolicy($buy_policy_params);
           print_r($result);
 
@@ -107,15 +191,6 @@ if(isset($_POST['pin_pay'])){
             }
 
           // echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
-
-          // Set session variables
-          // $_SESSION['policy_number'] = $policy_number;
-          // $_SESSION['status'] = $status_message;
-          // $_SESSION['insured_id'] = $insured_id;
-          // $_SESSION['fullname'] = $fullname;
-          // $_SESSION['expiry_date'] = $policy_expiry_date;
-          // $_SESSION['cert_no'] = $certificate_number;
-          // $_SESSION['product'] = $product;
 
            $success_data = [
              'policy_number' => $policy_number,

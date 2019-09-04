@@ -146,7 +146,7 @@ $policy_start_date = $_GET['policy_start_date'];
 					<div class="row">
 <?php
 
-if(!is_numeric($policy_number)) 
+if(!is_numeric($policy_number) || !is_numeric($certificate_number)) 
 {
 ?>
 <body style="background-image:url(../img/road2.png);">
@@ -155,8 +155,8 @@ if(!is_numeric($policy_number))
 				<span class="glyphicon glyphicon-thumbs-down"></span>
 			</div>
 			<!--/.icon-->
-			<h1> <?php echo $policy_number ?> </h1>
-            <p style="margin-top:-30px; font-size:14px; line-height:25px;"><?php echo $status_message; ?></p>
+			<h1 style="font-size: 18px;padding-top: 1em;"> <?php if(empty($policy_number)){ echo 'Failed';}echo $policy_number ?> </h1>
+            <p style="margin-top:-30px; font-size:14px; line-height:25px;"><?php echo $status_message.' '.$certificate_number; ?></p>
            
             <button onclick="goBack()" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
   padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Try Again</button>
@@ -341,7 +341,7 @@ elseif(is_numeric($policy_number))
             <input type="hidden" name="amount" value="<?php echo $premium; ?>">
             <input type="hidden" name="model" value="<?php echo $vehicle_model; ?>">
             <input type="hidden" name="year" value="<?php echo $year_made; ?>">
-            <input type="hidden" name="date" value="<?php echo $policy_start_date; ?>">
+            <input type="hidden" name="date" value="<?php echo str_replace('T00:00:00','',$policy_start_date); ?>">
             <input type="submit" name="submit" value="View Certificate" style="background: linear-gradient(135deg, #891C2E 0%, #CCC 100%);
   padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">
             </form>

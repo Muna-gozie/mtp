@@ -608,6 +608,9 @@ else $amount = substr($_POST['category'], 6, 4);
   <tr>
 
   <td>
+		<div class="blink"><span><input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
+			padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card" name="pin_pay"></span></div>
+
     <?php
     if($_POST[paynow] == 'bus' || $_POST[paynow] == 'car' || $_POST[paynow] == 'jeep' || $_POST[paynow] == 'keke' || $_POST[paynow] == 'suv' || $_POST[paynow] == 'truck')
     {
@@ -616,8 +619,8 @@ else $amount = substr($_POST['category'], 6, 4);
     elseif($_POST[paynow] != 'bus' || $_POST[paynow] != 'car' || $_POST[paynow] != 'jeep' || $_POST[paynow] != 'keke' || $_POST[paynow] != 'suv' || $_POST[paynow] != 'truck')
     {
 	?>
-	<div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
-	</div>
+	<!-- <div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
+	</div> -->
   <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
   <!-- <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script> -->
   <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
@@ -660,14 +663,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		?>
     </td>	
 
-    <!-- <td>
-		<div class="blink"><span><a rel="facebox" href="../../preview/pay/?agentname=<?php echo $_POST['agentname']; ?>&type=<?php echo 'Corporate'; ?>&agentid=<?php echo $_POST['agentid']; ?>&usage=<?php echo $_POST['usage']; ?>&cat=<?php echo $_POST['category']; ?>&gender=<?php echo $_POST['gender']; ?>&color=<?php echo $_POST['colour']; ?>&chasis_no=<?php echo $_POST['chasis_no']; ?>&engine_no=<?php echo $_POST['engine_no']; ?>&regno=<?php echo $_POST['reg_no']; ?>&model=<?php echo $_POST['model']; ?>&car=<?php echo $_POST['car']; ?>&id_no=<?php echo $_POST['id_no']; ?>&id=<?php echo $_POST['identification']; ?>&occu=<?php echo $_POST['occupation']; ?>&address=<?php echo $_POST['address']; ?>&loc=<?php echo $_POST['location']; ?>&dob=<?php echo $_POST['dob']; ?>&title=<?php echo $_POST['title']; ?>&amount=<?php echo $_POST['category']; ?>&lname=<?php echo $_POST['lname']; ?>&fname=<?php echo $_POST['fname']; ?>&email=<?php echo $_POST['email']; ?>&phone=<?php echo $_POST['phone']; ?>&agent_id=<?php echo $_POST['agent_id']; ?>&year=<?php echo $_POST['year']; ?>&state_reg=<?php echo ucfirst($_POST['state_reg']); ?>" style="background: linear-gradient(135deg, #891C2E 30%, #CCC 60%);
-	padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</a></span></div>
-  </td> -->
+    
 
     <td>
-		<div class="blink"><span><input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
-	padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card" name="pin_pay"></span></div>
+		<!-- <div class="blink"><span><input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
+	padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card" name="pin_pay"></span></div> -->
   </td>
   </tr>
 </table>  
