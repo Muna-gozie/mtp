@@ -8,6 +8,27 @@ require('api_config.php');
 $api = new Api;
 $response = $api->getKey();
 
+// $response = array(
+//   'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
+//   'key' => 'x76o-XInterAP-MTP1920',
+//   'api_params' => [
+//       'cache_wsdl' => 0,
+//       'trace' => 1,
+//       'stream_context' => stream_context_create(array(
+//           'ssl' => array(
+//               'verify_peer' => false,
+//               'verify_peer_name' => false,
+//               'allow_self_signed' => true
+//           )
+//       ))
+//       ]
+// );
+
+$url = $response['url'];
+$key = $response['key'];
+$api_param = $response['api_params'];
+
+
 
 ?>
 	<!DOCTYPE html>
@@ -569,6 +590,12 @@ s0.parentNode.insertBefore(s1,s0);
 							<div class="title text-center">
 								<h1 class="mb-10" style="font-weight:bold;">Buy Motor Third Party Insurance</h1>
 								<p style="color:#000;">Explore our newly improved portal that helps you make easy and seamless purchases of your motor insurance</p>
+                <?php 
+                  // $clientx = new SoapClient($url,$api_param);
+                  // $res2x = $clientx->FindPremiumThirdParty(array('Vehicle' => 'bus'));
+                  // print_r($res2x);
+                                
+                ?>
 							</div>
 						</div>
 					</div>	
@@ -586,8 +613,8 @@ s0.parentNode.insertBefore(s1,s0);
 				<h1 style="font-size:18px;">
                 <img src="img/bus2.png" width="60" height="40"><br>
                 ₦<?php 
-                    $url = $response['url'];
-                    $api_param = $response['api_params'];
+                    // $url = $response['url'];
+                    // $api_param = $response['api_params'];
                     $clientx = new SoapClient($url,$api_param);
                     $res2x = $clientx->FindPremiumThirdParty(array('Vehicle' => 'bus'));
                     $bus = $res2x->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
@@ -1435,15 +1462,49 @@ while($yr >=1900)
 <?php
 //******************************************* Policy Renewal *********************************************************
 ?>  
+
+
+
 <div class="modal fade" id="popUpWindow4">
-    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
+    <div class="modal-dialog" style="width:100%;overflow-y:auto; max-height:90%;">
       <div class="modal-content">
         <!-- header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title"><font style="font-weight:bold">Motor Third Party Insurance Registration</font></h3>
+        </div>
+       <div class="modal-header">
+        <form action="renewal/" name="formx" id="formx" method="post">
+          <div>
+            <img src="img/car.fw.png" width="50" height="50"> 
+            <span style="font-weight:bold; color:#000; margin-left:5em;">RENEW YOUR POLICY</span>
+          </div>
+          <hr>
+
+          <div>
+           <input style="width: 400px; margin-left: 30px;" type="text" maxlength="11" name="Regno" placeholder="ENTER YOUR REGISTRATION NO. HERE" required>
+           </div>
+           
+        </div>
+       <!-- footer -->
+        <div class="modal-footer">
+          <input type="submit" name="submit" value="Check Details">
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+<!-- <div class="modal fade" id="popUpWindow4">
+    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
+      <div class="modal-content">
+        <!-- header --
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h3 class="modal-title"><font style="font-weight:bold">Policy Renewal</font></h3>
         </div>
-        <!-- body -->
+        <!-- body --
         <div class="modal-header">
           <form action="renewal/" name="formx" id="formx"  method="post">
           <div align="center"><img src="img/car.fw.png" width="50" height="70">  <font style="font-weight:bold; color:#000;">RENEW YOUR POLICY</font></div><br>
@@ -1458,14 +1519,14 @@ while($yr >=1900)
            </font>
           
         </div>
-       <!-- footer -->
+       <!-- footer --
         <div class="modal-footer">
          <input type="submit" name="submit" value="Check Details">
         </div>
         </form>
       </div>
     </div>
-  </div> 
+  </div>  -->
   
   
   

@@ -2,10 +2,14 @@
 require('../api_config.php');
 
 error_reporting(0);
-if(isset($_POST['Regno'])) 
+if(!isset($_POST['Regno'])) 
 {
-	$Regno = htmlentities($_POST['Regno']);
+	echo '<script type="text/javascript">alert("ERROR!!! UNAUTHORIZED BYPASS ACCESS");
+      window.location.assign("../")
+      </script>';
+       exit();
 }
+$Regno = htmlentities($_POST['Regno']);
 
  // Prevent unauthorized access
 //  if(!isset($_POST['email'])) 
@@ -16,16 +20,6 @@ if(isset($_POST['Regno']))
 //        exit();	
 //  }
 
-// $api_params = array(
-// 	'cache_wsdl' => 0,
-// 	'trace' => 1,
-// 	'stream_context' => stream_context_create(array(
-// 		'ssl' => array(
-// 			'verify_peer' => false,
-// 			'verify_peer_name' => false,
-// 			'allow_self_signed' => true
-// 		)
-// 	)));
 
 $api = new Api;
 $response = $api->getKey();
@@ -256,9 +250,9 @@ span{
 <tr>
 
 	<td>
-		<div id="form-card" class="form-field full-width" >
+		<div id="form-card" class="form-field" >
 			<label for="vehicle_brand">Vehicle Brand:</label>
-			<input id="vehicle_brand" name="brand" maxlength="50" value="<?php echo $vehicle_brand; ?>" required disabled>
+			<input id="vehicle_brand" name="brand" class="input-1" maxlength="50" value="<?php echo $vehicle_brand; ?>" required disabled>
 			<!-- Hidden -->
 			<input type="hidden" id="vehicle_brand" name="vehicle_brand" maxlength="50" value="<?php echo $vehicle_brand; ?>" >
 		</div>
@@ -352,7 +346,7 @@ span{
 	<tr>
 		<td colspan="2" align="center">
 			<input type="submit" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
-		padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" name="renew_now" value="Pay Now">
+		padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" name="renew_now" value="Proceed">
 		</td>
 	</tr>
 </table>  

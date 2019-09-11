@@ -24,18 +24,11 @@ Class Api{
 
         // Api key and url for policy renewal
         return [
-        'url' => 'https://onboarding.chiplc.com:4443/chisoapapi/mtpapp.asmx?wsdl',
-        'key' => 'x76o-XInterAP-MTP1920',
+        'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
+        'key' => 'x76o-XInterAP',
         'api_params' => [
             'cache_wsdl' => 0,
             'trace' => 1,
-            'stream_context' => stream_context_create(array(
-                'ssl' => array(
-                    'verify_peer' => false,
-                    'verify_peer_name' => false,
-                    'allow_self_signed' => true
-                )
-            ))
             ]
         ];
     }

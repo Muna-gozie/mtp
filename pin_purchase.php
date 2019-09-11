@@ -79,7 +79,9 @@ if(isset($_POST['renew_now'])){
 
       $query = http_build_query($policy_info);
 
-      header('Location:http://localhost:81/projects/mtp/success/?'.$query);
+      header('Location:http://localhost:81/projects/mtp/renewal/update-info.php'.$query);
+      // header('Location:http://localhost:81/projects/mtp/success/?'.$query);
+      // header('Location:http://localhost/success/?'.$query);
 
     }catch(Exception $e){
       $error = $e->getMessage();
@@ -214,7 +216,9 @@ if(isset($_POST['pin_pay'])){
 
           // header('Location:http://localhost:81/projects/mtp/success/?policy-number='.$policy_number.'&status='.$status_message); // Change to domain url address
 
-          header('Location:http://localhost:81/projects/mtp/success/?'.$query); // Change to domain url address
+          header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
+
+          // header('Location:http://localhost/success/?'.$query);
 
       }catch(SoapFault $e){
           $error = $e->getMessage();

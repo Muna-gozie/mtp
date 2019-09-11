@@ -7,7 +7,7 @@ $api = new Api;
 $response = $api->getKey();
 
 $url = $response['url'];
-$api_param = $response['api_param'];
+$api_param = $response['api_params'];
 $key = $response['key'];
 
 
@@ -189,7 +189,7 @@ $amount = $amount->item(0)->nodeValue;
 	
 	}
 	
-	-->
+	
 	
 	</style>
 	
@@ -207,11 +207,11 @@ $amount = $amount->item(0)->nodeValue;
 	
 	<style type="text/css">
 	
-	<!--
+	
 	
 	.style21 {font-size: 10}
 	
-	-->
+	
 	
 	</style>
 	
