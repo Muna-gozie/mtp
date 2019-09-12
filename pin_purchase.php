@@ -79,9 +79,10 @@ if(isset($_POST['renew_now'])){
 
       $query = http_build_query($policy_info);
 
-      header('Location:http://localhost:81/projects/mtp/renewal/update-info.php'.$query);
-      // header('Location:http://localhost:81/projects/mtp/success/?'.$query);
-      // header('Location:http://localhost/success/?'.$query);
+      // header('Location:http://localhost:81/projects/mtp/renewal/update-info.php'.$query);
+
+      header('Location:http://localhost:81/projects/mtp/success/?'.$query);
+      
 
     }catch(Exception $e){
       $error = $e->getMessage();
@@ -94,7 +95,7 @@ if(isset($_POST['renew_now'])){
 
 }
 
-
+/** Buy New Policy */
 
 if(isset($_POST['pin_pay'])){
     $title = $_POST['title'];
@@ -214,11 +215,10 @@ if(isset($_POST['pin_pay'])){
 
            $query = http_build_query($success_data);
 
-          // header('Location:http://localhost:81/projects/mtp/success/?policy-number='.$policy_number.'&status='.$status_message); // Change to domain url address
 
           header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
 
-          // header('Location:http://localhost/success/?'.$query);
+          // header('Location:https://motorthirdpartyonline.com/demo/success/?'.$query);
 
       }catch(SoapFault $e){
           $error = $e->getMessage();

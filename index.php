@@ -517,9 +517,11 @@ s0.parentNode.insertBefore(s1,s0);
 
         <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
           <ul class="navbar-nav">
-          <li><a href="https://chiplc.com">Back To Website</a></li>
+          <!-- <li><a href="https://chiplc.com">Back To Website</a></li> -->
+          <li><a href="#" data-toggle="modal" data-target="#popUpWindow11">Check Pin Status</a></li>
           <li><a href="#" data-toggle="modal" data-target="#popUpWindow3">Print Certificate</a></li>
-          <li><a href="#" data-toggle="modal" data-target="#popUpWindow4">Renew Policy</a></li>
+          <!-- <li><a href="#" data-toggle="modal" data-target="#">Renew Policy</a></li> -->
+          <li><a href="#" data-toggle="modal" data-target="#popUpWindow4">Renew Policy</a></li> 
           </ul>
         </div>						
       </div>
@@ -1496,77 +1498,44 @@ while($yr >=1900)
   </div>
 
 
-<!-- <div class="modal fade" id="popUpWindow4">
-    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
-      <div class="modal-content">
-        <!-- header --
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title"><font style="font-weight:bold">Policy Renewal</font></h3>
-        </div>
-        <!-- body --
-        <div class="modal-header">
-          <form action="renewal/" name="formx" id="formx"  method="post">
-          <div align="center"><img src="img/car.fw.png" width="50" height="70">  <font style="font-weight:bold; color:#000;">RENEW YOUR POLICY</font></div><br>
- <hr>
-           <font color="#000000">
-<table align="center" style="width:100%;">
-   <tr>
-       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="Regno" placeholder="Enter your Vehicle Registration No. :" required></td>
-  </tr>
-</table>
-
-           </font>
-          
-        </div>
-       <!-- footer --
-        <div class="modal-footer">
-         <input type="submit" name="submit" value="Check Details">
-        </div>
-        </form>
-      </div>
-    </div>
-  </div>  -->
   
   
   
 <?php
 //******************************************* Pin Status *********************************************************
 ?>  
+
 <div class="modal fade" id="popUpWindow11">
-    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
+    <div class="modal-dialog" style="width:100%;overflow-y:auto; max-height:90%;">
       <div class="modal-content">
         <!-- header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title"><font style="font-weight:bold">Check Pin Status </font></h3>
+          <h3 class="modal-title"><font style="font-weight:bold">Motor Third Party Insurance Registration</font></h3>
         </div>
-        <!-- body -->
-        <div class="modal-header">
-          <form action="check-status/" target="_blank" name="form50" id="form50"  method="get">
-          <div align="center"><img src="img/status.png" width="70" height="70">  <font style="font-weight:bold; color:#000;">CHECK THE STATUS OF YOUR PIN </font></div><br>
- <hr>
-           <font color="#000000">
-<table align="center" style="width:100%;">
-   <tr>
-       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="serialno" placeholder="TYPE SERIAL NO. HERE" required></td>
-  </tr>
-</table>
+       <div class="modal-header">
+        <form action="check-status/" target="_blank" name="form50" id="form50" method="get">
+          <div>
+            <img src="img/status.png" width="50" height="50"> 
+            <span style="font-weight:bold; color:#000; margin-left:5em;">CHECK THE STATUS OF YOUR PIN</span>
+          </div>
+          <hr>
 
-           </font>
-          
+          <div>
+           <input style="width: 400px; margin-left: 30px;" type="text" maxlength="11" name="serialno" placeholder="TYPE SERIAL NO. HERE" required>
+           </div>
+           
         </div>
        <!-- footer -->
         <div class="modal-footer">
-         <input type="submit" name="submit" value="Check Status">
+          <input type="submit" name="submit" value="Check Details">
         </div>
         </form>
       </div>
     </div>
-  </div> 
-  
-  
-</div>
+  </div>
+
+
 					
 <?php
 //***************************************************BUS************************************************

@@ -210,7 +210,8 @@ span{
 	<section id="right">
     <?php
 	// if(($phone != '') && ($type == 'Individual'))
-	if($Regno != '' && $insurance_type!='COMPREHENSIVE')
+	// if($Regno != '' && $insurance_type!='COMPREHENSIVE')
+	if($Regno != '')
 	{
 	?>
     <div align="center"><h1 style="font-size:18px; font-weight:bold; color:#008C23;"><img src="happy.fw.png" width="80" height="80"><br>WELCOME BACK <?php echo strtoupper($lname.' '.$fname); ?></h1></div> <hr>
@@ -355,7 +356,8 @@ span{
  		</form>
 <?php
 
-}elseif($Regno !='' && $insurance_type =='COMPREHENSIVE'){
+// }elseif($Regno !='' && $insurance_type =='COMPREHENSIVE'){
+}elseif($Regno !=''){
 
 	echo '<br><br><br><br><br><br><br><br><br><center><img src="failed.fw.png" width="92" height="120"><br>
     			<div style="margin:-14px 0px;"> <br><br><font color="#891C2E" style="font-weight:600; line-height:30px;">SORRY, THIS POLICY CAN NOT BE RENEWED. MAKE SURE YOU ARE RENEWING A THIRD PARTY POLICY. PLEASE CHECK AND TRY AGAIN!</font></div>
