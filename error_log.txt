@@ -1,0 +1,32 @@
+[15-Nov-2020 11:26:25 Africa/Lagos] PHP Warning:  Uncaught SoapFault exception: [HTTP] Could not connect to host in C:\xampp\htdocs\projects\mtp\pin_purchase.php:187
+Stack trace:
+#0 [internal function]: SoapClient->__doRequest('<?xml version="...', 'http://test.chi...', 'http://tempuri....', 1, 0)
+#1 C:\xampp\htdocs\projects\mtp\pin_purchase.php(187): SoapClient->__call('BuyPolicy', Array)
+#2 {main}
+  thrown in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 187
+[15-Nov-2020 11:26:25 Africa/Lagos] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 187
+[15-Nov-2020 11:36:12 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$Object in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 191
+[15-Nov-2020 11:44:23 Africa/Lagos] PHP Warning:  Uncaught SoapFault exception: [HTTP] Could not connect to host in C:\xampp\htdocs\projects\mtp\pin_purchase.php:187
+Stack trace:
+#0 [internal function]: SoapClient->__doRequest('<?xml version="...', 'http://test.chi...', 'http://tempuri....', 1, 0)
+#1 C:\xampp\htdocs\projects\mtp\pin_purchase.php(187): SoapClient->__call('BuyPolicy', Array)
+#2 {main}
+  thrown in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 187
+[15-Nov-2020 11:44:23 Africa/Lagos] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 187
+[15-Nov-2020 11:56:17 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$PolicyNumber in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 194
+[15-Nov-2020 12:00:56 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$PolicyNumber in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 194
+[15-Nov-2020 12:32:35 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:32:35 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 12:33:27 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:33:27 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 12:36:48 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:36:48 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 12:36:58 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:36:58 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 12:37:19 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:37:19 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 12:40:07 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:40:07 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 12:59:19 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 207
+[15-Nov-2020 12:59:19 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$CustomerReference in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 218
+[15-Nov-2020 13:02:08 Africa/Lagos] PHP Notice:  Undefined property: stdClass::$PolicyNumber in C:\xampp\htdocs\projects\mtp\pin_purchase.php on line 194

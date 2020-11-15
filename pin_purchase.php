@@ -3,6 +3,10 @@ require('api_config.php');
 include('page_function.php');
 date_default_timezone_set("Africa/Lagos");
 
+// log error
+ini_set('log_errors',1);
+ini_set('error_log',dirname(__FILE__).'/error_log.txt');
+
 $api = new Api;
 $response = $api->getKey();
 $url = $response['url'];
@@ -171,57 +175,130 @@ if(isset($_POST['pin_pay'])){
     // print_r($buy_policy_params);
     // echo '<br><br>';
 
+    // $client = new SoapClient($url,$api_params);
+    // $result = $client->BuyPolicy($buy_policy_params);
+    // print_r($result);
+
+    // echo 'Your policy start date is'.$policy_start_date;
+
     if($policy_start_date !== false){
-        try{
-          $client = new SoapClient($url,$api_params);
-          $result = $client->BuyPolicy($buy_policy_params);
-          print_r($result);
+      try{
+        $client = new SoapClient($url,$api_params);
+        $result = $client->BuyPolicy($buy_policy_params);
+        print_r($result);
 
-          foreach($result->BuyPolicyResult as $item){
-              if(!is_numeric($item->PolicyNumber)){
-                $policy_number = $item->PolicyNumber;
-                $status_message = $item->StatusmSG;
+        //purchase error
+        $error_response = $result->BuyPolicyResult->ReferenceID11;
 
-              }else{
-                $policy_number = $item->PolicyNumber;
-                $insured_id = $item->CustomerReference;
-                $fullname = $item->Fullname;
-                $policy_expiry_date = $item->ExpiryDate;
-                $status_message = $item->StatusmSG;
-                $certificate_number = $item->CertificateNos;
-                $product = $item->Product;
-              }
-            }
+        // policy exist
+        if($error_response->PolicyNumber == 'Failed' && $error_response->Premium == 0){
+          echo $error_response->StatusmSG;
 
-          // echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
+          $error = [
+            'error_type' => 'Purchase Error',
+            'message' => $error_response->StatusmSG
+          ];
 
-           $success_data = [
-             'policy_number' => $policy_number,
-             'status' => $status_message,
-             'insured_id' => $insured_id,
-             'fullname' => $fullname,
-             'expiry_date' => $policy_expiry_date,
-             'cert_no' => $certificate_number,
-             'product' => $product,
-             'phone_number' => $phone,
-             'vehicle_name' => $vehicle_name,
-             'reg_no' => $reg_no,
-             'premium' => $premium,
-             'vehicle_model' => $vehicle_model,
-             'manufacture_year' => $manufacture_year,
-             'policy_start_date' => $policy_start_date,
-             'agent_id' => $agentid
-           ]; 
+          $query = http_build_query($error);
+          header('Location:error/?'.$query);
+        }
 
-           $query = http_build_query($success_data);
+        // pin is used
+        if($error_response->CustomerReference == 'Failed' && $error_response->Premium == 0){
+          $error = [
+            'error_type' => 'Purchase Error',
+            'message' => $error_response->StatusmSG
+          ];
+
+          $query = http_build_query($error);
+          header('Location:error/?'.$query);
+        }
+
+        // successful purchase
+        if(is_numeric($error_response->CustomerReference) && is_numeric($error_response->PolicyNumber) ){
+            $success_data = [
+            'policy_number' => $error_response->PolicyNumber,
+            'status' => $error_response->StatusmSG,
+            'insured_id' => $error_response->CustomerReference,
+            'fullname' => $error_response->Fullname,
+            'expiry_date' => $error_response->ExpiryDate,
+            'cert_no' => $error_response->CertificateNos,
+            'product' => $error_response->Product,
+            'phone_number' => $phone,
+            'vehicle_name' => $vehicle_name,
+            'reg_no' => $reg_no,
+            'premium' => $premium,
+            'vehicle_model' => $vehicle_model,
+            'manufacture_year' => $manufacture_year,
+            'policy_start_date' => $policy_start_date,
+            'agent_id' => $agentid
+          ]; 
+
+          $query = http_build_query($success_data);
 
 
-          header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
+        header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
+        }
 
-          // header('Location:https://motorthirdpartyonline.com/demo/success/?'.$query);
+
+        
+
+        // print_r($error_response);
+
+        // foreach($result->BuyPolicyResult as $item){
+        //     if(!is_numeric($item->PolicyNumber)){
+        //       $policy_number = $item->PolicyNumber;
+        //       $status_message = $item->StatusmSG;
+
+        //     }else{
+        //       $policy_number = $item->PolicyNumber;
+        //       $insured_id = $item->CustomerReference;
+        //       $fullname = $item->Fullname;
+        //       $policy_expiry_date = $item->ExpiryDate;
+        //       $status_message = $item->StatusmSG;
+        //       $certificate_number = $item->CertificateNos;
+        //       $product = $item->Product;
+        //     }
+        //   }
+
+        // // echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
+
+        //   $success_data = [
+        //     'policy_number' => $policy_number,
+        //     'status' => $status_message,
+        //     'insured_id' => $insured_id,
+        //     'fullname' => $fullname,
+        //     'expiry_date' => $policy_expiry_date,
+        //     'cert_no' => $certificate_number,
+        //     'product' => $product,
+        //     'phone_number' => $phone,
+        //     'vehicle_name' => $vehicle_name,
+        //     'reg_no' => $reg_no,
+        //     'premium' => $premium,
+        //     'vehicle_model' => $vehicle_model,
+        //     'manufacture_year' => $manufacture_year,
+        //     'policy_start_date' => $policy_start_date,
+        //     'agent_id' => $agentid
+        //   ]; 
+
+        //   $query = http_build_query($success_data);
+
+
+        // header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
+
+        // // header('Location:https://motorthirdpartyonline.com/demo/success/?'.$query);
 
       }catch(SoapFault $e){
-          $error = $e->getMessage();
+          //  Api error
+          $error_msg = $e->getMessage();
+          print_r($error_msg);
+          $error = [
+            'error_type' => 'Purchase Error',
+            'message' => 'There was an issue completing this purchase.'
+          ];
+          
+          $query = http_build_query($error);
+          header('Location:error/?'.$query);
       }
     }else{
         echo'<script> window.history.back(alert("Enter a valid policy start date")); </script>';

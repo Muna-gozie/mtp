@@ -188,6 +188,7 @@ $used_by = $used_by->item(0)->nodeValue;
             <div class="container">
             <div class="row">
 
+            <div class="col-md-2"></div>        
             <!-- item -->
             <div class="col-md-8 text-center">
                 <div class="panel panel-danger panel-pricing" style="margin-top: -10em;">
@@ -233,6 +234,7 @@ $used_by = $used_by->item(0)->nodeValue;
                 </div>
             </div>
             <!-- /item -->
+            <div class="col-md-2"></div>    
 
             </div>
             </div>
@@ -255,9 +257,10 @@ $used_by = $used_by->item(0)->nodeValue;
             <div class="container">
             <div class="row">
 
+            <div class="col-md-2"></div> <!-- Spacer -->
             <!-- item -->
             <div class="col-md-8 text-center">
-                <div class="panel panel-success panel-pricing">
+                <div class="panel panel-success panel-pricing" style="margin-top: -10em;">
                     <div class="panel-heading">
                         <i class="fa fa-desktop"></i>
                         <img src="happy.fw.png" width="92" height="92"></h3>
@@ -266,8 +269,37 @@ $used_by = $used_by->item(0)->nodeValue;
                         <h3><strong>THIS PIN IS VALID AND UN-USED</strong></h3>
                     </div>
                     <ul class="list-group text-center">
-                        <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Card Status: &nbsp;
-                            <?php echo $status == 2 ? 'Used' : 'Un-used' ?></li>
+                    <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i>&nbsp; Used By: &nbsp;
+                         <?php echo $used_by ?></li>
+
+                         <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Printed Date: &nbsp;
+                         <?php echo $date_printed ?></li>
+
+                         <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Date of Usage: &nbsp;
+                         <?php echo $used_date ?></li>
+
+                        <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Batch Number: &nbsp;
+                            <?php echo $batch_no ?></li>
+
+                        <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Serial Number: &nbsp;
+                         <?php echo $card_serial_no ?></li>
+
+                         <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Amount: &nbsp;
+                         <?php echo $amount ?></li>
+
+                         <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Card Status: &nbsp;
+                         <?php echo $status == 2 ? 'Used' : 'Un-used' ?></li>
+
+                         <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Printed Date: &nbsp;
+                         <?php echo $date_printed ?></li>
+
+                         <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Date of Usage: &nbsp;
+                         <?php echo $used_date ?></li>
+
+
+
+                        <!-- <li style="color:#000;" class="list-group-item"><i class="fa fa-check"></i> &nbsp; Card Status: &nbsp;
+                            <?php echo $status == 2 ? 'Used' : 'Un-used' ?></li> -->
                     </ul>
                     <div class="panel-footer" align="center">
                         <a onclick="self.close()" href="../" class="btn btn-lg btn-block btn-success" style="width:150px; font-size:15px;" href="#">GO BACK!</a>
@@ -276,6 +308,8 @@ $used_by = $used_by->item(0)->nodeValue;
             </div>
             <!-- /item -->
 
+            <div class="col-md-2"></div> <!-- Spacer -->
+            
             </div>
             </div>
             </section></td>
@@ -295,10 +329,11 @@ $used_by = $used_by->item(0)->nodeValue;
             <td><section id="plans">
             <div class="container">
             <div class="row">
-            <div class="col-md-4"></div>
+
+            <div class="col-md-2"></div> <!-- Spacer -->
             <!-- item -->
             <div class="col-md-8 text-center">
-                <div class="panel panel-danger panel-pricing">
+                <div class="panel panel-danger panel-pricing" style="margin-top: -10em;">
                     <div class="panel-heading">
                         <i class="fa fa-desktop"></i>
                         <img src="failed.fw.png" width="92" height="120"></h3>
@@ -318,6 +353,7 @@ $used_by = $used_by->item(0)->nodeValue;
                 </div>
             </div>
             <!-- /item -->
+            <div class="col-md-2"></div> <!-- Spacer --> 
 
             </div>
             </div>

@@ -9,6 +9,14 @@ $api = new Api;
 $response = $api->getKey();
 
 
+$url = $response['url'];
+$key = $response['key'];
+$api_param = $response['api_params'];
+
+// print_r($response);
+
+
+
 ?>
 	<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
@@ -323,6 +331,56 @@ em{
 50%{opacity: .5;}
 100%{opacity: 1;}
 }
+
+.main{
+  background-color: #86192C;
+}
+
+.buyer-category{
+  text-align: center;
+  background-color: #fff;
+  padding: 2em 1em;
+  border-radius: 4em;
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.40);
+}
+
+section#buyers-modal{
+  /* border: 1px solid; */
+  padding: 0 2em;
+}
+
+.click-here{
+  width: 100px;
+  font-size: 1em;
+  margin-top: 1em;
+  box-shadow: 2px 3px 8px -4px rgb(0, 0, 0.9);
+  background-color: #86192c;
+  border: 2px solid #86192c;
+  transition: all ease-in;
+}
+.click-here:hover{
+  background-color: #fff;
+  color: #86192c;
+  border: 2px solid #86192c;
+}
+.title-head{
+  color: #fff;
+  text-align: left;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.buyer-type{
+  color: #86192c;
+  font-weight: 700;
+}
+
+.modal-footer p{
+  color: #fff;
+}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -361,119 +419,120 @@ s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 <!--End of Tawk.to Script-->
+
 </head>
 
 		<body>
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content" style="background-color:#86192C; width:100%;">
-      <div class="modal-header">
-       <table width="100%">
-  <tr>
-    <td><img src="img/pos.fw.png" width="114" height="170"></td>
-    <td colspan="2">
-	<div align="right" style="margin-top:-15px;">
-    <br><br><br>
-    <h4 style="color:#fff; font-weight:bolder;">
-     <?php 
-			$date = date('H'); 
-			if($date<=11.50)
-			{
-				echo 'Good Morning Customer,<br>';
-			}
-			
-			elseif($date>12 && $date<16)
-			{
-				echo 'Good Afternoon Customer,<br>';
-			}
-			else
-			{
-				echo 'Good Evening Customer,<br>';	
-			}
-			//if($date
-	?>
-	
-	Buying As An Individual?
-    </h4>
-    <br>
-<div class="blink"><em><a href="#" style="text-decoration:none; color:#FFF;" data-toggle="modal" data-target="#popUpWindow"><img src="img/btn3.png" style="width:150px;"></a></em></div>
-</div>
-    </td>
-  </tr>
-  <tr>
-  <td colspan="2">
-  <hr style="background-color:#FFF; height:1.4px;">
-  </td>
-  </tr>
-  <tr>
-  <td>
-<h4 style="color:#fff; font-weight:bolder;">Do You Have An Existing Policy?</h4><br>
-<a href="#" style="text-decoration:none; color:#FFF;" data-toggle="modal" data-target="#popUpWindow1"><img src="img/btn1.png" style="width:150px;"></a>
-</td>
-  <td align="right">
-<h4 style="color:#fff; font-weight:bolder;">Buying As A Corporate Entity?</h4><br>
-<a href="#" style="text-decoration:none; color:#FFF;" data-toggle="modal" data-target="#popUpWindow2"><img src="img/btn1.png" style="width:150px;"></a
-  ></td>
-  </tr>
-</table>
 
- </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+<!-- Start up Modal -->
+<div id="myModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content main">
+    <div class="modal-header">
+      <div class="col-md-3">
+        <img src="img/pos.fw.png" width="114">
       </div>
-      <center><font color="#CCCCCC">Consolidated Hallmark Insurance Plc.</font></center>
-<br>
+      <div class="col-md-9">
+          <h1 class="title-head">Motor Third Party Insurance</h3>
+      </div>
+      
+      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+      
+        <section id="buyers-modal">
+          <div class="row">
+            <div class="col-md-4 col-xs-12">
+              <div class="buyer-category">
+                <div class="img-border"><img src="img/user-img.png" width="130" alt=""></div>
+                <h2 class="buyer-type">Are you an Individual?</h2>
+                <a href="#" data-toggle="modal" data-target="#popUpWindow">
+                  <button class="btn btn-primary click-here">Buy Now</button>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+              <div class="buyer-category">
+                <div class="img-border"><img src="img/corporate-1.jpg" width="130" alt=""></div>
+                <h2 class="buyer-type">Are you a Company? </h2>
+                <a href="#" data-toggle="modal" data-target="#popUpWindow2">
+                  <button class="btn btn-primary click-here">Buy Now</button>
+                </a>
+                
+              </div>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+              <div class="buyer-category">
+                <div class="img-border"><img src="img/returning-cus1.jpg" width="130" alt=""></div> 
+                <h2 class="buyer-type">Existing Policy Holder?</h2>
+                <a href="#" data-toggle="modal" data-target="#popUpWindow1">
+                  <button class="btn btn-primary click-here">Buy Now</button>
+                </a>
+              </div>
+            </div>
+            </div>
+          </div> 
+        </section>
+            
+    <div class="modal-footer">
+      <p> &copy Consolidated Hallmark Insurance</p>
+      <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Save changes</button> -->
+    </div>
+    
     </div>
   </div>
 </div>
-
-
-
+<!-- End of Start up Modal -->
 
 
      
-    			<!-- Start Header Area -->
-			<header class="default-header">
-				<nav class="navbar navbar-expand-lg  navbar-light">
-					<div class="container">
-						  <a class="navbar-brand" href="http://motorthirdpartyonline.com">
-						  	<img src="img/logo.png" alt="" style="height:60px;">
-						  </a>
-						  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						    <span class="navbar-toggler-icon"></span>
-						  </button>
+  <!-- Start Header Area -->
+  <header class="default-header">
+    <nav class="navbar navbar-expand-lg  navbar-light">
+      <div class="container">
+        <a class="navbar-brand" href="http://motorthirdpartyonline.com">
+        <img src="img/logo.png" alt="" style="height:60px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
 
-						  <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
-						    <ul class="navbar-nav">
-								<li><a href="https://chiplc.com">Back To Website</a></li>
-								<li><a href="#" data-toggle="modal" data-target="#popUpWindow3">Print Certificate</a></li>
-								<li><a href="#" data-toggle="modal" data-target="#popUpWindow4">Renew Policy</a></li>
-						    </ul>
-						  </div>						
-					</div>
-				</nav>
-			</header>
-			<!-- End Header Area -->
+        <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+          <!-- <li><a href="https://chiplc.com">Back To Website</a></li> -->
+          <li><a href="#" data-toggle="modal" data-target="#popUpWindow11">Check Pin Status</a></li>
+          <li><a href="#" data-toggle="modal" data-target="#popUpWindow3">Print Certificate</a></li>
+          <!-- <li><a href="#" data-toggle="modal" data-target="#">Renew Policy</a></li> -->
+          <li><a href="#" data-toggle="modal" data-target="#popUpWindow4">Renew Policy</a></li> 
+          </ul>
+        </div>						
+      </div>
+    </nav>
+  </header>
+  <!-- End Header Area -->
 
 			<!-- start banner Area -->
 
 				<div class="container">
 					<div class="row">
-<div class="sim-slider" data-width="2600" data-height="1240" data-animation="500" data-current="true" data-progress="true"><br><br><br>
-<div class="sim-slider-inner">  
-<div class="sim-slider-slide">
+            <div class="sim-slider" data-width="2600" data-height="1240" data-animation="500" data-current="true" data-progress="true"><br><br><br>
+            <div class="sim-slider-inner">  
+            <div class="sim-slider-slide">
 
-<div class="sim-slider-layer" data-effect="zoomInDown" data-width="450" data-height="124" data-left="1000" data-top="150"><img src="img/top1.png" /></div>
-<div class="sim-slider-layer" data-effect="bounceIn" data-width="600" data-height="300" data-left="75" data-top="500"><img src="img/scratchcard1.png" /></div>
-<div class="sim-slider-layer" data-effect="bounceIn" data-width="600" data-height="300" data-left="950" data-top="500"><img src="img/auto_insurance.png" /></div>
-<div class="sim-slider-layer" data-effect="bounceIn" data-width="600" data-height="300" data-left="1811" data-top="500"><img src="img/scratchcard4.png" /></div>
+            <div class="sim-slider-layer" data-effect="zoomInDown" data-width="450" data-height="124" data-left="1000" data-top="150"><img src="img/top1.png" /></div>
+            <div class="sim-slider-layer" data-effect="bounceIn" data-width="600" data-height="300" data-left="75" data-top="500"><img src="img/scratchcard1.png" /></div>
+            <div class="sim-slider-layer" data-effect="bounceIn" data-width="600" data-height="300" data-left="950" data-top="500"><img src="img/auto_insurance.png" /></div>
+            <div class="sim-slider-layer" data-effect="bounceIn" data-width="600" data-height="300" data-left="1811" data-top="500"><img src="img/scratchcard4.png" /></div>
 
-</div>
-</div>      
-</div>	
-</div>
-					
+            </div>
+            </div>      
+            </div>	
+          </div>
 				</div>
 
 			<!-- End banner Area -->	
@@ -484,7 +543,7 @@ s0.parentNode.insertBefore(s1,s0);
 				<div class="container">
                 
                 
-                <div class="modal fade" id="popUpWindow1">
+    <div class="modal fade" id="popUpWindow1">
     <div class="modal-dialog" style="width:100%;overflow-y:auto; max-height:90%;">
       <div class="modal-content">
         <!-- header -->
@@ -494,18 +553,16 @@ s0.parentNode.insertBefore(s1,s0);
         </div>
        <div class="modal-header">
         <form action="customer/" name="form1" method="post">
-           <div align="right"><img src="img/returnee.png" width="50" height="50"> <font style="font-weight:bold; color:#000;">RETURNING CUSTOMER</font></div>
-<hr>
-           <font color="#000000">
-<table width="100%" border="0">
-  <tr>
-    <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="phone" placeholder="TYPE YOUR REGISTRATION NO. HERE" required></td>
-  </tr>
-  
-</table>
+          <div>
+            <img src="img/returnee.png" width="50" height="50"> 
+            <span style="font-weight:bold; color:#000; margin-left:5em;">RETURNING CUSTOMER</span>
+          </div>
+          <hr>
 
-           </font>
-          
+          <div>
+           <input style="width: 400px; margin-left: 30px;" type="text" style="" maxlength="11" name="phone" placeholder="ENTER YOUR REGISTRATION NO. HERE" required>
+           </div>
+           
         </div>
        <!-- footer -->
         <div class="modal-footer">
@@ -522,6 +579,12 @@ s0.parentNode.insertBefore(s1,s0);
 							<div class="title text-center">
 								<h1 class="mb-10" style="font-weight:bold;">Buy Motor Third Party Insurance</h1>
 								<p style="color:#000;">Explore our newly improved portal that helps you make easy and seamless purchases of your motor insurance</p>
+                <?php 
+                  // $clientx = new SoapClient($url,$api_param);
+                  // $res2x = $clientx->FindPremiumThirdParty(array('Vehicle' => 'bus'));
+                  // print_r($res2x);
+                                
+                ?>
 							</div>
 						</div>
 					</div>	
@@ -534,15 +597,13 @@ s0.parentNode.insertBefore(s1,s0);
 				<h2 style="color:#FFF;">Bus</h2>
 			</header> <!-- .cd-pricing-header -->
 
-
-
 			<div class="cd-pricing-features" align="left">
 				<ul>
 				<h1 style="font-size:18px;">
                 <img src="img/bus2.png" width="60" height="40"><br>
                 ₦<?php 
-                    $url = $response['url'];
-                    $api_param = $response['api_params'];
+                    // $url = $response['url'];
+                    // $api_param = $response['api_params'];
                     $clientx = new SoapClient($url,$api_param);
                     $res2x = $clientx->FindPremiumThirdParty(array('Vehicle' => 'bus'));
                     $bus = $res2x->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
@@ -772,9 +833,8 @@ Consolidated Hallmark Insurance Motor Third Party Online is committed to protect
 			</section>
 			<!-- end service Area-->
 
-<div style="margin-bottom:-200px;"></div>
 
-    
+<div style="margin-bottom:-200px;"></div>
 		
 			<!-- Start testimonial Area -->
 			<section class="relative section-gap">
@@ -1031,7 +1091,7 @@ while($yr >=1999)
     </td>
   <td>
   <div style="margin-left:6px;">
-<select style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" name="category" style="color:#000; width:183px;">
+<select style="width:197px; height:44px; border-color:#ddd; border-radius:5px;" name="category" style="color:#000; width:183px;" required>
 <option value="">Category</option>
 <option>
     <?php 
@@ -1312,7 +1372,9 @@ while($yr >=1900)
 </select></td>
   </tr>
 </table></td>
-<td><input type="text" name="rc_no" placeholder="RC Number"></td>
+<td>
+<label style="font-size: 14px; margin: -11.6px 6px; color: #ddd;font-weight: bolder;" for="">Registration Number</label>
+<input style="" type="text" name="rc_no" placeholder="RC Number"></td>
   </tr>
   <tr>
   <td><input type="text" name="email" placeholder="Email"  required></td>
@@ -1389,77 +1451,78 @@ while($yr >=1900)
 <?php
 //******************************************* Policy Renewal *********************************************************
 ?>  
+
+
+
 <div class="modal fade" id="popUpWindow4">
-    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
+    <div class="modal-dialog" style="width:100%;overflow-y:auto; max-height:90%;">
       <div class="modal-content">
         <!-- header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title"><font style="font-weight:bold">Policy Renewal</font></h3>
+          <h3 class="modal-title"><font style="font-weight:bold">Motor Third Party Insurance Registration</font></h3>
         </div>
-        <!-- body -->
-        <div class="modal-header">
-          <form action="renewal/" name="formx" id="formx"  method="post">
-          <div align="center"><img src="img/car.fw.png" width="50" height="70">  <font style="font-weight:bold; color:#000;">RENEW YOUR POLICY</font></div><br>
- <hr>
-           <font color="#000000">
-<table align="center" style="width:100%;">
-   <tr>
-       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="Regno" placeholder="Enter your Vehicle Registration No. :" required></td>
-  </tr>
-</table>
+       <div class="modal-header">
+        <form action="renewal/" name="formx" id="formx" method="post">
+          <div>
+            <img src="img/car.fw.png" width="50" height="50"> 
+            <span style="font-weight:bold; color:#000; margin-left:5em;">RENEW YOUR POLICY</span>
+          </div>
+          <hr>
 
-           </font>
-          
+          <div>
+           <input style="width: 400px; margin-left: 30px;" type="text" maxlength="11" name="Regno" placeholder="ENTER YOUR REGISTRATION NO. HERE" required>
+           </div>
+           
         </div>
        <!-- footer -->
         <div class="modal-footer">
-         <input type="submit" name="submit" value="Check Details">
+          <input type="submit" name="submit" value="Check Details">
         </div>
         </form>
       </div>
     </div>
-  </div> 
+  </div>
+
+
   
   
   
 <?php
 //******************************************* Pin Status *********************************************************
 ?>  
+
 <div class="modal fade" id="popUpWindow11">
-    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
+    <div class="modal-dialog" style="width:100%;overflow-y:auto; max-height:90%;">
       <div class="modal-content">
         <!-- header -->
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title"><font style="font-weight:bold">Check Pin Status </font></h3>
+          <h3 class="modal-title"><font style="font-weight:bold">Motor Third Party Insurance Registration</font></h3>
         </div>
-        <!-- body -->
-        <div class="modal-header">
-          <form action="check-status/" target="_blank" name="form50" id="form50"  method="get">
-          <div align="center"><img src="img/status.png" width="70" height="70">  <font style="font-weight:bold; color:#000;">CHECK THE STATUS OF YOUR PIN </font></div><br>
- <hr>
-           <font color="#000000">
-<table align="center" style="width:100%;">
-   <tr>
-       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="serialno" placeholder="TYPE SERIAL NO. HERE" required></td>
-  </tr>
-</table>
+       <div class="modal-header">
+        <form action="check-status/" target="_blank" name="form50" id="form50" method="get">
+          <div>
+            <img src="img/status.png" width="50" height="50"> 
+            <span style="font-weight:bold; color:#000; margin-left:5em;">CHECK THE STATUS OF YOUR PIN</span>
+          </div>
+          <hr>
 
-           </font>
-          
+          <div>
+           <input style="width: 400px; margin-left: 30px;" type="text" maxlength="11" name="serialno" placeholder="TYPE SERIAL NO. HERE" required>
+           </div>
+           
         </div>
        <!-- footer -->
         <div class="modal-footer">
-         <input type="submit" name="submit" value="Check Status">
+          <input type="submit" name="submit" value="Check Details">
         </div>
         </form>
       </div>
     </div>
-  </div> 
-  
-  
-</div>
+  </div>
+
+
 					
 <?php
 //***************************************************BUS************************************************

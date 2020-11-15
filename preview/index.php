@@ -313,15 +313,15 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 				<label for="car">Vehicle:</label>
 				<input type="hidden" name="car" id="car" value="<?php echo $_POST['car']; ?>"/>
 
-				<input type="text" class="input-1" name="car" id="car" value="<?php echo $_POST['car']; ?>" required disabled />
+				<!-- <input type="text" class="input-1" name="car" id="car" value="<?php echo $_POST['car']; ?>" required  /> -->
 				<!-- Hidden -->
 				<!-- <input type="hidden" class="input-1" name="country" id="country" value="<?php // echo $_POST['car']; ?>" /> -->
 
-				<!-- <select class="input-1" name="country" id="country" required onchange="form.car.value=this.options[this.selectedIndex].text">
-				<option><?php // echo $_POST['car']; ?></option>
+				<select class="input-1" name="country" id="country" required onchange="form.car.value=this.options[this.selectedIndex].text">
+				<option><?php  echo $_POST['car']; ?></option>
 				<option></option>
 				<?php 
-				/*
+				
 				$sql = "select * from `cars` order by cars asc";
 				$res = mysqli_query($con, $sql);
 				if(mysqli_num_rows($res) > 0) {
@@ -329,22 +329,22 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 						echo "<option value='".$row->id."'>".ucfirst(strtolower($row->cars))."</option>";
 					}
 				}
-				*/
+				
 				?>
-				</select> -->
+				</select>
 			</div>
 		</td>
 			
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="model">Model:</label>
-				<input type="text" class="input-2" name="model" id="model" value="<?php echo $_POST['model']; ?>" required disabled/>
+				<!-- <input type="text" class="input-2" name="model" id="model" value="<?php // echo $_POST['model']; ?>" required /> -->
 				<!-- Hidden -->
 				<input type="hidden" name="model" id="model" value="<?php echo $_POST['model']; ?>"/>
 				
-				<!-- <select name="state" id="state" class="input-2" required disabled onchange="form.model.value=this.options[this.selectedIndex].text">
-					<option><?php // echo $_POST['model']; ?></option>
-				</select> -->
+				<select name="state" id="state" class="input-2" required onchange="form.model.value=this.options[this.selectedIndex].text">
+					<option><?php echo $_POST['model']; ?></option>
+				</select>
 			</div>
 		</td>
 	</tr>
@@ -353,7 +353,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="reg_no">Registration No:</label>
-				<input class="input-1" id="reg_no" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required disabled>
+				<input class="input-1" id="reg_no" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required >
 
 				<!-- Hidden -->
 				<input type="hidden" class="input-1" id="reg_no" name="reg_no" maxlength="20" value="<?php echo $_POST['reg_no']; ?>" required>
@@ -363,7 +363,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="engine_no">Engine No:</label>
-				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required disabled>
+				<input class="input-2" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>" required >
 				<!-- Hidden -->
 				<input type="hidden" id="engine_no" name="engine_no"  maxlength="50" value="<?php echo $_POST['engine_no']; ?>">
 
@@ -375,7 +375,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="chasis_no">Chasis No:</label>
-				<input class="input-1" id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" required disabled>
+				<input class="input-1" id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>" required >
 				<!-- Hidden -->
 				<input type="hidden" id="chasis_no" name="chasis_no" maxlength="17" value="<?php echo $_POST['chasis_no']; ?>">
 			</div>
@@ -384,7 +384,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="color">Colour:</label>
-				<input class="input-2" id="color" name="color" maxlength="20" value="<?php echo $_POST['colour']; ?>" required disabled>
+				<input class="input-2" id="color" name="color" maxlength="20" value="<?php echo $_POST['colour']; ?>" required >
 				<!-- Hidden -->
 				<input type="hidden" id="color" name="color" maxlength="20" value="<?php echo $_POST['colour']; ?>" >
 			</div>
@@ -395,14 +395,13 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="year">Year of Make:</label>
-				<input type="text" class="input-1" name="year" id="year" value="<?php echo $_POST['year']; ?>" required disabled> 
+				<!-- <input type="text" class="input-1" name="year" id="year" value="<?php echo $_POST['year']; ?>" required >  -->
 				<!-- Hidden -->
 				<input type="hidden" class="input-1" name="year" id="year" value="<?php echo $_POST['year']; ?>" > 
-				<!-- <select class="input-1" name="year" id="year">
-				<option><?php // echo $_POST['year']; ?></option>
-				<option></option>
+				<select class="input-1" name="year" id="year">
+				<option><?php echo $_POST['year']; ?></option>
 				<?php
-				/*
+			
 				$yr = 2019;
 
 				while($yr >=1999)
@@ -410,16 +409,57 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 					echo '<option>'. $yr. '</option>';
 					--$yr;
 				}
-				*/
+				
 				?>
-				</select> -->
+				</select> 
 			</div>
 		</td>
 
     	<td>
 			<div id="form-card" class="form-field">
                 <label for="state_reg">State of Registration:</label>
-				<input type="text"  name="state_reg" id="state_reg" class="input-2" value="<?php echo $_POST['state_reg']; ?>" required disabled>
+				<!-- <input type="text"  name="state_reg" id="state_reg" class="input-2" value="<?php // echo $_POST['state_reg']; ?>" required > -->
+
+				<select name="state_reg" id="state_reg" class="input-2">
+				<option value="<?php echo $_POST['state_reg']; ?>"><?php echo $_POST['state_reg']; ?></option>
+				<OPTION>Lagos</OPTION>
+				<option>Abuja FCT</option>
+				<option>Abia</option>
+				<option>Adamawa</option>
+				<option>Akwa Ibom</option>
+				<option>Anambra</option>
+				<option>Bauchi</option>
+				<option>Bayelsa</option>
+				<option>Benue</option>
+				<option>Borno</option>
+				<option>Cross River</option>
+				<option>Delta</option>
+				<option>Ebonyi</option>
+				<option>Edo</option>
+				<option>Ekiti</option>
+				<option>Enugu</option>
+				<option>Gombe</option>
+				<option>Imo</option>
+				<option>Jigawa</option>
+				<option>Kaduna</option>
+				<option>Kano</option>
+				<option>Kastina</option>
+				<option>Kebbi</option>
+				<option>Kogi</option>
+				<option>Kwara</option>
+				<option>Nassarawa</option>
+				<option>Niger</option>
+				<option>Ogun</option>
+				<option>Ondo</option>
+				<option>Osun</option>
+				<option>Oyo</option>
+				<option>Plateau</option>
+				<option>Rivers</option>
+				<option>Sokoto</option>
+				<option>Taraba</option>
+				<option>Yobe</option>
+				<option>Zamfara</option>
+					</select>
 
 				<!--  Hidden -->	
 				<input type="hidden" name="state_reg" id="state_reg" class="input-2" value="<?php echo $_POST['state_reg']; ?>" >	
@@ -432,7 +472,7 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="category">Category:</label>
-				<input class="input-1" id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" required disabled>
+				<input class="input-1" id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" required>
 				<!-- Hidden -->
 				<input type="hidden" class="input-1" id="cat" name="cat" maxlength="19" value="<?php echo $_POST['category']; ?>" >
 			</div>
@@ -441,16 +481,16 @@ $dob = $_POST['yearx'].'-'.$_POST['month'].'-'.$_POST['day']
 		<td>
 			<div id="form-card" class="form-field">
 				<label for="usage">Usage:</label>
-				<input type="text" class="input-2" name="usage" value="<?php echo $_POST['usage']; ?>" required disabled>
+				<!-- <input type="text" class="input-2" name="usage" value="<?php echo $_POST['usage']; ?>" required > -->
 				<!-- Hidden -->
 				<input type="hidden" class="input-2" name="usage" value="<?php echo $_POST['usage']; ?>" >
 
-				<!-- <select class="input-2" required name="usage">
-				<option><?php // echo $_POST['usage']; ?></option>
+				<select class="input-2" required name="usage">
+				<option><?php echo $_POST['usage']; ?></option>
 				<option></option>
 				<option>Private</option>
 				<option>Commercial</option>
-				</select> -->
+				</select>
 			</div>
 		</td>
   </tr>
@@ -493,24 +533,28 @@ elseif($_POST['id_no'] != '')
 	padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Scratch Card"></em></div>
 	</td>
 
+	<td><div class="blink"><em><input id="debit-card-btn" type="button" style="background: linear-gradient(135deg, #ccc 0%, #891C2E 100%);
+	padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;" value="Pay With Debit Card"></em></div>
+	</td>
+
     <td>
     <?php
     if($_POST[paynow] == 'bus' || $_POST[paynow] == 'car' || $_POST[paynow] == 'jeep' || $_POST[paynow] == 'keke' || $_POST[paynow] == 'suv' || $_POST[paynow] == 'truck')
     {
-        echo '<img src="finger.fw.png" width="50"><br />Please Use <br />Scratch Card';
+        // echo '<img src="finger.fw.png" width="50"><br />Please Use <br />Scratch Card';
     }
     elseif($_POST[paynow] != 'bus' || $_POST[paynow] != 'car' || $_POST[paynow] != 'jeep' || $_POST[paynow] != 'keke' || $_POST[paynow] != 'suv' || $_POST[paynow] != 'truck')
     {
 	?>
 	<!-- <div class="blink"><em><button type="button" value="Pay Now" id="submit"  style="cursor:pointer; background: linear-gradient(135deg, #891C2E 30%, #CCC 60%); padding: 10px; border: none; border-radius: 50px; width:200px; color: white; font-weight: 400; font-size: 12pt;">Pay With Debit Card</button></em>
 	</div> -->
-  <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
-  <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script>
-  <!-- <script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script> -->
+  <!-- <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script> -->
+  <!-- <script src='https://api.ravepay.co/flwv3-pug/getpaidx/api/flwpbf-inline.js'></script> -->
+  
 
   
 
-<script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", function(event) {
     document.getElementById("submit").addEventListener("click", function() {
      
@@ -539,7 +583,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       });
     });
   });
-</script>
+</script> -->
 	
    <?php } 
 		}
@@ -617,6 +661,8 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			</footer>
 			<!-- End footer Area -->
 
+			<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
 			<script src="../js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 			<script src="../js/vendor/bootstrap.min.js"></script>
@@ -627,5 +673,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 			<script src="../js/jquery.DonutWidget.min.js"></script>
 			<script src="../js/jquery.magnific-popup.min.js"></script>			
 			<script src="../js/main.js"></script>	
+			<script src="../js/card-pay.js"></script>
+			<script type="text/javascript" src="https://ravesandboxapi.flutterwave.com/flwv3-pug/getpaidx/api/flwpbf-inline.js"></script>
 		</body>
 	</html>

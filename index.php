@@ -8,22 +8,6 @@ require('api_config.php');
 $api = new Api;
 $response = $api->getKey();
 
-// $response = array(
-//   'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
-//   'key' => 'x76o-XInterAP-MTP1920',
-//   'api_params' => [
-//       'cache_wsdl' => 0,
-//       'trace' => 1,
-//       'stream_context' => stream_context_create(array(
-//           'ssl' => array(
-//               'verify_peer' => false,
-//               'verify_peer_name' => false,
-//               'allow_self_signed' => true
-//           )
-//       ))
-//       ]
-// );
-
 $url = $response['url'];
 $key = $response['key'];
 $api_param = $response['api_params'];
@@ -619,8 +603,12 @@ s0.parentNode.insertBefore(s1,s0);
                     // $api_param = $response['api_params'];
                     $clientx = new SoapClient($url,$api_param);
                     $res2x = $clientx->FindPremiumThirdParty(array('Vehicle' => 'bus'));
-                    $bus = $res2x->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+                    foreach($res2x->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+                      $bus = $item->Premium;
+                    }
                     echo number_format($bus);
+                    // $bus = $res2x->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+                    // echo number_format($bus);
                   ?>
 				  </h1>
 				</ul>
@@ -663,8 +651,13 @@ s0.parentNode.insertBefore(s1,s0);
 				<img src="img/jeep.jpg" width="50" height="40"><br>
                 ₦<?php 
                   $res2c = $clientx->FindPremiumThirdParty(array('Vehicle' => 'jeep'));
-                  $jeep = $res2c->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
-                  echo number_format($jeep);
+                  foreach($res2c->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+                    $jeep = $item->Premium;
+                  }
+                  echo number_format($jeep);    
+
+                  // $jeep = $res2c->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+                  // echo number_format($jeep);
                 ?>
 </h1>
 				</ul>
@@ -736,8 +729,12 @@ echo number_format($keke);
 				<img src="img/suv.png" width="60" height="40"><br>
                 ₦<?php 
 $res2d = $clientx->FindPremiumThirdParty(array('Vehicle' => 'suv'));
-$suv = $res2d->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+foreach($res2d->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $suv = $item->Premium;
+}
 echo number_format($suv);
+// $suv = $res2d->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+// echo number_format($suv);
 ?></h1>
 				</ul>
 			</div> <!-- .cd-pricing-features -->
@@ -757,9 +754,13 @@ echo number_format($suv);
 				<img src="img/truck.jpg" width="50" height="40"><br>
                 ₦<?php 
 $res2e = $clientx->FindPremiumThirdParty(array('Vehicle' => 'truck'));
-$truck = $res2e->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+foreach($res2e->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $price = $item->Premium;
+}
+// $truck = $res2e->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 
-echo number_format($truck);
+// echo number_format($truck);
+echo $price;
 ?>
 </h1>
 				</ul>
@@ -1125,17 +1126,27 @@ echo $res->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium;
 
 <option><?php 
 $res4 = $client->FindPremiumThirdParty(array('Vehicle' => 'jeep'));
-echo substr(ucfirst(strtolower($res4->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res4->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+foreach($res4->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $jeep = $item->Premium;
+  $insurance_class = $item->InsuranceClass;
+}
+echo substr(ucfirst(strtolower($insurance_class)), 0, 4).' - '.$jeep;
+// echo substr(ucfirst(strtolower($res4->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+// echo " - ";
+// echo $res4->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 ?></option>
 
 
 <option><?php 
 $res3 = $client->FindPremiumThirdParty(array('Vehicle' => 'suv'));
-echo substr(ucfirst(strtolower($res3->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res3->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+foreach($res3->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $suv = $item->Premium;
+  $insurance_class = $item->InsuranceClass;
+}
+echo substr(ucfirst(strtolower($insurance_class)), 0, 4).' - '.$suv;
+// echo substr(ucfirst(strtolower($res3->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+// echo " - ";
+// echo $res3->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 ?></option>
 
 <option><?php 
@@ -1149,9 +1160,17 @@ echo $res7->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium;
 <option>
 <?php
 $res2 = $client->FindPremiumThirdParty(array('Vehicle' => 'bus'));
-echo substr(ucfirst(strtolower($res2->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res2->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+
+foreach($res2->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $bus = $item->Premium;
+  $insurance_class = $item->InsuranceClass;
+}
+echo substr(ucfirst(strtolower($insurance_class)), 0, 4).' - '.$bus;
+// echo number_format($bus);
+
+// echo substr(ucfirst(strtolower($res2->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+// echo " - ";
+// echo $res2->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 ?></option>
 
 
@@ -1536,6 +1555,42 @@ while($yr >=1900)
   </div>
 
 
+
+
+<!-- <div class="modal fade" id="popUpWindow11">
+    <div class="modal-dialog" style="width:auto; overflow-y:auto; max-height:90%;">
+      <div class="modal-content">
+        <!-- header --
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h3 class="modal-title"><font style="font-weight:bold">Check Pin Status </font></h3>
+        </div>
+        <!-- body --
+        <div class="modal-header">
+          <form action="check-status/" target="_blank" name="form50" id="form50"  method="get">
+          <div align="center"><img src="img/status.png" width="70" height="70">  <font style="font-weight:bold; color:#000;">CHECK THE STATUS OF YOUR PIN </font></div><br>
+ <hr>
+           <font color="#000000">
+<table align="center" style="width:100%;">
+   <tr>
+       <td colspan="2"><input type="text" style="width:300px;" maxlength="11" name="serialno" placeholder="TYPE SERIAL NO. HERE" required></td>
+  </tr>
+</table>
+
+           </font>
+          
+        </div>
+       <!-- footer --
+        <div class="modal-footer">
+         <input type="submit" name="submit" value="Check Status">
+        </div>
+        </form>
+      </div>
+    </div>
+  </div> 
+  
+  
+</div> -->
 					
 <?php
 //***************************************************BUS************************************************
@@ -1744,9 +1799,14 @@ while($yr >=1900)
 <option>
 <?php
 $res2 = $client->FindPremiumThirdParty(array('Vehicle' => 'bus'));
-echo substr(ucfirst(strtolower($res2->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res2->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+foreach($res2->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $bus = $item->Premium;
+  $insurance_class = $item->InsuranceClass;
+}
+echo substr(ucfirst(strtolower($insurance_class)), 0, 4).' - '.$bus;
+// echo substr(ucfirst(strtolower($res2->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+// echo " - ";
+// echo $res2->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 ?></option>
 </select></td>
   </tr>
@@ -2205,9 +2265,16 @@ while($yr >=1900)
 <option>
 <?php 
 $res4 = $client->FindPremiumThirdParty(array('Vehicle' => 'jeep'));
-echo substr(ucfirst(strtolower($res4->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res4->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+foreach($res4->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $jeep = $item->Premium;
+  $insurance_class = $item->InsuranceClass;
+}
+echo substr(ucfirst(strtolower($insurance_class)), 0, 4).' - '.$jeep;
+
+
+// echo substr(ucfirst(strtolower($res4->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+// echo " - ";
+// echo $res4->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 ?></option>
 </select></td>
   </tr>
@@ -2667,9 +2734,16 @@ while($yr >=1900)
 <option>
 <?php 
 $res3 = $client->FindPremiumThirdParty(array('Vehicle' => 'suv'));
-echo substr(ucfirst(strtolower($res3->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
-echo " - ";
-echo $res3->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
+
+foreach($res3->FindPremiumThirdPartyResult->ThirdPartyPremium as $item){
+  $suv = $item->Premium;
+  $insurance_class = $item->InsuranceClass;
+}
+echo substr(ucfirst(strtolower($insurance_class)), 0, 4).' - '.$suv;
+
+// echo substr(ucfirst(strtolower($res3->FindPremiumThirdPartyResult->ThirdPartyPremium->InsuranceClass)), 0, 4); 
+// echo " - ";
+// echo $res3->FindPremiumThirdPartyResult->ThirdPartyPremium->Premium; 
 ?></option>
 </select></td>
   </tr>
