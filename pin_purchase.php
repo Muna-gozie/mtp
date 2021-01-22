@@ -42,55 +42,63 @@ if(isset($_POST['renew_now'])){
   // print_r($renewal_params);
 
   if($policy_start_date != false){
-
     try{
       $client = new SoapClient($url,$api_params);
       $response = $client->RenewMotorPolicy($renewal_params);
 
+      // echo '<pre>';
       // print_r($response);
+      // echo '</pre>';
 
-      foreach($response->RenewMotorPolicyResult as $result){
-        if(!is_numeric($result->CertificateNos)){
-          $certificate_number = $result->CertificateNos;
-        }else{
-          $certificate_number = $result->CertificateNos;
-          $fullname = $result->Firstname;
-          $insurance_type = $result->InsuredType;
-          $policy_number = $result->PolicyNumber;
-          $premium = $result->Premium;
-          $policy_start_date = $result->StartDate;
-          $policy_expiry_date = $result->ExpiryDate; 
-        }
-        
+      $renew_response = $response->RenewMotorPolicyResult->InsuredPolicyDetails;
+
+      // error
+      if($renew_response->status == 'Failed'){
+        $error = [
+          'error_type' => 'Renewal Error',
+          'message' => $renew_response->statusmsg
+        ];
+  
+        $query = http_build_query($error);
+        header('Location:error/?'.$query);
       }
-      
-      // echo $certificate_number;
 
-      $policy_info = [
-        'policy_number' => $policy_number,
-        'fullname' => $fullname,
-        'cert_no' => $certificate_number,
-        'insurance_type' => $insurance_type, 
-        'premium' => $premium,
-        'policy_start_date' => $policy_start_date,
-        'expiry_date' => $policy_expiry_date,
-        'reg_no' => $reg_number,
-        'vehicle_name' =>  $vehicle_brand,
-        'vehicle_model' => $vehicle_model
-      ];
+      // success
+      if($renew_response->status == 'ok' && $renew_response->statusmsg == 'success'){
 
-      print_r($policy_info);
+        $policy_info = [
+          'policy_number' => $renew_response->PolicyNumber,
+          'fullname' => $renew_response->Firstname,
+          'cert_no' => $renew_response->CertificateNos,
+          'insurance_type' => $renew_response->InsuredType, 
+          'premium' => $renew_response->Premium,
+          'policy_start_date' => $renew_response->StartDate,
+          'expiry_date' => $renew_response->ExpiryDate,
+          'reg_no' => $reg_number,
+          'vehicle_name' =>  $vehicle_brand,
+          'vehicle_model' => $vehicle_model
+        ];
 
-      $query = http_build_query($policy_info);
+        // print_r($policy_info);
+        $query = http_build_query($policy_info);
 
-      // header('Location:http://localhost:81/projects/mtp/renewal/update-info.php'.$query);
+        // header('Location:http://localhost:81/projects/mtp/success/?'.$query);
+        header('Location:success/?'.$query);
 
-      header('Location:http://localhost:81/projects/mtp/success/?'.$query);
-      
+      }           
 
     }catch(Exception $e){
-      $error = $e->getMessage();
+      // $error_msg = $e->getMessage();
+      $error_msg = 'Could not connect to host';
+      // print_r($error_msg);
       // Send error back to page
+      $error = [
+        'error_type' => 'Renewal Error',
+        'message' => $error_msg
+      ];
+
+      $query = http_build_query($error);
+      header('Location:error/?'.$query);
     }   
 
   }else{
@@ -172,58 +180,40 @@ if(isset($_POST['pin_pay'])){
         'ispin' => '1'
       );
 
-    // print_r($buy_policy_params);
-    // echo '<br><br>';
-
-    // $client = new SoapClient($url,$api_params);
-    // $result = $client->BuyPolicy($buy_policy_params);
-    // print_r($result);
-
-    // echo 'Your policy start date is'.$policy_start_date;
-
+    
     if($policy_start_date !== false){
       try{
         $client = new SoapClient($url,$api_params);
         $result = $client->BuyPolicy($buy_policy_params);
-        print_r($result);
+        
+        // echo '<pre>';
+        // print_r($result);
+        // echo '</pre>';
+        
+        $buy_response = $result->BuyPolicyResult->ReferenceID11;
 
         //purchase error
-        $error_response = $result->BuyPolicyResult->ReferenceID11;
-
-        // policy exist
-        if($error_response->PolicyNumber == 'Failed' && $error_response->Premium == 0){
-          echo $error_response->StatusmSG;
-
+        if($buy_response->Status == 'Failed'){
           $error = [
             'error_type' => 'Purchase Error',
-            'message' => $error_response->StatusmSG
+            'message' => $buy_response->StatusmSG
           ];
-
+    
           $query = http_build_query($error);
           header('Location:error/?'.$query);
         }
 
-        // pin is used
-        if($error_response->CustomerReference == 'Failed' && $error_response->Premium == 0){
-          $error = [
-            'error_type' => 'Purchase Error',
-            'message' => $error_response->StatusmSG
-          ];
-
-          $query = http_build_query($error);
-          header('Location:error/?'.$query);
-        }
 
         // successful purchase
-        if(is_numeric($error_response->CustomerReference) && is_numeric($error_response->PolicyNumber) ){
-            $success_data = [
-            'policy_number' => $error_response->PolicyNumber,
-            'status' => $error_response->StatusmSG,
-            'insured_id' => $error_response->CustomerReference,
-            'fullname' => $error_response->Fullname,
-            'expiry_date' => $error_response->ExpiryDate,
-            'cert_no' => $error_response->CertificateNos,
-            'product' => $error_response->Product,
+        if($buy_response->Status == '00' && $buy_response->StatusmSG == 'OK' ){
+          $success_data = [
+            'policy_number' => $buy_response->PolicyNumber,
+            'status' => $buy_response->StatusmSG,
+            'insured_id' => $buy_response->CustomerReference,
+            'fullname' => $buy_response->Fullname,
+            'expiry_date' => $buy_response->ExpiryDate,
+            'cert_no' => $buy_response->CertificateNos,
+            'product' => $buy_response->Product,
             'phone_number' => $phone,
             'vehicle_name' => $vehicle_name,
             'reg_no' => $reg_no,
@@ -235,66 +225,20 @@ if(isset($_POST['pin_pay'])){
           ]; 
 
           $query = http_build_query($success_data);
-
-
-        header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
-        }
-
-
-        
-
-        // print_r($error_response);
-
-        // foreach($result->BuyPolicyResult as $item){
-        //     if(!is_numeric($item->PolicyNumber)){
-        //       $policy_number = $item->PolicyNumber;
-        //       $status_message = $item->StatusmSG;
-
-        //     }else{
-        //       $policy_number = $item->PolicyNumber;
-        //       $insured_id = $item->CustomerReference;
-        //       $fullname = $item->Fullname;
-        //       $policy_expiry_date = $item->ExpiryDate;
-        //       $status_message = $item->StatusmSG;
-        //       $certificate_number = $item->CertificateNos;
-        //       $product = $item->Product;
-        //     }
-        //   }
-
-        // // echo $insured_id.' '.$policy_number.' '.$fullname.' '.$policy_expiry_date.' '.$status_message.' '.$certificate_number.' '.$product;
-
-        //   $success_data = [
-        //     'policy_number' => $policy_number,
-        //     'status' => $status_message,
-        //     'insured_id' => $insured_id,
-        //     'fullname' => $fullname,
-        //     'expiry_date' => $policy_expiry_date,
-        //     'cert_no' => $certificate_number,
-        //     'product' => $product,
-        //     'phone_number' => $phone,
-        //     'vehicle_name' => $vehicle_name,
-        //     'reg_no' => $reg_no,
-        //     'premium' => $premium,
-        //     'vehicle_model' => $vehicle_model,
-        //     'manufacture_year' => $manufacture_year,
-        //     'policy_start_date' => $policy_start_date,
-        //     'agent_id' => $agentid
-        //   ]; 
-
-        //   $query = http_build_query($success_data);
-
-
-        // header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
-
-        // // header('Location:https://motorthirdpartyonline.com/demo/success/?'.$query);
+          // header('Location:http://localhost:81/projects/mtp/success/?'.$query); 
+          header('Location:success/?'.$query);
+          
+        }      
+       
 
       }catch(SoapFault $e){
           //  Api error
-          $error_msg = $e->getMessage();
-          print_r($error_msg);
+          // $error_msg = $e->getMessage();
+          $error_msg = 'Could not connect to host';
+          // print_r($error_msg);
           $error = [
             'error_type' => 'Purchase Error',
-            'message' => 'There was an issue completing this purchase.'
+            'message' => $error_msg
           ];
           
           $query = http_build_query($error);

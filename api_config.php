@@ -16,19 +16,21 @@ Class Api{
             )
         )));
 
-         // 'url' => 'https://onboarding.chiplc.com:4443/chisoapapi/mtpapp.asmx?wsdl'
-        // 'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl'
-        // 'url' => 'http://52.213.72.87/chisoapapi/mtpapp.asmx?wsdl'
-        //live key = x76o-XInterAP-MTP1920
-        //test key = x76o-XInterAP
+        //  $live_url = 'https://onboarding.chiplc.com:4443/chisoapapi/mtpapp.asmx?wsdl';
+        // $test_url = 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl';
+        // // 'url' => 'http://52.213.72.87/chisoapapi/mtpapp.asmx?wsdl'
+        // $live_key = 'x76o-XInterAP-MTP1920';
+        // $test_key = 'x76o-XInterAP';
 
         // Api key and url for policy renewal
         return [
-        'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
-        'key' => 'x76o-XInterAP',
-        'api_params' => [
-            'cache_wsdl' => 0,
-            'trace' => 1,
+            // 'url' => $test_url,
+            // 'key' => $test_key,
+            'url' => 'http://test.chiplc.com/chisoapapi/mtpapp.asmx?wsdl',
+            'key' => 'x76o-XInterAP',
+            'api_params' => [
+                'cache_wsdl' => 0,
+                'trace' => 1,
             ]
         ];
     }
